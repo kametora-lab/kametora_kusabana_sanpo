@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+    --color-neon-pink: #ff2d95;
+    --color-neon-cyan: #00f0ff;
+    --color-neon-purple: #b026ff;
+    --color-bg-dark: #0a0a0f;
+    --color-glass: rgba(255, 255, 255, 0.1);
+
+    --font-display: "Orbitron", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --shadow-neon-pink: 0 0 10px #ff2d95, 0 0 20px #ff2d95;
+    --shadow-neon-cyan: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+body {
+    @apply bg-bg-dark text-white font-body selection:bg-neon-pink selection:text-white;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 45, 149, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+    min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-glass rounded-full hover:bg-neon-pink transition-colors;
+}
+
+/* Utilities */
+.glass-panel {
+    @apply bg-glass backdrop-blur-md border border-white/10 rounded-xl;
+}
+
+.text-glow {
+    text-shadow: 0 0 10px currentColor;
+}

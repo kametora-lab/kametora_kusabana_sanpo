@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { NeonButton } from '../../components/NeonButton';
+import { ImageGallery } from '../../components/ImageGallery';
+import plants from '../../data/plants.json';
+import colors from '../../data/colors.json';
+
+export function getStaticPaths() {
+  return plants.map((plant) => ({
+    params: { slug: plant.slug },
+    props: { plant },
+  }));
+}
+
+const { plant } = Astro.props;
+
+// Helper to get color info
+const getColors = (colorIds: string[] | undefined) => {
+  if (!colorIds) return [];
+  return colorIds.map(id => colors.find(c => c.id === id)).filter(Boolean);
+};
+
+const plantColors = getColors(plant.colors);
+---
+
+<Layout title={plant.title} description={plant.description}>
+  <main class="min-h-screen p-4 md:p-8 pt-20 max-w-6xl mx-auto">
+    
+    <div class="mb-8">
+       <a href="/plants" class="text-neon-cyan hover:text-white transition-colors flex items-center gap-2 group">
+        <span class="group-hover:-translate-x-1 transition-transform">←</span> Back to Database
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      
+      {/* Left: Image Selection */}
+      <div class="space-y-4">
+        <ImageGallery client:load images={plant.images} title={plant.title} />
+      </div>
+
+      {/* Right: Info */}
+      <div class="space-y-8">
+        <div>
+          {/* Colors */}
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            {plantColors.map((color) => (
+              <span 
+                class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20"
+                style={{ 
+                  color: color.value, 
+                  borderColor: `${color.value}40`,
+                  backgroundColor: `${color.value}10`,
+                  boxShadow: `0 0 10px ${color.value}20`
+                }}
+              >
+                {color.name}
+              </span>
+            ))}
+            <span class="text-gray-500 text-xs font-mono ml-auto">{plant.meta?.scientificName}</span>
+          </div>
+          
+          <h1 class="font-display text-4xl md:text-6xl font-black text-white mb-6 text-glow">
+            {plant.title}
+          </h1>
+          
+          <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4">
+            {plant.description}
+          </p>
+        </div>
+
+        {/* Tags / Months */}
+        <div>
+          <h3 class="font-display text-sm text-neon-cyan mb-3 uppercase tracking-widest">Observation Months</h3>
+          <div class="flex flex-wrap gap-2">
+            {plant.months?.map((month) => (
+              <span class="px-4 py-2 bg-white/5 border border-white/10 rounded text-sm text-gray-300 hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-default">
+                {month}
+              </span>
+            ))}
+            {(!plant.months || plant.months.length === 0) && (
+              <span class="text-gray-600 text-sm italic">No observation data</span>
+            )}
+          </div>
+        </div>
+
+        {/* Meta Info Grid */}
+        <div class="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
+          <div>
+            <span class="block text-gray-500 text-xs uppercase mb-1">Family</span>
+            <span class="text-white font-display">{plant.meta?.family || '-'}</span>
+          </div>
+           <div>
+            <span class="block text-gray-500 text-xs uppercase mb-1">ID Code</span>
+            <span class="text-white font-mono text-xs">{plant.id}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>

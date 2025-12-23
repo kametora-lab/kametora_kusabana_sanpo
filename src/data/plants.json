@@ -1,0 +1,6585 @@
+[
+  {
+    "id": "adan",
+    "slug": "adan",
+    "title": "アダン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/adan_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "akaboshitatsunamisou",
+    "slug": "akaboshitatsunamisou",
+    "title": "アカボシタツナミソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/akaboshitatsunamisou_00.jpg",
+      "/images/akaboshitatsunamisou_01.jpg",
+      "/images/akaboshitatsunamisou_02.jpg",
+      "/images/akaboshitatsunamisou_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "akakatabami",
+    "slug": "akakatabami",
+    "title": "アカカタバミ",
+    "description": "カタバミの変種で、葉が赤紫色になるのが特徴。",
+    "images": [
+      "/images/akakatabami_00.jpg"
+    ],
+    "colors": [
+      "yellow",
+      "red"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Oxalis corniculata f. rubrifolia"
+    }
+  },
+  {
+    "id": "akamegasiwa",
+    "slug": "akamegasiwa",
+    "title": "アカメガシワ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/akamegasiwa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "akinokirinsou",
+    "slug": "akinokirinsou",
+    "title": "アキノキリンソウ",
+    "description": "秋の里山を代表する黄色い花。",
+    "images": [
+      "/images/akinokirinsou_00.jpg",
+      "/images/akinokirinsou_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "9月",
+      "10月",
+      "11月"
+    ],
+    "meta": {
+      "scientificName": "Solidago virgaurea"
+    }
+  },
+  {
+    "id": "akinonogesi",
+    "slug": "akinonogesi",
+    "title": "アキノノゲシ",
+    "description": "秋に淡い黄色の花を咲かせる。",
+    "images": [
+      "/images/akinonogesi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "9月",
+      "10月"
+    ],
+    "meta": {
+      "scientificName": "Lactuca indica"
+    }
+  },
+  {
+    "id": "amakusagi",
+    "slug": "amakusagi",
+    "title": "アマクサギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amakusagi_00.jpg",
+      "/images/amakusagi_01.jpg",
+      "/images/amakusagi_02.jpg",
+      "/images/amakusagi_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amamifuyuichigo",
+    "slug": "amamifuyuichigo",
+    "title": "アマミフユイチゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amamifuyuichigo_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amamihiiragimoti",
+    "slug": "amamihiiragimoti",
+    "title": "アマミヒイラギモチ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amamihiiragimoti_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amamikusaajisai",
+    "slug": "amamikusaajisai",
+    "title": "アマミクサアヂサイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amamikusaajisai_00.jpg",
+      "/images/amamikusaajisai_01.jpg",
+      "/images/amamikusaajisai_02.jpg",
+      "/images/amamikusaajisai_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amamiseisika",
+    "slug": "amamiseisika",
+    "title": "アマミセイシカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amamiseisika_00.jpg",
+      "/images/amamiseisika_01 (1).jpg",
+      "/images/amamiseisika_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amamitennanshou",
+    "slug": "amamitennanshou",
+    "title": "アマミテンアンショウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amamitennanshou_00.jpg",
+      "/images/amamitennanshou_2025_00.jpg",
+      "/images/amamitennanshou_2025_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amashiba",
+    "slug": "amashiba",
+    "title": "アマシバ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amashiba_00.jpg",
+      "/images/amashiba_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "americafuuro",
+    "slug": "americafuuro",
+    "title": "アメリcアフウロ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/americafuuro_20250421_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "americahamaguruma",
+    "slug": "americahamaguruma",
+    "title": "アメリカハマグルマ",
+    "description": "グランドカバーとしてよく利用される帰化植物。",
+    "images": [
+      "/images/americahamaguruma_00.jpg",
+      "/images/americahamaguruma_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Sphagneticola trilobata"
+    }
+  },
+  {
+    "id": "amerikafuuro",
+    "slug": "amerikafuuro",
+    "title": "アメリカフウロ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amerikafuuro_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amerikainuhoozuki",
+    "slug": "amerikainuhoozuki",
+    "title": "アメリカイヌホオヅキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amerikainuhoozuki_00.jpg",
+      "/images/amerikainuhoozuki_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "amerikanenasikazura",
+    "slug": "amerikanenasikazura",
+    "title": "アメリカネナシカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/amerikanenasikazura_00.jpg",
+      "/images/amerikanenasikazura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "aomoji",
+    "slug": "aomoji",
+    "title": "アオモヂ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/aomoji_00.jpg",
+      "/images/aomoji_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "aonokumatakeran",
+    "slug": "aonokumatakeran",
+    "title": "アオノクマタケラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/aonokumatakeran_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "aretihanagasa",
+    "slug": "aretihanagasa",
+    "title": "アレチハナガサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/aretihanagasa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ariakekazura",
+    "slug": "ariakekazura",
+    "title": "アリアケカズラ",
+    "description": "鮮やかな黄色の大きな花を咲かせるつる性植物。",
+    "images": [
+      "/images/ariakekazura_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Allamanda cathartica"
+    }
+  },
+  {
+    "id": "aridooshi",
+    "slug": "aridooshi",
+    "title": "アリドオシ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/aridooshi_00.jpg",
+      "/images/aridooshi_01.jpg",
+      "/images/aridooshi_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "asdan",
+    "slug": "asdan",
+    "title": "アsダン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/asdan_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "atsubaasagao",
+    "slug": "atsubaasagao",
+    "title": "アツバアサガオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/atsubaasagao_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "bashou",
+    "slug": "bashou",
+    "title": "バショウ",
+    "description": "バナナに似た実をつけるが、食用には適さない。",
+    "images": [
+      "/images/bashou_00.jpg",
+      "/images/bashou_01.jpg"
+    ],
+    "colors": [
+      "green",
+      "other"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Musa basjoo"
+    }
+  },
+  {
+    "id": "benibanaborogiku",
+    "slug": "benibanaborogiku",
+    "title": "ベニバナボロギク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/benibanaborogiku_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "benikougan",
+    "slug": "benikougan",
+    "title": "ベニコウガン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/benikougan_00.jpg",
+      "/images/benikougan_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "beninigana",
+    "slug": "beninigana",
+    "title": "ベニニガナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/beninigana_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "benitemari",
+    "slug": "benitemari",
+    "title": "ベニテマリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/benitemari_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "botyouji",
+    "slug": "botyouji",
+    "title": "ボチョウヂ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/botyouji_ryukyuuaoki_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "bukuryousai",
+    "slug": "bukuryousai",
+    "title": "ブクリョウサイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/bukuryousai_00.jpg",
+      "/images/bukuryousai_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "byouyanagi",
+    "slug": "byouyanagi",
+    "title": "ビョウヤナギ",
+    "description": "金色の長い雄しべが特徴的な美しい花。",
+    "images": [
+      "/images/byouyanagi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "6月"
+    ],
+    "meta": {
+      "scientificName": "Hypericum monogynum"
+    }
+  },
+  {
+    "id": "chaboinamori",
+    "slug": "chaboinamori",
+    "title": "チャボイナモリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/chaboinamori_00.jpg",
+      "/images/chaboinamori_01.jpg",
+      "/images/chaboinamori_02.jpg",
+      "/images/chaboinamori_03.jpg",
+      "/images/chaboinamori_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "dandoku",
+    "slug": "dandoku",
+    "title": "ダンドク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/dandoku_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "deigo",
+    "slug": "deigo",
+    "title": "デイゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/deigo_00.jpg",
+      "/images/deigo_20250530_00.jpg",
+      "/images/deigo_20250530_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "egonoki",
+    "slug": "egonoki",
+    "title": "エゴノキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/egonoki_00.jpg",
+      "/images/egonoki_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "enokigusa",
+    "slug": "enokigusa",
+    "title": "エノキグサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/enokigusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "furasabasou",
+    "slug": "furasabasou",
+    "title": "フラサバソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/furasabasou_00.jpg",
+      "/images/furasabasou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "futoukazura",
+    "slug": "futoukazura",
+    "title": "フトウカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/futoukazura_20250505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "fuuran",
+    "slug": "fuuran",
+    "title": "フウラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/fuuran_00.jpg",
+      "/images/fuuran_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gennoshouko",
+    "slug": "gennoshouko",
+    "title": "ゲンオショウコ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gennoshouko_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gettou",
+    "slug": "gettou",
+    "title": "ゲットウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gettou_00.jpg",
+      "/images/gettou_01.jpg",
+      "/images/gettou_02.jpg",
+      "/images/gettou_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gima",
+    "slug": "gima",
+    "title": "ギマ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gima_00.jpg",
+      "/images/gima_01.jpg",
+      "/images/gima_01_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ginbaihirugao",
+    "slug": "ginbaihirugao",
+    "title": "ギンバイヒルガオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ginbaihirugao_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ginnnemu",
+    "slug": "ginnnemu",
+    "title": "ギンネム",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ginnnemu_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gladiolus",
+    "slug": "gladiolus",
+    "title": "glアヂオlウs",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gladiolus_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "goldenshower",
+    "slug": "goldenshower",
+    "title": "ゴールデンシャワー",
+    "description": "黄金色の花が藤のように垂れ下がって咲く。",
+    "images": [
+      "/images/goldenshower_00.jpg",
+      "/images/goldenshower_01.jpg",
+      "/images/goldenshower_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "6月",
+      "7月"
+    ],
+    "meta": {
+      "scientificName": "Cassia fistula"
+    }
+  },
+  {
+    "id": "gomojyu",
+    "slug": "gomojyu",
+    "title": "ゴモジュ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gomojyu_00.jpg",
+      "/images/gomojyu_20250430_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gonzui",
+    "slug": "gonzui",
+    "title": "ゴンヅイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gonzui_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "guaba",
+    "slug": "guaba",
+    "title": "グアバ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/guaba_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gunbaihirugao",
+    "slug": "gunbaihirugao",
+    "title": "グンバイヒルガオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gunbaihirugao_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gunbainazuna",
+    "slug": "gunbainazuna",
+    "title": "グンバイナヅナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gunbainazuna_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gurajiorasu",
+    "slug": "gurajiorasu",
+    "title": "グラヂオラス",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gurajiorasu_20250507_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gyokuisnnka",
+    "slug": "gyokuisnnka",
+    "title": "ギョクイsンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gyokuisnnka_202505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "gyokushinka",
+    "slug": "gyokushinka",
+    "title": "ギョクシンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/gyokushinka_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hadakahoozuki",
+    "slug": "hadakahoozuki",
+    "title": "ハダカホオズキ",
+    "description": "赤い実が特徴で、ホオズキのような袋に包まれない。",
+    "images": [
+      "/images/hadakahoozuki_00.jpg",
+      "/images/hadakahoozuki_01.jpg"
+    ],
+    "colors": [
+      "white",
+      "red"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Tubocapsicum anomalum"
+    }
+  },
+  {
+    "id": "hahakogusa",
+    "slug": "hahakogusa",
+    "title": "ハハコグサ",
+    "description": "春の七草「ゴギョウ」のこと。",
+    "images": [
+      "/images/hahakogusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "3月",
+      "4月",
+      "5月"
+    ],
+    "meta": {
+      "scientificName": "Gnaphalium affine"
+    }
+  },
+  {
+    "id": "haikingojika",
+    "slug": "haikingojika",
+    "title": "ハイキンゴジカ",
+    "description": "地面を這うように広がるキンゴジカの仲間。",
+    "images": [
+      "/images/haikingojika_00.jpg",
+      "/images/haikingojika_01.jpg",
+      "/images/haikinngojika_202505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Sida rhombifolia"
+    }
+  },
+  {
+    "id": "haikinngojika",
+    "slug": "haikinngojika",
+    "title": "ハイキンゴヂカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/haikinngojika_202505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "haimakiehagi",
+    "slug": "haimakiehagi",
+    "title": "ハイマキエハギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/haimakiehagi_20250530_00.jpg",
+      "/images/haimakiehagi_20250530_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hakamakazura",
+    "slug": "hakamakazura",
+    "title": "ハカマカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hakamakazura_00.jpg",
+      "/images/hakamakazura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hakobe",
+    "slug": "hakobe",
+    "title": "ハコベ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hakobe_00.jpg",
+      "/images/hakobe_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamaazuki",
+    "slug": "hamaazuki",
+    "title": "ハマアズキ",
+    "description": "海岸の砂浜によく生えるマメ科の植物。",
+    "images": [
+      "/images/hamaazuki_00.jpg",
+      "/images/hamaazuki_01.jpg",
+      "/images/hamaazuki_20250428_02.jpg",
+      "/images/hamaazuki_20250428_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Vigna marina"
+    }
+  },
+  {
+    "id": "hamabossu",
+    "slug": "hamabossu",
+    "title": "ハマボッス",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamabossu_00.jpg",
+      "/images/hamabossu_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamadaikon",
+    "slug": "hamadaikon",
+    "title": "ハマダイコン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamadaikon_00.jpg",
+      "/images/hamadaikon_01.jpg",
+      "/images/hamadaikon_20250425_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamagou",
+    "slug": "hamagou",
+    "title": "ハマゴウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamagou_00.jpg",
+      "/images/hamagou_01.jpg",
+      "/images/hamagou_02.jpg",
+      "/images/hamagou_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamaguruma",
+    "slug": "hamaguruma",
+    "title": "ハマグルマ",
+    "description": "海岸の砂地に生えるキク科の植物。別名ネコノシタ。",
+    "images": [
+      "/images/hamaguruma_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Wedelia prostrata"
+    }
+  },
+  {
+    "id": "hamahirugao",
+    "slug": "hamahirugao",
+    "title": "ハマヒルガオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamahirugao_00.jpg",
+      "/images/hamahirugao_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamahisakaki",
+    "slug": "hamahisakaki",
+    "title": "ハマヒサカキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamahisakaki_00.jpg",
+      "/images/hamahisakaki_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamamannengusa",
+    "slug": "hamamannengusa",
+    "title": "ハママンネングサ",
+    "description": "海岸の岩場などに生える多肉植物。",
+    "images": [
+      "/images/hamamannengusa_00.jpg",
+      "/images/hamamannengusa_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Sedum formosanum"
+    }
+  },
+  {
+    "id": "hamanatamame",
+    "slug": "hamanatamame",
+    "title": "ハマナタマメ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamanatamame_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamanindou",
+    "slug": "hamanindou",
+    "title": "ハマニンドウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamanindou_00.jpg",
+      "/images/hamanindou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamatoranoo",
+    "slug": "hamatoranoo",
+    "title": "ハマトラノオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamatoranoo_00.jpg",
+      "/images/hamatoranoo_01.jpg",
+      "/images/hamatoranoo_02.jpg",
+      "/images/hamatoranoo_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamaudo",
+    "slug": "hamaudo",
+    "title": "ハマウド",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamaudo_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hamayu",
+    "slug": "hamayu",
+    "title": "ハマユ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hamayu_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hanaibana",
+    "slug": "hanaibana",
+    "title": "ハナイバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hanaibana_00.jpg",
+      "/images/hanaibana_01.jpg",
+      "/images/hanaibana_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hanashukusha",
+    "slug": "hanashukusha",
+    "title": "ハナシュクシャ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hanashukusha_00.jpg",
+      "/images/hanashukusha_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hanatade",
+    "slug": "hanatade",
+    "title": "ハナタデ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hanatade_00.jpg",
+      "/images/hanatade_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hangeshou",
+    "slug": "hangeshou",
+    "title": "ハンゲショウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hangeshou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "haritsurumasaki",
+    "slug": "haritsurumasaki",
+    "title": "ハリツルマサキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/haritsurumasaki_00.jpg",
+      "/images/haritsurumasaki_01.jpg",
+      "/images/haritsurumasaki_02.jpg",
+      "/images/haritsurumasaki_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "harushion",
+    "slug": "harushion",
+    "title": "ハルシオン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/harushion_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hashikanboku",
+    "slug": "hashikanboku",
+    "title": "ハシカンボク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hashikanboku_00.jpg",
+      "/images/hashikanboku_01.jpg",
+      "/images/hashikanboku_02.jpg",
+      "/images/hashikanboku_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hasunohakazura",
+    "slug": "hasunohakazura",
+    "title": "ハスノハカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hasunohakazura_00.jpg",
+      "/images/hasunohakazura_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hasunokazura",
+    "slug": "hasunokazura",
+    "title": "ハスノカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hasunokazura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hebiichigo",
+    "slug": "hebiichigo",
+    "title": "ヘビイチゴ",
+    "description": "赤い実は美味しそうに見えるが、あまり味がない。",
+    "images": [
+      "/images/hebiichigo_00.jpg",
+      "/images/hebiichigo_01.jpg",
+      "/images/hebiichigo_02.jpg"
+    ],
+    "colors": [
+      "yellow",
+      "red"
+    ],
+    "months": [
+      "4月",
+      "5月"
+    ],
+    "meta": {
+      "scientificName": "Duchesnea chrysantha"
+    }
+  },
+  {
+    "id": "hekusokazura",
+    "slug": "hekusokazura",
+    "title": "ヘクソカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hekusokazura_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hetsukarindou",
+    "slug": "hetsukarindou",
+    "title": "ヘツカリンドウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hetsukarindou_00.jpg",
+      "/images/hetsukarindou_01.jpg",
+      "/images/hetsukarindou_02.jpg",
+      "/images/hetsukarindou_04.jpg",
+      "/images/hetsukarindou_05.jpg",
+      "/images/hetsukarindou_06.jpg",
+      "/images/hetsukarindou_07.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "higanbana",
+    "slug": "higanbana",
+    "title": "ヒガンバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/higanbana_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hiiragi",
+    "slug": "hiiragi",
+    "title": "ヒイラギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hiiragi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hikanzakura",
+    "slug": "hikanzakura",
+    "title": "ヒカンザクラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hikanzakura_00.jpg",
+      "/images/hikanzakura_01.jpg",
+      "/images/hikanzakura_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himefutabaran",
+    "slug": "himefutabaran",
+    "title": "ヒメフタバラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himefutabaran_00.jpg",
+      "/images/himefutabaran_00_01.jpg",
+      "/images/himefutabaran_01.jpg",
+      "/images/himefutabaran_01_01.jpg",
+      "/images/himefutabaran_02.jpg",
+      "/images/himefutabaran_03.jpg",
+      "/images/himefutabaran_04.jpg",
+      "/images/himefutabaran_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himehagi",
+    "slug": "himehagi",
+    "title": "ヒメハギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himehagi_00.jpg",
+      "/images/himehagi_01.jpg",
+      "/images/himehagi_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himehamanadesiko",
+    "slug": "himehamanadesiko",
+    "title": "ヒメハマナデシコ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himehamanadesiko_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himeiwadaresou",
+    "slug": "himeiwadaresou",
+    "title": "ヒメイワダレソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himeiwadaresou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himeiyokazura",
+    "slug": "himeiyokazura",
+    "title": "ヒメイヨカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himeiyokazura_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himejiso",
+    "slug": "himejiso",
+    "title": "ヒメヂソ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himejiso_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himejoonn",
+    "slug": "himejoonn",
+    "title": "ヒメジョオン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himejoonn_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himekiransou",
+    "slug": "himekiransou",
+    "title": "ヒメキランソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himekiransou_02.jpg",
+      "/images/himekiransou_03.jpg",
+      "/images/himekiransou_20250510_01.jpg",
+      "/images/himekiransou_20250520_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himekisewata",
+    "slug": "himekisewata",
+    "title": "ヒメキセワタ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himekisewata_00.jpg",
+      "/images/himekisewata_01.jpg",
+      "/images/himekisewata_02.jpg",
+      "/images/himekisewata_03.jpg",
+      "/images/himekisewata_04.jpg",
+      "/images/himekisewata_05.jpg",
+      "/images/himekisewata_06.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himematumabotan",
+    "slug": "himematumabotan",
+    "title": "ヒメマツマボタン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himematumabotan_00.jpg",
+      "/images/himematumabotan_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himenouzennkazura",
+    "slug": "himenouzennkazura",
+    "title": "ヒメノウゼンカズラ",
+    "description": "鮮やかなオレンジ色や黄色の花を咲かせる。",
+    "images": [
+      "/images/himenouzennkazura_00.jpg"
+    ],
+    "colors": [
+      "orange",
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Tecoma capensis"
+    }
+  },
+  {
+    "id": "himeotogiri",
+    "slug": "himeotogiri",
+    "title": "ヒメオトギリ",
+    "description": "小さな黄色い花を咲かせるオトギリソウの仲間。",
+    "images": [
+      "/images/himeotogiri_00.jpg",
+      "/images/himeotogiri_01.jpg",
+      "/images/himeotogiri_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Hypericum japonicum"
+    }
+  },
+  {
+    "id": "himetamurasou",
+    "slug": "himetamurasou",
+    "title": "ヒメタムラソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himetamurasou_00.jpg",
+      "/images/himetamurasou_01.jpg",
+      "/images/himetamurasou_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "himeyaburan",
+    "slug": "himeyaburan",
+    "title": "ヒメヤブラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/himeyaburan_202506_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hinagikyou",
+    "slug": "hinagikyou",
+    "title": "ヒナギキョウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hinagikyou_00.jpg",
+      "/images/hinagikyou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hiruzakitukimisou",
+    "slug": "hiruzakitukimisou",
+    "title": "ヒルザキツキミソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hiruzakitukimisou_202505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hosobawadan",
+    "slug": "hosobawadan",
+    "title": "ホソバワダン",
+    "description": "海岸の岩場や崖に生えるキク科の植物。",
+    "images": [
+      "/images/hosobawadan_00_081124.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Crepidiastrum lanceolatum"
+    }
+  },
+  {
+    "id": "hoteiaoi",
+    "slug": "hoteiaoi",
+    "title": "ホテイアオイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hoteiaoi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hotokenoza",
+    "slug": "hotokenoza",
+    "title": "ホトケノザ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hotokenoza_00.jpg",
+      "/images/hotokenoza_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "houkigiku",
+    "slug": "houkigiku",
+    "title": "ホウキギク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/houkigiku_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hououboku",
+    "slug": "hououboku",
+    "title": "ホウオウボク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hououboku_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "houraituyukusa",
+    "slug": "houraituyukusa",
+    "title": "ホウライツユクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/houraituyukusa_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hourokuichigo",
+    "slug": "hourokuichigo",
+    "title": "ホウロクイチゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hourokuichigo_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "hozakizakura",
+    "slug": "hozakizakura",
+    "title": "ホザキザクラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/hozakizakura_00.jpg",
+      "/images/hozakizakura_01.jpg",
+      "/images/hozakizakura_02.jpg",
+      "/images/hozakizakura_03.jpg",
+      "/images/hozakizakura_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ibokusa",
+    "slug": "ibokusa",
+    "title": "イボクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ibokusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ibotakusagi",
+    "slug": "ibotakusagi",
+    "title": "イボタクサギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ibotakusagi_00.jpg",
+      "/images/ibotakusagi_01.jpg",
+      "/images/ibotakusagi_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ichiran",
+    "slug": "ichiran",
+    "title": "イチラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ichiran_kiiro.jpg",
+      "/images/ichiran_midori.jpg",
+      "/images/ichiran_murasaki.jpg",
+      "/images/ichiran_red_01.jpg",
+      "/images/ichiran_sonota.jpg",
+      "/images/ichiran_white.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "iigiri",
+    "slug": "iigiri",
+    "title": "ッイギリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/iigiri_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ijyu",
+    "slug": "ijyu",
+    "title": "イジュ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ijyu_00.jpg",
+      "/images/ijyu_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "inugarasi",
+    "slug": "inugarasi",
+    "title": "イヌガラシ",
+    "description": "道端や湿った場所によく生える。",
+    "images": [
+      "/images/inugarasi_00.jpg",
+      "/images/inugarasi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Rorippa indica"
+    }
+  },
+  {
+    "id": "inutade",
+    "slug": "inutade",
+    "title": "イヌタデ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/inutade_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ippe",
+    "slug": "ippe",
+    "title": "イッペイ",
+    "description": "鮮やかな黄色の花が木全体を覆うように咲く。",
+    "images": [
+      "/images/ippe_00.jpg",
+      "/images/ippe_01.jpg",
+      "/images/ippe_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "3月"
+    ],
+    "meta": {
+      "scientificName": "Tabebuia chrysotricha"
+    }
+  },
+  {
+    "id": "irukanda",
+    "slug": "irukanda",
+    "title": "イルカンダ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/irukanda_00.jpg",
+      "/images/irukanda_2025_00.jpg",
+      "/images/irukanda_2025_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "isofuji",
+    "slug": "isofuji",
+    "title": "イソフジ",
+    "description": "海岸に生えるマメ科の低木。黄色い花を咲かせる。",
+    "images": [
+      "/images/isofuji_00.jpg",
+      "/images/isofuji_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Sophora tomentosa"
+    }
+  },
+  {
+    "id": "isofusagi",
+    "slug": "isofusagi",
+    "title": "イソフサギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/isofusagi_00.jpg",
+      "/images/isofusagi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "isogiku",
+    "slug": "isogiku",
+    "title": "イソギク",
+    "description": "葉の縁が白いのが特徴。花は筒状花のみで花びらがないように見える。",
+    "images": [
+      "/images/isogiku_00.jpg",
+      "/images/isogiku_01.jpg",
+      "/images/isogiku_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "meta": {
+      "scientificName": "Chrysanthemum pacificum"
+    }
+  },
+  {
+    "id": "isomatsu",
+    "slug": "isomatsu",
+    "title": "イソマツ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/isomatsu_00.jpg",
+      "/images/isomatsu_01.jpg",
+      "/images/isomatsu_02.jpg",
+      "/images/isomatsu_03.jpg",
+      "/images/isomatsu_04.jpg",
+      "/images/isomatsu_05.jpg",
+      "/images/isomatsu_06.jpg",
+      "/images/isomatsu_07.jpg",
+      "/images/isomatsu_08.jpg",
+      "/images/isomatsu_09.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "isonogiku",
+    "slug": "isonogiku",
+    "title": "イソノギク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/isonogiku_00.jpg",
+      "/images/isonogiku_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "itadori",
+    "slug": "itadori",
+    "title": "イタドリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/itadori_00.jpg",
+      "/images/itadori_01.jpg",
+      "/images/itadori_07.jpg",
+      "/images/itadori_08.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "jishibari",
+    "slug": "jishibari",
+    "title": "ジシバリ",
+    "description": "地面を縛るように増えることからこの名がついた。",
+    "images": [
+      "/images/jishibari_00.jpg",
+      "/images/jisibari_20250425_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "4月",
+      "5月"
+    ],
+    "meta": {
+      "scientificName": "Ixeris stolonifera"
+    }
+  },
+  {
+    "id": "jisibari",
+    "slug": "jisibari",
+    "title": "ヂシバリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/jisibari_20250425_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kagomeran",
+    "slug": "kagomeran",
+    "title": "カゴメラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kagomeran_00.jpg",
+      "/images/kagomeran_01.jpg",
+      "/images/kagomeran_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kakkouazami",
+    "slug": "kakkouazami",
+    "title": "カッコウアザミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kakkouazami_01.jpg",
+      "/images/kakkouazami_02.jpg",
+      "/images/kakkouazami_03.jpg",
+      "/images/kakkouazami_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kakuchouran",
+    "slug": "kakuchouran",
+    "title": "カクチョウラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kakuchouran_00.jpg",
+      "/images/kakuchouran_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kanamugura",
+    "slug": "kanamugura",
+    "title": "カナムグラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kanamugura_00.jpg",
+      "/images/kanamugura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kanaoi",
+    "slug": "kanaoi",
+    "title": "カナオイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kanaoi_00.jpg",
+      "/images/kanaoi_00_00.jpg",
+      "/images/kanaoi_01.jpg",
+      "/images/kanaoi_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kannaoi",
+    "slug": "kannaoi",
+    "title": "カンアオイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kannaoi_00.jpg",
+      "/images/kannaoi_01.jpg",
+      "/images/kannaoi_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "karasunoendou",
+    "slug": "karasunoendou",
+    "title": "カラスノエンドウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/karasunoendou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kasumagusa",
+    "slug": "kasumagusa",
+    "title": "カスマグサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kasumagusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kasumihimehagi",
+    "slug": "kasumihimehagi",
+    "title": "カスミヒメハギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kasumihimehagi_00.jpg",
+      "/images/kasumihimehagi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "katabami",
+    "slug": "katabami",
+    "title": "カタバミ",
+    "description": "ハート型の葉が特徴。道端によく生える。",
+    "images": [
+      "/images/katabami_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Oxalis corniculata"
+    }
+  },
+  {
+    "id": "keramatutuji",
+    "slug": "keramatutuji",
+    "title": "ケラマツツヂ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/keramatutuji_00.jpg",
+      "/images/keramatutuji_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kidatikinbai",
+    "slug": "kidatikinbai",
+    "title": "キダチキンバイ",
+    "description": "湿地や水辺に生えるヒレタゴボウの仲間。",
+    "images": [
+      "/images/kidatikinbai_20250530_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Ludwigia octovalvis"
+    }
+  },
+  {
+    "id": "kikeman",
+    "slug": "kikeman",
+    "title": "キケマン",
+    "description": "春に黄色い独特の形の花を咲かせる。",
+    "images": [
+      "/images/kikeman_00.jpg",
+      "/images/kikeman_01.jpg",
+      "/images/kikeman_02.jpg",
+      "/images/kikeman_03.jpg",
+      "/images/kikeman_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "3月",
+      "4月"
+    ],
+    "meta": {
+      "scientificName": "Corydalis heterocarpa"
+    }
+  },
+  {
+    "id": "kikyouran",
+    "slug": "kikyouran",
+    "title": "キキョウラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kikyouran_00.jpg",
+      "/images/kikyouran_01.jpg",
+      "/images/kikyouran_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kikyousou",
+    "slug": "kikyousou",
+    "title": "キキョウソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kikyousou_00.jpg",
+      "/images/kikyousou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kinchou",
+    "slug": "kinchou",
+    "title": "キンチョウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kinchou_00.jpg",
+      "/images/kinchou_01.jpg",
+      "/images/kinchou_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kinginsou",
+    "slug": "kinginsou",
+    "title": "キンギンソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kinginsou_00.jpg",
+      "/images/kinginsou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kingojika",
+    "slug": "kingojika",
+    "title": "キンゴジカ",
+    "description": "熱帯アメリカ原産の帰化植物。",
+    "images": [
+      "/images/kingojika_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Sida spinosa"
+    }
+  },
+  {
+    "id": "kinreijyu",
+    "slug": "kinreijyu",
+    "title": "キンレイジュ",
+    "description": "鮮やかな黄色の花が房状に咲く。",
+    "images": [
+      "/images/kinreijyu_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Tecoma stans"
+    }
+  },
+  {
+    "id": "kinuran",
+    "slug": "kinuran",
+    "title": "キヌラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kinuran_01.jpg",
+      "/images/kinuran_02.jpg",
+      "/images/kinuran_03.jpg",
+      "/images/kinuran_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kiransou",
+    "slug": "kiransou",
+    "title": "キランソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kiransou_02.jpg",
+      "/images/kiransou_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kitsunenohimago",
+    "slug": "kitsunenohimago",
+    "title": "キツネノヒマゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kitsunenohimago_00.jpg",
+      "/images/kitsunenohimago_01.jpg",
+      "/images/kitsunenohimago_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kitsunenomemago",
+    "slug": "kitsunenomemago",
+    "title": "キツネノメマゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kitsunenomemago_00.jpg",
+      "/images/kitsunenomemago_01.jpg",
+      "/images/kitsunenomemago_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kitunenohimago",
+    "slug": "kitunenohimago",
+    "title": "キツネノヒマゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kitunenohimago_20250510_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kobanosenna",
+    "slug": "kobanosenna",
+    "title": "コバノセンナ",
+    "description": "秋から冬にかけて黄色い花をたくさん咲かせる。",
+    "images": [
+      "/images/kobanosenna_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "10月",
+      "11月"
+    ],
+    "meta": {
+      "scientificName": "Senna surattensis"
+    }
+  },
+  {
+    "id": "kobushi",
+    "slug": "kobushi",
+    "title": "コブシ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kobushi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "koganetanukimame",
+    "slug": "koganetanukimame",
+    "title": "コガネタヌキマメ",
+    "description": "豆のさやが毛で覆われているのが特徴。",
+    "images": [
+      "/images/koganetanukimame_00.jpg",
+      "/images/koganetanukimame_01.jpg",
+      "/images/koganetanukimame_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Crotalaria assamica"
+    }
+  },
+  {
+    "id": "kokinbanzasa",
+    "slug": "kokinbanzasa",
+    "title": "コキンバイザサ",
+    "description": "小さな黄色い星形の花を咲かせる。",
+    "images": [
+      "/images/kokinbanzasa_01.jpg",
+      "/images/kokinbanzasa_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Hypoxis aurea"
+    }
+  },
+  {
+    "id": "komatsuyoigusa",
+    "slug": "komatsuyoigusa",
+    "title": "コマツヨイグサ",
+    "description": "海岸によく生える這性植物。夕方に花を開く。",
+    "images": [
+      "/images/komatsuyoigusa_00.jpg",
+      "/images/komatsuyoigusa_01.jpg",
+      "/images/komatsuyoigusa_02.jpg",
+      "/images/komatsuyoigusa_02_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Oenothera laciniata"
+    }
+  },
+  {
+    "id": "kometsubuumagoyashi",
+    "slug": "kometsubuumagoyashi",
+    "title": "コメツブウマゴヤシ",
+    "description": "米粒のように小さな黄色い花が集まって咲く。",
+    "images": [
+      "/images/kometsubuumagoyashi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Medicago lupulina"
+    }
+  },
+  {
+    "id": "komousengoke",
+    "slug": "komousengoke",
+    "title": "コモウセンゴケ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/komousengoke_00 (2).jpg",
+      "/images/komousengoke_00.jpg",
+      "/images/komousengoke_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "konamiki",
+    "slug": "konamiki",
+    "title": "コナミキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/konamiki_00.jpg",
+      "/images/konamiki_01.jpg",
+      "/images/konamiki_02.jpg",
+      "/images/konamiki_03.jpg",
+      "/images/konamiki_04.jpg",
+      "/images/konamiki_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "konasubi",
+    "slug": "konasubi",
+    "title": "コナスビ",
+    "description": "実が小さなナスに似ている。",
+    "images": [
+      "/images/konasubi_00.jpg",
+      "/images/konasubi_01.jpg",
+      "/images/konasubi_02.jpg",
+      "/images/konasubi_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Lysimachia japonica"
+    }
+  },
+  {
+    "id": "konisikisou",
+    "slug": "konisikisou",
+    "title": "コニシキソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/konisikisou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "konronka",
+    "slug": "konronka",
+    "title": "コンロンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/konronka_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "koshounoki",
+    "slug": "koshounoki",
+    "title": "コショウノキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/koshounoki_00.jpg",
+      "/images/koshounoki_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "koubousiba",
+    "slug": "koubousiba",
+    "title": "コウボウシバ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/koubousiba_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kouteihimawari",
+    "slug": "kouteihimawari",
+    "title": "コウテイヒマワリ",
+    "description": "背が高く成長することからその名がある。別名ニトベギク。",
+    "images": [
+      "/images/kouteihimawari_00.jpg",
+      "/images/kouteihimawari_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "11月",
+      "12月"
+    ],
+    "meta": {
+      "scientificName": "Tithonia diversifolia"
+    }
+  },
+  {
+    "id": "koyabumyouga",
+    "slug": "koyabumyouga",
+    "title": "コヤブミョウガ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/koyabumyouga_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "koyaburan",
+    "slug": "koyaburan",
+    "title": "コヤブラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/koyaburan_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "koyabutabako",
+    "slug": "koyabutabako",
+    "title": "コヤブタバコ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/koyabutabako_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "koyomena",
+    "slug": "koyomena",
+    "title": "コヨメナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/koyomena_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kumatakeran",
+    "slug": "kumatakeran",
+    "title": "クマタケラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kumatakeran_00.jpg",
+      "/images/kumatakeran_01.jpg",
+      "/images/kumatakeran_02.jpg",
+      "/images/kumatakeran_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kumatudura",
+    "slug": "kumatudura",
+    "title": "クマツヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kumatudura_00.jpg",
+      "/images/kumatudura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kuroiwazasa",
+    "slug": "kuroiwazasa",
+    "title": "クロイワザサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kuroiwazasa_00.jpg",
+      "/images/kuroiwazasa_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kurominookinawasuzumeuri",
+    "slug": "kurominookinawasuzumeuri",
+    "title": "クロミノオキナワスヅメウリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kurominookinawasuzumeuri_00.jpg",
+      "/images/kurominookinawasuzumeuri_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kurotugu",
+    "slug": "kurotugu",
+    "title": "クロツグ",
+    "description": "南国情緒あふれるヤシ科の植物。花は甘い香りがする。",
+    "images": [
+      "/images/kurotugu_20250530.jpg"
+    ],
+    "colors": [
+      "yellow",
+      "other"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Arenga engleri"
+    }
+  },
+  {
+    "id": "kuroyona",
+    "slug": "kuroyona",
+    "title": "クロヨナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kuroyona_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kusagi",
+    "slug": "kusagi",
+    "title": "クサギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kusagi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kusatobera",
+    "slug": "kusatobera",
+    "title": "クサトベラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kusatobera_00.jpg",
+      "/images/kusatobera_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kuwazuimo",
+    "slug": "kuwazuimo",
+    "title": "クワヅイモ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kuwazuimo_00.jpg",
+      "/images/kuwazuimo_01.jpg",
+      "/images/kuwazuimo_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kuwazyimo",
+    "slug": "kuwazyimo",
+    "title": "クワzyイモ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kuwazyimo_00jpg.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kuzu",
+    "slug": "kuzu",
+    "title": "クヅ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kuzu_20250617_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kyouchikutou",
+    "slug": "kyouchikutou",
+    "title": "キョウチクトウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kyouchikutou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kyoutikutou",
+    "slug": "kyoutikutou",
+    "title": "キョウチクトウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kyoutikutou_20250425_00.jpg",
+      "/images/kyoutikutou_20250512_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "kyuurigusa",
+    "slug": "kyuurigusa",
+    "title": "キュウリグサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/kyuurigusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "manryou",
+    "slug": "manryou",
+    "title": "マンリョウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/manryou_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "marubadeigo",
+    "slug": "marubadeigo",
+    "title": "マルバデイゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/marubadeigo_00.jpg",
+      "/images/marubadeigo_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "matsubazeri",
+    "slug": "matsubazeri",
+    "title": "マツバゼリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/matsubazeri_00.jpg",
+      "/images/matsubazeri_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "medohagi",
+    "slug": "medohagi",
+    "title": "メドハギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/medohagi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mehirugi",
+    "slug": "mehirugi",
+    "title": "メヒルギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mehirugi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mejirohoozuki",
+    "slug": "mejirohoozuki",
+    "title": "メヂロホオヅキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mejirohoozuki_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mexcohakoyanagi",
+    "slug": "mexcohakoyanagi",
+    "title": "メxcオハコヤナギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mexcohakoyanagi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mitubahamagou",
+    "slug": "mitubahamagou",
+    "title": "ミツバハマゴウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mitubahamagou_00.jpg",
+      "/images/mitubahamagou_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mizosoba",
+    "slug": "mizosoba",
+    "title": "ミゾソバ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mizosoba_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mizuganpi",
+    "slug": "mizuganpi",
+    "title": "ミヅガンピ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mizuganpi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "modama",
+    "slug": "modama",
+    "title": "モダマ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/modama_00.jpg",
+      "/images/modama_01.jpg",
+      "/images/modama_02.jpg",
+      "/images/modama_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "momijihirugao",
+    "slug": "momijihirugao",
+    "title": "モミヂヒルガオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/momijihirugao_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "monpanoki",
+    "slug": "monpanoki",
+    "title": "モンパノキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/monpanoki_00.jpg",
+      "/images/monpanoki_01.jpg",
+      "/images/monpanoki_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "morokosisou",
+    "slug": "morokosisou",
+    "title": "モロコシソウ",
+    "description": "サクラソウ科の植物。黄色い花を下向きに咲かせる。",
+    "images": [
+      "/images/morokosisou.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Lysimachia sikokiana"
+    }
+  },
+  {
+    "id": "morokosisou.jpg",
+    "slug": "morokosisou.jpg",
+    "title": "モロコシソウ.jpg",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/morokosisou.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "mube",
+    "slug": "mube",
+    "title": "ムベ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/mube_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "murasakikakkouazami",
+    "slug": "murasakikakkouazami",
+    "title": "ムラサキカッコウアザミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/murasakikakkouazami_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "murasakikatabami",
+    "slug": "murasakikatabami",
+    "title": "ムラサキカタバミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/murasakikatabami_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "murasakikeman",
+    "slug": "murasakikeman",
+    "title": "ムラサキケマン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/murasakikeman_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "murasakimukashiyomogi",
+    "slug": "murasakimukashiyomogi",
+    "title": "ムラサキムカシヨモギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/murasakimukashiyomogi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "murasakisosinnka",
+    "slug": "murasakisosinnka",
+    "title": "ムラサキソシンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/murasakisosinnka_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "murasakiyahazukazura",
+    "slug": "murasakiyahazukazura",
+    "title": "ムラサキヤハヅカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/murasakiyahazukazura_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nanbankibushi",
+    "slug": "nanbankibushi",
+    "title": "ナンバンキブシ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nanbankibushi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nanbankibusi",
+    "slug": "nanbankibusi",
+    "title": "ナンバンキブシ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nanbankibusi_00.jpg",
+      "/images/nanbankibusi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nanbankiseru",
+    "slug": "nanbankiseru",
+    "title": "ナンバンキセル",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nanbankiseru_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nangokuaoki",
+    "slug": "nangokuaoki",
+    "title": "ナンゴクアオキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nangokuaoki_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nangokuhoutyakusou",
+    "slug": "nangokuhoutyakusou",
+    "title": "ナンゴクホウチャクソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nangokuhoutyakusou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nangokunejibana",
+    "slug": "nangokunejibana",
+    "title": "ナンゴクネヂバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nangokunejibana_00.jpg",
+      "/images/nangokunejibana_01.jpg",
+      "/images/nangokunejibana_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nantenkazura",
+    "slug": "nantenkazura",
+    "title": "ナンテンカズラ",
+    "description": "マメ科のつる植物で、赤い花ではなく黄色などの花を咲かせるタイプもある。",
+    "images": [
+      "/images/nantenkazura_00.jpg"
+    ],
+    "colors": [
+      "yellow",
+      "red"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Caesalpinia crista"
+    }
+  },
+  {
+    "id": "nawashiroichigo",
+    "slug": "nawashiroichigo",
+    "title": "ナワシロイチゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nawashiroichigo_00.jpg",
+      "/images/nawashiroichigo_01.jpg",
+      "/images/nawashiroichigo_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nawasiroitigo",
+    "slug": "nawasiroitigo",
+    "title": "ナワシロイチゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nawasiroitigo_20250422_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nejibana",
+    "slug": "nejibana",
+    "title": "ネヂバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nejibana_202506_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nekonosita",
+    "slug": "nekonosita",
+    "title": "ネコノシタ",
+    "description": "葉がざらざらしており、猫の舌に例えられる。ハマグルマの別名。",
+    "images": [
+      "/images/nekonosita_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Wedelia prostrata"
+    }
+  },
+  {
+    "id": "nemunoki",
+    "slug": "nemunoki",
+    "title": "ネムノキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nemunoki_20250627_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ninnikukazura",
+    "slug": "ninnikukazura",
+    "title": "ニンイクカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ninnikukazura_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nirabaran",
+    "slug": "nirabaran",
+    "title": "ニラバラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nirabaran_00.jpg",
+      "/images/nirabaran_01.jpg",
+      "/images/nirabaran_02.jpg",
+      "/images/nirabaran_03.jpg",
+      "/images/nirabaran_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "noasagao",
+    "slug": "noasagao",
+    "title": "ノアサガオ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/noasagao_00.jpg",
+      "/images/noasagao_20250422_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nobotan",
+    "slug": "nobotan",
+    "title": "ノボタン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nobotan_00.jpg",
+      "/images/nobotan_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nogeitou",
+    "slug": "nogeitou",
+    "title": "ノゲイトウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nogeitou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nojiaoi",
+    "slug": "nojiaoi",
+    "title": "ノヂアオイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nojiaoi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "noshiran",
+    "slug": "noshiran",
+    "title": "ノシラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/noshiran_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "nosiran20250918",
+    "slug": "nosiran20250918",
+    "title": "ノシラン20250918",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/nosiran20250918_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "numadaikon",
+    "slug": "numadaikon",
+    "title": "ヌマダイコン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/numadaikon_00.jpg",
+      "/images/numadaikon_01.jpg",
+      "/images/numadaikon_02.jpg",
+      "/images/numadaikon_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ohirugi",
+    "slug": "ohirugi",
+    "title": "オヒルギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ohirugi_00.jpg",
+      "/images/ohirugi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "okinawachidori",
+    "slug": "okinawachidori",
+    "title": "オキナワチドリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/okinawachidori_00.jpg",
+      "/images/okinawachidori_01.jpg",
+      "/images/okinawachidori_02.jpg",
+      "/images/okinawachidori_03.jpg",
+      "/images/okinawachidori_04.jpg",
+      "/images/okinawachidori_05.jpg",
+      "/images/okinawachidori_06.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "okinawagiku",
+    "slug": "okinawagiku",
+    "title": "オキナワギク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/okinawagiku_00.jpg",
+      "/images/okinawagiku_01.jpg",
+      "/images/okinawagiku_02.jpg",
+      "/images/okinawagiku_04.jpg",
+      "/images/okinawagiku_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "okinawakurumabana",
+    "slug": "okinawakurumabana",
+    "title": "オキナワクルマバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/okinawakurumabana_00.jpg",
+      "/images/okinawakurumabana_001.jpg",
+      "/images/okinawakurumabana_01.jpg",
+      "/images/okinawakurumabana_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "okinawakyouchikutou",
+    "slug": "okinawakyouchikutou",
+    "title": "オキナワキョウチクトウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/okinawakyouchikutou_00.jpg",
+      "/images/okinawakyouchikutou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "okinawasuzumeuri",
+    "slug": "okinawasuzumeuri",
+    "title": "オキナワスズメウリ",
+    "description": "可愛らしい縞模様の実をつける。観賞用として人気。",
+    "images": [
+      "/images/okinawasuzumeuri_20250430_00.jpg",
+      "/images/okinawasuzumeuri_20250528_00.jpg"
+    ],
+    "colors": [
+      "green",
+      "red",
+      "other"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Diplocyclos palmatus"
+    }
+  },
+  {
+    "id": "okinawateikakazura",
+    "slug": "okinawateikakazura",
+    "title": "オキナワテイカカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/okinawateikakazura_00.jpg",
+      "/images/okinawateikakazura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "onikiransou",
+    "slug": "onikiransou",
+    "title": "オニキランソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/onikiransou_00.jpg",
+      "/images/onikiransou_00_00_01_01.jpg",
+      "/images/onikiransou_00_00_02_01 .jpg",
+      "/images/onikiransou_01.jpg",
+      "/images/onikiransou_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "onikiransu",
+    "slug": "onikiransu",
+    "title": "オニキランス",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/onikiransu_20250502.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "onitabirako",
+    "slug": "onitabirako",
+    "title": "オニタビラコ",
+    "description": "道端でよく見かけるキク科の植物。",
+    "images": [
+      "/images/onitabirako_00 - コピー.jpg",
+      "/images/onitabirako_01 - コピー.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Youngia japonica"
+    }
+  },
+  {
+    "id": "oniyuri",
+    "slug": "oniyuri",
+    "title": "オニユリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/oniyuri_00 - コピー.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "oobagumi",
+    "slug": "oobagumi",
+    "title": "ッオバグミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/oobagumi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "oobanasarusuberi",
+    "slug": "oobanasarusuberi",
+    "title": "ッオバナサルスベリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/oobanasarusuberi_00.jpg",
+      "/images/oobanasarusuberi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "oohamabou",
+    "slug": "oohamabou",
+    "title": "オオハマボウ",
+    "description": "ハート型の大きな葉が特徴。方言でユウナとも呼ばれる。",
+    "images": [
+      "/images/oohamabou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "7月",
+      "8月"
+    ],
+    "meta": {
+      "scientificName": "Hibiscus tiliaceus"
+    }
+  },
+  {
+    "id": "ooinunofuguri",
+    "slug": "ooinunofuguri",
+    "title": "ッオイヌノフグリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ooinunofuguri_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ooitabi",
+    "slug": "ooitabi",
+    "title": "ッオイタビ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ooitabi_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ookarasuuri",
+    "slug": "ookarasuuri",
+    "title": "ッオカラスウリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ookarasuuri_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ookinnkeigiku",
+    "slug": "ookinnkeigiku",
+    "title": "オオキンケイギク",
+    "description": "特定外来生物に指定されており、栽培は禁止されている。",
+    "images": [
+      "/images/ookinnkeigiku_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "5月",
+      "6月"
+    ],
+    "meta": {
+      "scientificName": "Coreopsis lanceolata"
+    }
+  },
+  {
+    "id": "oomurasakisikibu",
+    "slug": "oomurasakisikibu",
+    "title": "ッオムラサキシキブ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/oomurasakisikibu_00.jpg",
+      "/images/oomurasakisikibu_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ooshimakobannnoki",
+    "slug": "ooshimakobannnoki",
+    "title": "オオシマコバンノキ",
+    "description": "葉の脇に小さな花や実をつける。",
+    "images": [
+      "/images/ooshimakobannnoki_20250507_00.jpg"
+    ],
+    "colors": [
+      "other"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Breynia vitis-idaea"
+    }
+  },
+  {
+    "id": "ooshimakobannoki",
+    "slug": "ooshimakobannoki",
+    "title": "ッオシマコバンオキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ooshimakobannoki_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ooshimanojigiku",
+    "slug": "ooshimanojigiku",
+    "title": "ッオシマノヂギク",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ooshimanojigiku_00.jpg",
+      "/images/ooshimanojigiku_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ooshimautugi",
+    "slug": "ooshimautugi",
+    "title": "ッオシマウツギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ooshimautugi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "oosimagamazumi",
+    "slug": "oosimagamazumi",
+    "title": "ッオシマガマヅミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/oosimagamazumi_20250505_00.jpg",
+      "/images/oosimagamazumi_20250505_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "oosimautugi",
+    "slug": "oosimautugi",
+    "title": "ッオシマウツギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/oosimautugi_00.jpg",
+      "/images/oosimautugi_20250422_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ootaniwatari",
+    "slug": "ootaniwatari",
+    "title": "ッオタニワタリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ootaniwatari_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "orandamiminagusa",
+    "slug": "orandamiminagusa",
+    "title": "オランダミミナグサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/orandamiminagusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "otogiri",
+    "slug": "otogiri",
+    "title": "オトギリソウ",
+    "description": "薬草としても知られる。",
+    "images": [
+      "/images/otogiri_2025_00.jpg",
+      "/images/otogiri_2025_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Hypericum erectum"
+    }
+  },
+  {
+    "id": "rurihakobe",
+    "slug": "rurihakobe",
+    "title": "ルリハコベ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/rurihakobe_00.jpg",
+      "/images/rurihakobe_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyubaraichigo",
+    "slug": "ryukyubaraichigo",
+    "title": "リュキュバライチゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyubaraichigo_03.jpg",
+      "/images/ryukyubaraichigo_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyuhagi",
+    "slug": "ryukyuhagi",
+    "title": "リュキュハギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyuhagi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyuichigo",
+    "slug": "ryukyuichigo",
+    "title": "リュキュイチゴ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyuichigo_00.jpg",
+      "/images/ryukyuichigo_01.jpg",
+      "/images/ryukyuichigo_02.jpg",
+      "/images/ryukyuichigo_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyukozakura",
+    "slug": "ryukyukozakura",
+    "title": "リュキュコザクラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyukozakura_00.jpg",
+      "/images/ryukyukozakura_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyumiyamasikimi",
+    "slug": "ryukyumiyamasikimi",
+    "title": "リュキュミヤマシキミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyumiyamasikimi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyururiminoki",
+    "slug": "ryukyururiminoki",
+    "title": "リュキュルリミノキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyururiminoki_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyusirosumire",
+    "slug": "ryukyusirosumire",
+    "title": "リュキュシロスミレ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyusirosumire_00.jpg",
+      "/images/ryukyusirosumire_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyusuzukake",
+    "slug": "ryukyusuzukake",
+    "title": "リュキュスヅカケ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyusuzukake_00.jpg",
+      "/images/ryukyusuzukake_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyuuasebi",
+    "slug": "ryukyuuasebi",
+    "title": "リュキュウアセビ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyuuasebi_00.jpg",
+      "/images/ryukyuuasebi_01.jpg",
+      "/images/ryukyuuasebi_03.jpg",
+      "/images/ryukyuuasebi_04.jpg",
+      "/images/ryukyuuasebi_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "ryukyuukosumire",
+    "slug": "ryukyuukosumire",
+    "title": "リュキュウコスミレ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/ryukyuukosumire_01.jpg",
+      "/images/ryukyuukosumire_03.jpg",
+      "/images/ryukyuukosumire_04.jpg",
+      "/images/ryukyuukosumire_12.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sagaribana",
+    "slug": "sagaribana",
+    "title": "サガリバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sagaribana_00.jpg",
+      "/images/sagaribana_00_01.jpg",
+      "/images/sagaribana_01.jpg",
+      "/images/sagaribana_02.jpg",
+      "/images/sagaribana_03.jpg",
+      "/images/sagaribana_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "saiyoushajinn",
+    "slug": "saiyoushajinn",
+    "title": "サイヨウシャヂン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/saiyoushajinn_00.jpg",
+      "/images/saiyoushajinn_01.jpg",
+      "/images/saiyoushajinn_02.jpg",
+      "/images/saiyoushajinn_03.jpg",
+      "/images/saiyoushajinn_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sakishimafuyou",
+    "slug": "sakishimafuyou",
+    "title": "サキシマフヨウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sakishimafuyou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sakura",
+    "slug": "sakura",
+    "title": "サクラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sakura_03(1).jpg",
+      "/images/sakura_04.jpg",
+      "/images/sakura_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sakuraran",
+    "slug": "sakuraran",
+    "title": "サクララン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sakuraran_20250622_00.jpg",
+      "/images/sakuraran_20250622_01.jpg",
+      "/images/sakuraran_20250622_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sakurarann",
+    "slug": "sakurarann",
+    "title": "サクララン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sakurarann_00.jpg",
+      "/images/sakurarann_01.jpg",
+      "/images/sakurarann_02.jpg",
+      "/images/sakurarann_03.jpg",
+      "/images/sakurarann_04.jpg",
+      "/images/sakurarann_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sakuratutuji",
+    "slug": "sakuratutuji",
+    "title": "サクラツツヂ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sakuratutuji_00.jpg",
+      "/images/sakuratutuji_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sandanka",
+    "slug": "sandanka",
+    "title": "サンダンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sandanka_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sanekazura",
+    "slug": "sanekazura",
+    "title": "サネカズラ",
+    "description": "赤い集合果が美しい。美男葛とも呼ばれる。",
+    "images": [
+      "/images/sanekazura_20251005.jpg"
+    ],
+    "colors": [
+      "yellow",
+      "red"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Kadsura japonica"
+    }
+  },
+  {
+    "id": "sangositou",
+    "slug": "sangositou",
+    "title": "サンゴシトウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sangositou_202505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sannshou",
+    "slug": "sannshou",
+    "title": "サンショウ",
+    "description": "特有の香りがある。葉や実は香辛料として使われる。",
+    "images": [
+      "/images/sannshou_00.jpg",
+      "/images/sannshou_01.jpg",
+      "/images/sannshou_02.jpg"
+    ],
+    "colors": [
+      "yellow",
+      "green"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Zanthoxylum piperitum"
+    }
+  },
+  {
+    "id": "sanshousou",
+    "slug": "sanshousou",
+    "title": "サンショウソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sanshousou_00.jpg",
+      "/images/sanshousou_01.jpg",
+      "/images/sanshousou_02.jpg",
+      "/images/sanshousou_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "satumasankirai",
+    "slug": "satumasankirai",
+    "title": "サツマサンキライ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/satumasankirai_00.jpg",
+      "/images/satumasankirai_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sazanka",
+    "slug": "sazanka",
+    "title": "サザンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sazanka_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "seiyoutanpopo",
+    "slug": "seiyoutanpopo",
+    "title": "セイヨウタンポポ",
+    "description": "総苞片が反り返るのが特徴の外来種。",
+    "images": [
+      "/images/seiyoutanpopo_00.jpg",
+      "/images/seiyoutanpopo_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Taraxacum officinale"
+    }
+  },
+  {
+    "id": "sendan",
+    "slug": "sendan",
+    "title": "センダン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sendan_00.jpg",
+      "/images/sendan_01.jpg",
+      "/images/sendan_02.jpg",
+      "/images/sendan_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sendangusa",
+    "slug": "sendangusa",
+    "title": "センダングサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sendangusa_00.jpg",
+      "/images/sendangusa_01.jpg",
+      "/images/sendangusa_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "senninsou",
+    "slug": "senninsou",
+    "title": "センインソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/senninsou_00.jpg",
+      "/images/senninsou_01.jpg",
+      "/images/senninsou_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "senryou",
+    "slug": "senryou",
+    "title": "センリョウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/senryou_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sharinbai",
+    "slug": "sharinbai",
+    "title": "シャリンバイ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sharinbai_00.jpg",
+      "/images/sharinbai_20250417_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shibahagi",
+    "slug": "shibahagi",
+    "title": "シバハギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shibahagi_01.jpg",
+      "/images/shibahagi_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shikonnobotan",
+    "slug": "shikonnobotan",
+    "title": "シコンオボタン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shikonnobotan_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shimaginnreika",
+    "slug": "shimaginnreika",
+    "title": "シマギンレイカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shimaginnreika_00.jpg",
+      "/images/shimaginnreika_01.jpg",
+      "/images/shimaginnreika_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shimakitsunenobotan",
+    "slug": "shimakitsunenobotan",
+    "title": "シマキツネノボタン",
+    "description": "湿った場所に生える。実の形が独特。",
+    "images": [
+      "/images/shimakitsunenobotan_00.jpg",
+      "/images/shimakitsunenobotan_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Ranunculus sieboldii"
+    }
+  },
+  {
+    "id": "shimanishikisou",
+    "slug": "shimanishikisou",
+    "title": "シマニシキソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shimanishikisou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shimasennburi",
+    "slug": "shimasennburi",
+    "title": "シマセンブリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shimasennburi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shinagawahagi",
+    "slug": "shinagawahagi",
+    "title": "シナガワハギ",
+    "description": "小さな黄色い花を穂状に咲かせる。",
+    "images": [
+      "/images/shinagawahagi_00.jpg",
+      "/images/shinagawahagi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Melilotus officinalis"
+    }
+  },
+  {
+    "id": "shiran",
+    "slug": "shiran",
+    "title": "シラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shiran_00.jpg",
+      "/images/shiran_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shirotumekusa",
+    "slug": "shirotumekusa",
+    "title": "シロツメクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shirotumekusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shiso",
+    "slug": "shiso",
+    "title": "シソ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shiso_00.jpg",
+      "/images/shiso_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shoubennoki",
+    "slug": "shoubennoki",
+    "title": "ショウベンオキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shoubennoki_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "shouzousou",
+    "slug": "shouzousou",
+    "title": "ショウゾウソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/shouzousou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sikimi",
+    "slug": "sikimi",
+    "title": "シキミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sikimi_00.jpg",
+      "/images/sikimi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sikonnobotan",
+    "slug": "sikonnobotan",
+    "title": "シコンオボタン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sikonnobotan_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simaazami",
+    "slug": "simaazami",
+    "title": "シマアザミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simaazami_00.jpg",
+      "/images/simaazami_20250512.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simaibokusa",
+    "slug": "simaibokusa",
+    "title": "シマイボクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simaibokusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simamurasakituyukusa",
+    "slug": "simamurasakituyukusa",
+    "title": "シマムラサキツユクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simamurasakituyukusa_00.jpg",
+      "/images/simamurasakituyukusa_01.jpg",
+      "/images/simamurasakituyukusa_05.jpg",
+      "/images/simamurasakituyukusa_06.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simaootaniwatari",
+    "slug": "simaootaniwatari",
+    "title": "シマッオタニワタリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simaootaniwatari_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simasarusuberi",
+    "slug": "simasarusuberi",
+    "title": "シマサルスベリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simasarusuberi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simatuyukusa",
+    "slug": "simatuyukusa",
+    "title": "シマツユクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simatuyukusa_00.jpg",
+      "/images/simatuyukusa_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "simaurikaede",
+    "slug": "simaurikaede",
+    "title": "シマウリカエデ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/simaurikaede_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "siratamakazura",
+    "slug": "siratamakazura",
+    "title": "シラタマカヅラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/siratamakazura_00.jpg",
+      "/images/siratamakazura_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sokushinran",
+    "slug": "sokushinran",
+    "title": "ソクシンラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sokushinran_00.jpg",
+      "/images/sokushinran_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sonaremugura",
+    "slug": "sonaremugura",
+    "title": "ソナレムグラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sonaremugura_00.jpg",
+      "/images/sonaremugura_01.jpg",
+      "/images/sonaremugura_02.jpg",
+      "/images/sonaremugura_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sotetsu",
+    "slug": "sotetsu",
+    "title": "ソテツ",
+    "description": "南国の海岸沿いによく見られる裸子植物。",
+    "images": [
+      "/images/sotetsu_00.jpg"
+    ],
+    "colors": [
+      "other"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Cycas revoluta"
+    }
+  },
+  {
+    "id": "sousijyu",
+    "slug": "sousijyu",
+    "title": "ソウシジュ",
+    "description": "黄色いポンポンのような花を咲かせるマメ科の樹木。",
+    "images": [
+      "/images/sousijyu_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Acacia confusa"
+    }
+  },
+  {
+    "id": "sumire",
+    "slug": "sumire",
+    "title": "スミレ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sumire_08.jpg",
+      "/images/sumire_09.jpg",
+      "/images/sumire_10.jpg",
+      "/images/sumire_11.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sumomo",
+    "slug": "sumomo",
+    "title": "スモモ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sumomo_01.jpg",
+      "/images/sumomo_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "sunaduru",
+    "slug": "sunaduru",
+    "title": "スナヅル",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/sunaduru_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "suzumenoendou",
+    "slug": "suzumenoendou",
+    "title": "スヅメノエンドウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/suzumenoendou_00.jpg",
+      "/images/suzumenoendou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "suzumenotougarashi",
+    "slug": "suzumenotougarashi",
+    "title": "スヅメノトウガラシ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/suzumenotougarashi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "suzumenotougarasimodoki",
+    "slug": "suzumenotougarasimodoki",
+    "title": "スヅメノトウガラシモドキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/suzumenotougarasimodoki_00.jpg",
+      "/images/suzumenotougarasimodoki_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tabirako",
+    "slug": "tabirako",
+    "title": "タビラコ",
+    "description": "「コオニタビラコ」は春の七草のホトケノザのこと。",
+    "images": [
+      "/images/tabirako_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Lapsana apogonoides"
+    }
+  },
+  {
+    "id": "tachiinunofuguri",
+    "slug": "tachiinunofuguri",
+    "title": "タチイヌノフグリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tachiinunofuguri_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "taiwanrengyou",
+    "slug": "taiwanrengyou",
+    "title": "タイワンレンギョウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/taiwanrengyou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "taiwanrurisou",
+    "slug": "taiwanrurisou",
+    "title": "タイワンルリソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/taiwanrurisou_00.jpg",
+      "/images/taiwanrurisou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "taiwantukubaneutugi",
+    "slug": "taiwantukubaneutugi",
+    "title": "タイワンツクバネウツギ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/taiwantukubaneutugi_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "taiwanyamatutuji",
+    "slug": "taiwanyamatutuji",
+    "title": "タイワニャマツツヂ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/taiwanyamatutuji_00.jpg",
+      "/images/taiwanyamatutuji_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "takasaburou",
+    "slug": "takasaburou",
+    "title": "タカサブロウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/takasaburou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tamamurasaki",
+    "slug": "tamamurasaki",
+    "title": "タマムラサキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tamamurasaki_00.jpg",
+      "/images/tamamurasaki_01.jpg",
+      "/images/tamamurasaki_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tankirimame",
+    "slug": "tankirimame",
+    "title": "タンキリマメ",
+    "description": "赤いさやと黒い実のコントラストが美しい。",
+    "images": [
+      "/images/tankirimame_20251005_0.jpg",
+      "/images/tankirimame_20251005_1.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Rhynchosia volubilis"
+    }
+  },
+  {
+    "id": "tatitubosumire",
+    "slug": "tatitubosumire",
+    "title": "タチツボスミレ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tatitubosumire_00.jpg",
+      "/images/tatitubosumire_01.jpg",
+      "/images/tatitubosumire_06.jpg",
+      "/images/tatitubosumire_07.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "teikinzakura",
+    "slug": "teikinzakura",
+    "title": "テイキンザクラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/teikinzakura_00.jpg",
+      "/images/teikinzakura_20250530_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tenanshou",
+    "slug": "tenanshou",
+    "title": "テナンショウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tenanshou_00.jpg",
+      "/images/tenanshou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tennoume",
+    "slug": "tennoume",
+    "title": "テンオウメ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tennoume_00.jpg",
+      "/images/tennoume_01 .jpg",
+      "/images/tennoume_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "teppouyuri",
+    "slug": "teppouyuri",
+    "title": "テッポウユリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/teppouyuri_00.jpg",
+      "/images/teppouyuri_00_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "terihanoibara",
+    "slug": "terihanoibara",
+    "title": "テリハノイバラ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/terihanoibara_00.jpg",
+      "/images/terihanoibara_01.jpg",
+      "/images/terihanoibara_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "titikogusa",
+    "slug": "titikogusa",
+    "title": "チチコグサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/titikogusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokeisou",
+    "slug": "tokeisou",
+    "title": "トケイソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokeisou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokiwahaze",
+    "slug": "tokiwahaze",
+    "title": "トキワハゼ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokiwahaze_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokiwakamomeduru",
+    "slug": "tokiwakamomeduru",
+    "title": "トキワカモメヅル",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokiwakamomeduru_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokiwakamomezuru",
+    "slug": "tokiwakamomezuru",
+    "title": "トキワカモメヅル",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokiwakamomezuru_20250612_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokkuri",
+    "slug": "tokkuri",
+    "title": "トックリ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokkuri_00.jpg",
+      "/images/tokkuri_01.jpg",
+      "/images/tokkuri_02.jpg",
+      "/images/tokkuri_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokkurikiwata",
+    "slug": "tokkurikiwata",
+    "title": "トックリキワタ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokkurikiwata_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokunoshimaebine",
+    "slug": "tokunoshimaebine",
+    "title": "トクノシマエビネ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tokunoshimaebine_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tokusaran",
+    "slug": "tokusaran",
+    "title": "トクサラン",
+    "description": "林床に生えるランの仲間。黄色い花を咲かせる。",
+    "images": [
+      "/images/tokusaran_00.jpg",
+      "/images/tokusaran_01.jpg",
+      "/images/tokusaran_02.jpg",
+      "/images/tokusaran_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Cephalantheropsis gracilis"
+    }
+  },
+  {
+    "id": "toubana",
+    "slug": "toubana",
+    "title": "トウバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/toubana_00.jpg",
+      "/images/toubana_01.jpg",
+      "/images/toubana_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tsukinukiotogiri",
+    "slug": "tsukinukiotogiri",
+    "title": "ツキヌキオトギリ",
+    "description": "茎が葉を突き抜いているように見えるのが名前の由来。",
+    "images": [
+      "/images/tsukinukiotogiri_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Hypericum sampsonii"
+    }
+  },
+  {
+    "id": "tsumekusa",
+    "slug": "tsumekusa",
+    "title": "ツメクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tsumekusa_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tsuriganeninjin",
+    "slug": "tsuriganeninjin",
+    "title": "ツリガネニンヂン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tsuriganeninjin_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tsuruna",
+    "slug": "tsuruna",
+    "title": "ツルナ",
+    "description": "海岸の砂地に生える。食用にもなる。",
+    "images": [
+      "/images/tsuruna_00.jpg",
+      "/images/tsuruna_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": "Tetragonia tetragonioides"
+    }
+  },
+  {
+    "id": "tukiige",
+    "slug": "tukiige",
+    "title": "ツキイゲ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tukiige_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "turubo",
+    "slug": "turubo",
+    "title": "ツルボ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/turubo_00.jpg",
+      "/images/turubo_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "turugumi",
+    "slug": "turugumi",
+    "title": "ツルグミ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/turugumi_00.jpg",
+      "/images/turugumi_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "turumourinnka",
+    "slug": "turumourinnka",
+    "title": "ツルモウリンカ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/turumourinnka_00.jpg",
+      "/images/turumourinnka_01.jpg",
+      "/images/turumourinnka_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "turunigakusa",
+    "slug": "turunigakusa",
+    "title": "ツルニガクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/turunigakusa_00.jpg",
+      "/images/turunigakusa_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tururan",
+    "slug": "tururan",
+    "title": "ツルラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tururan_00.jpg",
+      "/images/tururan_00_04.jpg",
+      "/images/tururan_01.jpg",
+      "/images/tururan_02.jpg",
+      "/images/tururan_03.jpg",
+      "/images/tururan_04.jpg",
+      "/images/tururan_05.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "turusoba",
+    "slug": "turusoba",
+    "title": "ツルソバ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/turusoba_00.jpg",
+      "/images/turusoba_01.jpg",
+      "/images/turusoba_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "turuurikusa",
+    "slug": "turuurikusa",
+    "title": "ツルウリクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/turuurikusa_00.jpg",
+      "/images/turuurikusa_01.jpg",
+      "/images/turuurikusa_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "tuwabuki",
+    "slug": "tuwabuki",
+    "title": "ツワブキ",
+    "description": "冬に黄色い花を咲かせる。葉には光沢がある。",
+    "images": [
+      "/images/tuwabuki_00 (2).jpg",
+      "/images/tuwabuki_00.jpg",
+      "/images/tuwabuki_01.jpg",
+      "/images/tuwabuki_02.jpg",
+      "/images/tuwabuki_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "meta": {
+      "scientificName": "Farfugium japonicum"
+    }
+  },
+  {
+    "id": "tuyukusa",
+    "slug": "tuyukusa",
+    "title": "ツユクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/tuyukusa_00.jpg",
+      "/images/tuyukusa_01.jpg",
+      "/images/tuyukusa_03.jpg",
+      "/images/tuyukusa_04.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "unran",
+    "slug": "unran",
+    "title": "ウンラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/unran_00.jpg",
+      "/images/unran_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "urikusa",
+    "slug": "urikusa",
+    "title": "ウリクサ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/urikusa_00.jpg",
+      "/images/urikusa_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "usubeninigana",
+    "slug": "usubeninigana",
+    "title": "ウスベニニガナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/usubeninigana_00.jpg",
+      "/images/usubeninigana_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "wanigutimodama",
+    "slug": "wanigutimodama",
+    "title": "ワニグチモダマ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/wanigutimodama_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yaburan",
+    "slug": "yaburan",
+    "title": "ヤブラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yaburan_01.jpg",
+      "/images/yaburan_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yaeyamasenninnsou",
+    "slug": "yaeyamasenninnsou",
+    "title": "ヤエヤマセンインソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yaeyamasenninnsou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yakkosou",
+    "slug": "yakkosou",
+    "title": "ヤッコソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yakkosou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yakusimasumire",
+    "slug": "yakusimasumire",
+    "title": "ヤクシマスミレ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yakusimasumire_00.jpg",
+      "/images/yakusimasumire_01.jpg",
+      "/images/yakusimasumire_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yamahiyodoribana",
+    "slug": "yamahiyodoribana",
+    "title": "ヤマヒヨドリバナ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yamahiyodoribana_00.jpg",
+      "/images/yamahiyodoribana_01.jpg",
+      "/images/yamahiyodoribana_02.jpg",
+      "/images/yamahiyodoribana_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yamamomosou",
+    "slug": "yamamomosou",
+    "title": "ヤマモモソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yamamomosou_00.jpg",
+      "/images/yamamomosou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yanagibaruirasou",
+    "slug": "yanagibaruirasou",
+    "title": "ヤナギバルイラソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yanagibaruirasou_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yanbaruawabuki",
+    "slug": "yanbaruawabuki",
+    "title": "ヤンバルアワブキ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yanbaruawabuki_20250627_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yanbarugoma",
+    "slug": "yanbarugoma",
+    "title": "ヤンバルゴマ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yanbarugoma_02.jpg",
+      "/images/yanbarugoma_20101003_00.jpg",
+      "/images/yanbarugoma_20101003_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yucca",
+    "slug": "yucca",
+    "title": "ユッcア",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yucca_00.jpg",
+      "/images/yucca_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yugeshou",
+    "slug": "yugeshou",
+    "title": "ユゲショウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yugeshou_202505_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yukokuran",
+    "slug": "yukokuran",
+    "title": "ユコクラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yukokuran_00.jpg",
+      "/images/yukokuran_01.jpg",
+      "/images/yukokuran_02.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yuugeshou",
+    "slug": "yuugeshou",
+    "title": "ユウゲショウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yuugeshou_00.jpg",
+      "/images/yuugeshou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yuukokuran",
+    "slug": "yuukokuran",
+    "title": "ユウコクラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yuukokuran_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yuuna",
+    "slug": "yuuna",
+    "title": "ユウナ",
+    "description": "オオハマボウの別名。鮮やかな黄色の花は一日で散る。",
+    "images": [
+      "/images/yuuna_00.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [
+      "7月",
+      "8月"
+    ],
+    "meta": {
+      "scientificName": "Hibiscus tiliaceus"
+    }
+  },
+  {
+    "id": "yuureiran",
+    "slug": "yuureiran",
+    "title": "ユウレイラン",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yuureiran_00.jpg",
+      "/images/yuureiran_01.jpg",
+      "/images/yuureiran_02.jpg",
+      "/images/yuureiran_03.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "yuwantutitorimoti",
+    "slug": "yuwantutitorimoti",
+    "title": "ユワンツチトリモチ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/yuwantutitorimoti_00.jpg",
+      "/images/yuwantutitorimoti_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  },
+  {
+    "id": "zakurosou",
+    "slug": "zakurosou",
+    "title": "ザクロソウ",
+    "description": "（説明文が未入力です）",
+    "images": [
+      "/images/zakurosou_00.jpg",
+      "/images/zakurosou_01.jpg"
+    ],
+    "colors": [
+      "yellow"
+    ],
+    "months": [],
+    "meta": {
+      "scientificName": ""
+    }
+  }
+]
