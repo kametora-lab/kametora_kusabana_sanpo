@@ -1,0 +1,6 @@
+PowerShell
+
+cd C:\Gravity\amamikusabana2\img_dl
+py download.py
+
+

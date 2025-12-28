@@ -19,13 +19,13 @@ const featuredPlants = plants.slice(0, 9);
 			</p>
 			
 			<div class="flex flex-wrap gap-4 justify-center pt-8">
-				<a href="/plants">
+				<a href="/amamikusabana_2/plants">
 					<NeonButton client:load variant="primary">Explore Database</NeonButton>
 				</a>
 				<button 
 					onClick={() => {
 						const randomPlant = plants[Math.floor(Math.random() * plants.length)];
-						window.location.href = `/plants/${randomPlant.slug}`;
+						window.location.href = `/amamikusabana_2/plants/${randomPlant.slug}`;
 					}}
 					class="neon-button-secondary"
 				>
@@ -37,7 +37,7 @@ const featuredPlants = plants.slice(0, 9);
 		{/* Featured Cards */}
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4 z-10">
 			{featuredPlants.map((plant) => (
-				<a href={`/plants/${plant.slug}`} class="block glass-panel p-4 group hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
+				<a href={`/amamikusabana_2/plants/${plant.slug}`} class="block glass-panel p-4 group hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
 					<div class="aspect-square bg-black/50 rounded-lg mb-4 overflow-hidden relative">
 						<div class="absolute inset-0 bg-gradient-to-tr from-neon-pink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
 						{plant.images?.[0] ? (

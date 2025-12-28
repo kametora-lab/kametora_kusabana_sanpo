@@ -6,7 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update": "node scripts/update_plants.cjs",
+    "export": "node scripts/json_to_excel.cjs",
+    "sync": "node scripts/sync_excel.cjs",
+    "sync-csv": "node scripts/sync_csv.cjs",
+    "sync-tsv": "node scripts/sync_tsv.cjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -14,8 +19,10 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.6",
+    "iconv-lite": "^0.7.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "xlsx": "^0.18.5"
   }
 }

@@ -85,8 +85,8 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                                 key={color.id}
                                 onClick={() => toggleColor(color.id)}
                                 className={`px-3 py-1 rounded-full text-xs font-bold border transition-all duration-300 ${selectedColors.includes(color.id)
-                                        ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
-                                        : 'border-white/10 text-gray-400 hover:border-white/30'
+                                    ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
+                                    : 'border-white/10 text-gray-400 hover:border-white/30'
                                     }`}
                                 style={{
                                     backgroundColor: selectedColors.includes(color.id) ? color.value : 'transparent',
@@ -108,8 +108,8 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                                 key={month}
                                 onClick={() => toggleMonth(month)}
                                 className={`text-xs py-1 rounded border transition-all ${selectedMonths.includes(month)
-                                        ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
-                                        : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
+                                    ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
+                                    : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
                                     }`}
                             >
                                 {month.replace('月', '')}
@@ -129,7 +129,7 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                 {filteredPlants.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredPlants.map(plant => (
-                            <a href={`/plants/${plant.slug}`} key={plant.id} className="group block glass-panel overflow-hidden hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
+                            <a href={`/amamikusabana_2/plants/${plant.slug}`} key={plant.id} className="group block glass-panel overflow-hidden hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
                                 <div className="aspect-square bg-black/50 relative overflow-hidden">
                                     {plant.images && plant.images.length > 0 ? (
                                         <img
