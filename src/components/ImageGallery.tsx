@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { resolveImageUrl } from '../utils/paths';
 
 interface ImageGalleryProps {
     images: string[];
@@ -22,7 +23,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
             {/* Main Image View */}
             <div className="aspect-square bg-black/50 rounded-2xl overflow-hidden glass-panel border-2 border-white/5 relative group">
                 <img
-                    src={activeImage}
+                    src={resolveImageUrl(activeImage)}
                     alt={title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -44,7 +45,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
                                 : 'border-white/10 opacity-60 hover:opacity-100 hover:border-white/30'
                                 }`}
                         >
-                            <img src={img} alt={`${title} ${index + 1}`} className="w-full h-full object-cover" />
+                            <img src={resolveImageUrl(img)} alt={`${title} ${index + 1}`} className="w-full h-full object-cover" />
                         </button>
                     ))}
                 </div>

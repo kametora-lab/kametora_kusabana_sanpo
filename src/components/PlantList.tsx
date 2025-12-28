@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { resolveImageUrl } from '../utils/paths';
 
 interface Plant {
     id: string;
@@ -133,7 +134,7 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                                 <div className="aspect-square bg-black/50 relative overflow-hidden">
                                     {plant.images && plant.images.length > 0 ? (
                                         <img
-                                            src={plant.images[0]}
+                                            src={resolveImageUrl(plant.images[0])}
                                             alt={plant.title}
                                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                         />
