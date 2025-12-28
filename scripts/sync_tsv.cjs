@@ -74,7 +74,7 @@ function syncFromTSV() {
             if (!imageGroups.has(id)) {
                 imageGroups.set(id, []);
             }
-            imageGroups.get(id).push('/amamikusabana_2/images/' + file);
+            imageGroups.get(id).push('/kametora_kusabana_sanpo/images/' + file);
         }
     });
 

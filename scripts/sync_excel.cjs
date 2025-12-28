@@ -31,7 +31,7 @@ function syncFromExcel() {
         if (!imageGroups.has(id)) {
             imageGroups.set(id, []);
         }
-        imageGroups.get(id).push('/images/' + file);
+        imageGroups.get(id).push('/kametora_kusabana_sanpo/images/' + file);
     });
 
     // Transform Excel data to plants.json format

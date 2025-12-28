@@ -129,7 +129,7 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                 {filteredPlants.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredPlants.map(plant => (
-                            <a href={`/amamikusabana_2/plants/${plant.slug}`} key={plant.id} className="group block glass-panel overflow-hidden hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
+                            <a href={`/kametora_kusabana_sanpo/plants/${plant.slug}`} key={plant.id} className="group block glass-panel overflow-hidden hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
                                 <div className="aspect-square bg-black/50 relative overflow-hidden">
                                     {plant.images && plant.images.length > 0 ? (
                                         <img

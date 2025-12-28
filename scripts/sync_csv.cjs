@@ -108,7 +108,7 @@ function syncFromCSV() {
             if (!imageGroups.has(id)) {
                 imageGroups.set(id, []);
             }
-            imageGroups.get(id).push('/images/' + file);
+            imageGroups.get(id).push('/kametora_kusabana_sanpo/images/' + file);
         }
     });
 
