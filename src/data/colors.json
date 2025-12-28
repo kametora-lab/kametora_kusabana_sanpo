@@ -10,13 +10,8 @@
         "value": "#ffee00"
     },
     {
-        "id": "blue",
-        "name": "青",
-        "value": "#00f0ff"
-    },
-    {
         "id": "purple",
-        "name": "紫",
+        "name": "紫と青",
         "value": "#b026ff"
     },
     {
