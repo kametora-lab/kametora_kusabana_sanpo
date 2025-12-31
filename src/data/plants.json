@@ -360,8 +360,7 @@
     ],
     "colors": [
       "white",
-      "purple",
-      "green"
+      "purple"
     ],
     "months": [
       "5月"
@@ -878,7 +877,9 @@
       "/kametora_kusabana_sanpo/images/0048_00.jpg",
       "/kametora_kusabana_sanpo/images/0048_01.jpg"
     ],
-    "colors": [],
+    "colors": [
+      "other"
+    ],
     "months": [],
     "meta": {
       "scientificName": "",
@@ -992,7 +993,7 @@
       "/kametora_kusabana_sanpo/images/0054_00.jpg",
       "/kametora_kusabana_sanpo/images/0054_01.jpg"
     ],
-    "colors": [],
+    "colors": ["white"],
     "months": [
       "5月",
       "6月"
@@ -1563,7 +1564,9 @@
     ],
     "colors": [
       "green",
-      "purpl"
+      "purpl",
+      "purple",
+      "white"
     ],
     "months": [],
     "meta": {
