@@ -21,12 +21,13 @@ interface PlantListProps {
     colors: Color[];
 }
 
-const ALL_MONTHS = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+const ALL_MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
 export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
     const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
     const toggleColor = (colorId: string) => {
         setSelectedColors(prev =>
@@ -60,72 +61,88 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
     }, [initialPlants, searchQuery, selectedColors, selectedMonths]);
 
     return (
-        <div className="flex flex-col md:flex-row gap-8">
-            {/* Filters Sidebar */}
-            <aside className="w-full md:w-64 space-y-8 flex-shrink-0">
-
-                {/* Search */}
-                <div className="space-y-2">
-                    <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Search</label>
-                    <input
-                        type="text"
-                        placeholder="Search plants..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"
-                    />
-                </div>
-
-                {/* Color Filter */}
-                <div className="space-y-2">
-                    <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Colors</label>
-                    <div className="flex flex-wrap gap-2">
-                        {colors.map(color => (
-                            <button
-                                key={color.id}
-                                onClick={() => toggleColor(color.id)}
-                                className={`px-3 py-1 rounded-full text-xs font-bold border transition-all duration-300 ${selectedColors.includes(color.id)
-                                    ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
-                                    : 'border-white/10 text-gray-400 hover:border-white/30'
-                                    }`}
-                                style={{
-                                    backgroundColor: selectedColors.includes(color.id) ? color.value : 'transparent',
-                                    color: selectedColors.includes(color.id) && ['white', 'yellow'].includes(color.id) ? 'black' : undefined
-                                }}
-                            >
-                                {color.name}
-                            </button>
-                        ))}
+        <div className="flex flex-col gap-6">
+            {/* Filters Header */}
+            <div className="glass-panel border border-white/10 p-4 md:p-6 sticky top-24 z-20 bg-black/80 backdrop-blur">
+                <div className="mb-4 flex flex-wrap justify-between items-end gap-3 border-b border-white/10 pb-3">
+                    <h2 className="text-2xl font-display font-bold text-white">Database Listings</h2>
+                    <div className="flex items-center gap-3">
+                        <span className="text-neon-pink font-mono">{filteredPlants.length} results</span>
+                        <button
+                            type="button"
+                            onClick={() => setIsFiltersOpen(prev => !prev)}
+                            className="md:hidden inline-flex items-center gap-2 px-3 py-1 border border-white/20 rounded-full text-xs font-bold text-white hover:border-white/40 transition-colors"
+                            aria-label="Toggle filters"
+                            aria-expanded={isFiltersOpen}
+                        >
+                            <span className="flex flex-col gap-1">
+                                <span className="w-4 h-[2px] bg-white"></span>
+                                <span className="w-4 h-[2px] bg-white"></span>
+                                <span className="w-4 h-[2px] bg-white"></span>
+                            </span>
+                            Filters
+                        </button>
                     </div>
                 </div>
+                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-6 ${isFiltersOpen ? 'grid' : 'hidden'} md:grid`}>
+                    {/* Search */}
+                    <div className="space-y-2 lg:col-span-4">
+                        <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Search</label>
+                        <input
+                            type="text"
+                            placeholder="Search plants..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"
+                        />
+                    </div>
 
-                {/* Month Filter */}
-                <div className="space-y-2">
-                    <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Months</label>
-                    <div className="grid grid-cols-4 gap-2">
-                        {ALL_MONTHS.map(month => (
-                            <button
-                                key={month}
-                                onClick={() => toggleMonth(month)}
-                                className={`text-xs py-1 rounded border transition-all ${selectedMonths.includes(month)
-                                    ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
-                                    : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
-                                    }`}
-                            >
-                                {month.replace('月', '')}
-                            </button>
-                        ))}
+                    {/* Color Filter */}
+                    <div className="space-y-2 lg:col-span-4">
+                        <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Colors</label>
+                        <div className="flex flex-wrap gap-2">
+                            {colors.map(color => (
+                                <button
+                                    key={color.id}
+                                    onClick={() => toggleColor(color.id)}
+                                    className={`px-3 py-1 rounded-full text-xs font-bold border transition-all duration-300 ${selectedColors.includes(color.id)
+                                        ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
+                                        : 'border-white/10 text-gray-400 hover:border-white/30'
+                                        }`}
+                                    style={{
+                                        backgroundColor: selectedColors.includes(color.id) ? color.value : 'transparent',
+                                        color: selectedColors.includes(color.id) && ['white', 'yellow'].includes(color.id) ? 'black' : undefined
+                                    }}
+                                >
+                                    {color.name}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Month Filter */}
+                    <div className="space-y-2 lg:col-span-4">
+                        <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Months</label>
+                        <div className="grid grid-cols-4 gap-2">
+                            {ALL_MONTHS.map(month => (
+                                <button
+                                    key={month}
+                                    onClick={() => toggleMonth(month)}
+                                    className={`text-xs py-1 rounded border transition-all ${selectedMonths.includes(month)
+                                        ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
+                                        : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
+                                        }`}
+                                >
+                                    {month}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </aside>
+            </div>
 
             {/* Results Grid */}
             <div className="flex-1">
-                <div className="mb-4 flex justify-between items-end border-b border-white/10 pb-2">
-                    <h2 className="text-2xl font-display font-bold text-white">Database Listings</h2>
-                    <span className="text-neon-pink font-mono">{filteredPlants.length} results</span>
-                </div>
-
                 {filteredPlants.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredPlants.map(plant => (
@@ -165,3 +182,4 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
         </div>
     );
 };
+
