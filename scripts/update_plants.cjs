@@ -96,6 +96,21 @@ function updatePlants() {
     const plantMap = new Map();
     plants.forEach(p => plantMap.set(p.id, p));
 
+    const normalizeImages = (images) => {
+        if (!Array.isArray(images)) return [];
+        return images
+            .map((img) => {
+                if (typeof img === 'string') {
+                    return { src: img, memo: '' };
+                }
+                if (img && typeof img === 'object') {
+                    return { src: img.src, memo: img.memo || '' };
+                }
+                return null;
+            })
+            .filter((img) => img && img.src);
+    };
+
     // 2. Scan images
     const files = fs.readdirSync(IMAGES_DIR);
     const imageGroups = new Map();
@@ -127,10 +142,15 @@ function updatePlants() {
         if (plantMap.has(id)) {
             // Update existing
             const p = plantMap.get(id);
-            // Union of existing images and new found images
-            const existingImgs = new Set(p.images);
-            images.forEach(img => existingImgs.add(img));
-            p.images = Array.from(existingImgs).sort();
+            // Union of existing images and new found images (preserve memos)
+            const existing = normalizeImages(p.images);
+            const existingMap = new Map(existing.map((img) => [img.src, img]));
+            images.forEach((src) => {
+                if (!existingMap.has(src)) {
+                    existingMap.set(src, { src, memo: '' });
+                }
+            });
+            p.images = Array.from(existingMap.values()).sort((a, b) => a.src.localeCompare(b.src));
         } else {
             // Create new
             const title = toKatakana(id);
@@ -139,7 +159,7 @@ function updatePlants() {
                 slug: id,
                 title: title,
                 description: "（説明文が未入力です）", // Description pending
-                images: images,
+                images: images.map((src) => ({ src, memo: '' })),
                 colors: ["yellow"], // Default to yellow as many previous ones were, or 'other'. Safe default?
                 months: [],
                 meta: {

@@ -1,16 +1,35 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
-interface Plant {
+interface PlantImage {
+    src: string;
+    memo?: string;
+}
+
+interface PlantInput {
     id: string;
     slug: string;
     title: string;
     description: string;
-    images: string[];
+    images: Array<string | PlantImage>;
     colors?: string[];
     months?: string[];
     meta?: {
         scientificName?: string;
         family?: string;
+    };
+}
+
+interface Plant {
+    id: string;
+    slug: string;
+    title: string;
+    description: string;
+    images: PlantImage[];
+    colors: string[];
+    months: string[];
+    meta: {
+        scientificName: string;
+        family: string;
     };
 }
 
@@ -21,13 +40,38 @@ interface Color {
 }
 
 interface AdminPanelProps {
-    initialPlants: Plant[];
+    initialPlants: PlantInput[];
     colors: Color[];
 }
 
 const MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
 const STORAGE_KEY = 'amami-admin-auth';
 const PASSWORD_HASH = '34a2baceb2b9d74e70b7afa96d58285abe448922c5ff3312f53090494550994b';
+
+const normalizeImages = (images?: Array<string | PlantImage>): PlantImage[] => {
+    if (!images) return [];
+    return images
+        .map((img) =>
+            typeof img === 'string'
+                ? { src: img, memo: '' }
+                : { src: img.src, memo: img.memo ?? '' }
+        )
+        .filter((img) => img.src?.trim());
+};
+
+const normalizePlant = (plant: PlantInput): Plant => ({
+    id: plant.id,
+    slug: plant.slug,
+    title: plant.title,
+    description: plant.description,
+    images: normalizeImages(plant.images),
+    colors: plant.colors ?? [],
+    months: plant.months ?? [],
+    meta: {
+        scientificName: plant.meta?.scientificName ?? '',
+        family: plant.meta?.family ?? ''
+    }
+});
 
 const hashText = async (value: string) => {
     const data = new TextEncoder().encode(value);
@@ -38,7 +82,7 @@ const hashText = async (value: string) => {
 };
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors }) => {
-    const [plants, setPlants] = useState<Plant[]>(initialPlants);
+    const [plants, setPlants] = useState<Plant[]>(() => initialPlants.map(normalizePlant));
     const [selectedId, setSelectedId] = useState<string>(initialPlants[0]?.id ?? '');
     const [searchQuery, setSearchQuery] = useState('');
     const [auth, setAuth] = useState(false);
@@ -96,6 +140,25 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
         setPlants((prev) =>
             prev.map((plant) => (plant.id === selectedId ? { ...plant, ...updates } : plant))
         );
+    };
+
+    const updateImage = (index: number, updates: Partial<PlantImage>) => {
+        if (!selectedPlant) return;
+        const next = selectedPlant.images.map((img, i) =>
+            i === index ? { ...img, ...updates } : img
+        );
+        updateSelected({ images: next });
+    };
+
+    const removeImage = (index: number) => {
+        if (!selectedPlant) return;
+        const next = selectedPlant.images.filter((_, i) => i !== index);
+        updateSelected({ images: next });
+    };
+
+    const addImage = () => {
+        if (!selectedPlant) return;
+        updateSelected({ images: [...selectedPlant.images, { src: '', memo: '' }] });
     };
 
     const handleIdChange = (value: string) => {
@@ -158,7 +221,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                 slug: plant.slug?.trim() || plant.id,
                 colors: plant.colors ?? [],
                 months: plant.months ?? [],
-                images: plant.images ?? [],
+                images: (plant.images ?? [])
+                    .map((img) => ({
+                        src: img.src.trim(),
+                        memo: img.memo?.trim() ?? ''
+                    }))
+                    .filter((img) => img.src),
                 meta: {
                     scientificName: plant.meta?.scientificName ?? '',
                     family: plant.meta?.family ?? ''
@@ -324,19 +392,53 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                             </label>
 
                             <label className="text-xs text-gray-400 uppercase tracking-wider">
-                                画像パス（1行1枚）
-                                <textarea
-                                    value={selectedPlant.images?.join('\n') ?? ''}
-                                    onChange={(event) =>
-                                        updateSelected({
-                                            images: event.target.value
-                                                .split('\n')
-                                                .map((line) => line.trim())
-                                                .filter(Boolean)
-                                        })
-                                    }
-                                    className="mt-2 w-full min-h-[120px] bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-cyan focus:outline-none"
-                                />
+                                画像パス & メモ
+                                <div className="mt-2 space-y-3">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[10px] text-gray-500">1枚ごとにメモを追加できます。</span>
+                                        <button
+                                            type="button"
+                                            onClick={addImage}
+                                            className="px-3 py-1 text-[10px] font-display tracking-wider border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 transition"
+                                        >
+                                            + 画像追加
+                                        </button>
+                                    </div>
+                                    {selectedPlant.images.length === 0 ? (
+                                        <div className="text-gray-600 text-xs font-mono border border-dashed border-white/10 rounded-lg px-3 py-3">
+                                            画像が未登録です。
+                                        </div>
+                                    ) : (
+                                        selectedPlant.images.map((img, index) => (
+                                            <div
+                                                key={`${img.src}-${index}`}
+                                                className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-2 items-center"
+                                            >
+                                                <input
+                                                    type="text"
+                                                    value={img.src}
+                                                    onChange={(event) => updateImage(index, { src: event.target.value })}
+                                                    placeholder="/kametora_kusabana_sanpo/images/xxxx_00.jpg"
+                                                    className="w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white text-xs focus:border-neon-cyan focus:outline-none"
+                                                />
+                                                <input
+                                                    type="text"
+                                                    value={img.memo ?? ''}
+                                                    onChange={(event) => updateImage(index, { memo: event.target.value })}
+                                                    placeholder="説明メモ"
+                                                    className="w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white text-xs focus:border-neon-cyan focus:outline-none"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => removeImage(index)}
+                                                    className="px-3 py-2 text-[10px] font-display tracking-wider border border-neon-pink text-neon-pink hover:bg-neon-pink/10 transition"
+                                                >
+                                                    削除
+                                                </button>
+                                            </div>
+                                        ))
+                                    )}
+                                </div>
                             </label>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

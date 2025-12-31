@@ -5,9 +5,14 @@ interface Plant {
     slug: string;
     title: string;
     description: string;
-    images: string[];
+    images: Array<string | PlantImage>;
     colors?: string[];
     months?: string[];
+}
+
+interface PlantImage {
+    src: string;
+    memo?: string;
 }
 
 interface Color {
@@ -23,11 +28,19 @@ interface PlantListProps {
 
 const ALL_MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
+const getImageSrc = (images?: Array<string | PlantImage>) => {
+    if (!images || images.length === 0) return '';
+    const first = images[0];
+    return typeof first === 'string' ? first : first.src;
+};
+
 export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
     const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
     const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+    const [isColorsOpen, setIsColorsOpen] = useState(false);
+    const [isMonthsOpen, setIsMonthsOpen] = useState(false);
 
     const toggleColor = (colorId: string) => {
         setSelectedColors(prev =>
@@ -63,28 +76,28 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
     return (
         <div className="flex flex-col gap-6">
             {/* Filters Header */}
-            <div className="glass-panel border border-white/10 p-4 md:p-6 sticky top-24 z-20 bg-black/80 backdrop-blur">
-                <div className="mb-4 flex flex-wrap justify-between items-end gap-3 border-b border-white/10 pb-3">
-                    <h2 className="text-2xl font-display font-bold text-white">Database Listings</h2>
+            <div className="glass-panel border border-white/10 p-3 md:p-6 sticky top-16 md:top-24 z-20 bg-black/80 backdrop-blur">
+                <div className="mb-3 md:mb-4 flex flex-wrap justify-between items-end gap-3 border-b border-white/10 pb-2 md:pb-3">
+                    <h2 className="text-xl md:text-2xl font-display font-bold text-white">Database Listings</h2>
                     <div className="flex items-center gap-3">
-                        <span className="text-neon-pink font-mono">{filteredPlants.length} results</span>
+                        <span className="text-neon-pink font-mono text-[11px] md:text-xs">{filteredPlants.length} results</span>
                         <button
                             type="button"
                             onClick={() => setIsFiltersOpen(prev => !prev)}
-                            className="md:hidden inline-flex items-center gap-2 px-3 py-1 border border-white/20 rounded-full text-xs font-bold text-white hover:border-white/40 transition-colors"
+                            className="md:hidden inline-flex items-center gap-2 px-2 py-0.5 border border-white/20 rounded-full text-[10px] font-bold text-white hover:border-white/40 transition-colors"
                             aria-label="Toggle filters"
                             aria-expanded={isFiltersOpen}
                         >
                             <span className="flex flex-col gap-1">
-                                <span className="w-4 h-[2px] bg-white"></span>
-                                <span className="w-4 h-[2px] bg-white"></span>
-                                <span className="w-4 h-[2px] bg-white"></span>
+                                <span className="w-3.5 h-[2px] bg-white"></span>
+                                <span className="w-3.5 h-[2px] bg-white"></span>
+                                <span className="w-3.5 h-[2px] bg-white"></span>
                             </span>
                             Filters
                         </button>
                     </div>
                 </div>
-                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-6 ${isFiltersOpen ? 'grid' : 'hidden'} md:grid`}>
+                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 ${isFiltersOpen ? 'grid' : 'hidden'} md:grid`}>
                     {/* Search */}
                     <div className="space-y-2 lg:col-span-4">
                         <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Search</label>
@@ -99,8 +112,17 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
 
                     {/* Color Filter */}
                     <div className="space-y-2 lg:col-span-4">
-                        <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Colors</label>
-                        <div className="flex flex-wrap gap-2">
+                        <button
+                            type="button"
+                            onClick={() => setIsColorsOpen(prev => !prev)}
+                            className="md:hidden inline-flex items-center gap-2 text-neon-cyan font-display text-sm uppercase tracking-wider"
+                            aria-expanded={isColorsOpen}
+                        >
+                            Colors
+                            <span className={`text-white/70 transition-transform ${isColorsOpen ? 'rotate-180' : ''}`}>▾</span>
+                        </button>
+                        <label className="hidden md:block text-neon-cyan font-display text-sm uppercase tracking-wider">Colors</label>
+                        <div className={`${isColorsOpen ? 'flex' : 'hidden'} md:flex flex-wrap gap-2`}>
                             {colors.map(color => (
                                 <button
                                     key={color.id}
@@ -122,18 +144,27 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
 
                     {/* Month Filter */}
                     <div className="space-y-2 lg:col-span-4">
-                        <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Months</label>
-                        <div className="grid grid-cols-4 gap-2">
+                        <button
+                            type="button"
+                            onClick={() => setIsMonthsOpen(prev => !prev)}
+                            className="md:hidden inline-flex items-center gap-2 text-neon-cyan font-display text-sm uppercase tracking-wider"
+                            aria-expanded={isMonthsOpen}
+                        >
+                            Months
+                            <span className={`text-white/70 transition-transform ${isMonthsOpen ? 'rotate-180' : ''}`}>▾</span>
+                        </button>
+                        <label className="hidden md:block text-neon-cyan font-display text-sm uppercase tracking-wider">Months</label>
+                        <div className={`${isMonthsOpen ? 'grid' : 'hidden'} md:grid grid-cols-6 gap-2`}>
                             {ALL_MONTHS.map(month => (
                                 <button
                                     key={month}
                                     onClick={() => toggleMonth(month)}
-                                    className={`text-xs py-1 rounded border transition-all ${selectedMonths.includes(month)
+                                    className={`text-[10px] py-1 rounded border transition-all ${selectedMonths.includes(month)
                                         ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
                                         : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
                                         }`}
                                 >
-                                    {month}
+                                    {month}月
                                 </button>
                             ))}
                         </div>
@@ -150,7 +181,7 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                                 <div className="aspect-square bg-black/50 relative overflow-hidden">
                                     {plant.images && plant.images.length > 0 ? (
                                         <img
-                                            src={plant.images[0]}
+                                            src={getImageSrc(plant.images)}
                                             alt={plant.title}
                                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                         />

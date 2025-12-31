@@ -38,6 +38,47 @@ const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[pla
       <span class="text-neon-purple uppercase">{plant.title}</span>
     </nav>
 
+    <div class="mb-10 space-y-4">
+      <h1 class="font-display text-4xl md:text-6xl font-black text-white text-glow">
+        {plant.title}
+      </h1>
+      <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
+        <span class="uppercase tracking-widest text-gray-500">ID</span>
+        <span class="text-white">{plant.id}</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        {plantColors.map((color) => (
+          <span 
+            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20"
+            style={{ 
+              color: color.value, 
+              borderColor: `${color.value}40`,
+              backgroundColor: `${color.value}10`,
+              boxShadow: `0 0 10px ${color.value}20`
+            }}
+          >
+            {color.name}
+          </span>
+        ))}
+        {plantColors.length === 0 && (
+          <span class="text-gray-600 text-xs italic">No colors</span>
+        )}
+      </div>
+      <div>
+        <h3 class="font-display text-sm text-neon-cyan mb-2 uppercase tracking-widest">Observation Months</h3>
+        <div class="flex flex-wrap gap-2">
+          {plant.months?.map((month) => (
+            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300 hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-default">
+              {month}
+            </span>
+          ))}
+          {(!plant.months || plant.months.length === 0) && (
+            <span class="text-gray-600 text-xs italic">No observation data</span>
+          )}
+        </div>
+      </div>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
       
       {/* Left: Image Selection */}
@@ -48,46 +89,9 @@ const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[pla
       {/* Right: Info */}
       <div class="space-y-8">
         <div>
-          {/* Colors */}
-          <div class="flex flex-wrap items-center gap-3 mb-4">
-            {plantColors.map((color) => (
-              <span 
-                class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20"
-                style={{ 
-                  color: color.value, 
-                  borderColor: `${color.value}40`,
-                  backgroundColor: `${color.value}10`,
-                  boxShadow: `0 0 10px ${color.value}20`
-                }}
-              >
-                {color.name}
-              </span>
-            ))}
-            <span class="text-gray-500 text-xs font-mono ml-auto">{plant.meta?.scientificName}</span>
-          </div>
-          
-          <h1 class="font-display text-4xl md:text-6xl font-black text-white mb-6 text-glow">
-            {plant.title}
-          </h1>
-          
           <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4">
             {plant.description}
           </p>
-        </div>
-
-        {/* Tags / Months */}
-        <div>
-          <h3 class="font-display text-sm text-neon-cyan mb-3 uppercase tracking-widest">Observation Months</h3>
-          <div class="flex flex-wrap gap-2">
-            {plant.months?.map((month) => (
-              <span class="px-4 py-2 bg-white/5 border border-white/10 rounded text-sm text-gray-300 hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-default">
-                {month}
-              </span>
-            ))}
-            {(!plant.months || plant.months.length === 0) && (
-              <span class="text-gray-600 text-sm italic">No observation data</span>
-            )}
-          </div>
         </div>
 
         {/* Meta Info Grid */}
@@ -96,9 +100,9 @@ const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[pla
             <span class="block text-gray-500 text-xs uppercase mb-1">Family</span>
             <span class="text-white font-display">{plant.meta?.family || '-'}</span>
           </div>
-           <div>
-            <span class="block text-gray-500 text-xs uppercase mb-1">ID Code</span>
-            <span class="text-white font-mono text-xs">{plant.id}</span>
+          <div>
+            <span class="block text-gray-500 text-xs uppercase mb-1">Scientific</span>
+            <span class="text-white font-display">{plant.meta?.scientificName || '-'}</span>
           </div>
         </div>
 

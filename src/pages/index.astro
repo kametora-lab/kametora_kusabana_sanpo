@@ -4,6 +4,12 @@ import { NeonButton } from '../components/NeonButton';
 import plants from '../data/plants.json';
 
 const featuredPlants = plants.slice(0, 9);
+
+const getImageSrc = (images) => {
+	if (!images || images.length === 0) return '';
+	const first = images[0];
+	return typeof first === 'string' ? first : first.src;
+};
 ---
 
 <Layout title="Home">
@@ -38,11 +44,11 @@ const featuredPlants = plants.slice(0, 9);
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4 z-10">
 			{featuredPlants.map((plant) => (
 				<a href={`/kametora_kusabana_sanpo/plants/${plant.slug}`} class="block glass-panel p-4 group hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
-					<div class="aspect-square bg-black/50 rounded-lg mb-4 overflow-hidden relative">
-						<div class="absolute inset-0 bg-gradient-to-tr from-neon-pink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-						{plant.images?.[0] ? (
+						<div class="aspect-square bg-black/50 rounded-lg mb-4 overflow-hidden relative">
+							<div class="absolute inset-0 bg-gradient-to-tr from-neon-pink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+						{getImageSrc(plant.images) ? (
 							<img 
-								src={plant.images[0]} 
+								src={getImageSrc(plant.images)} 
 								alt={plant.title}
 								class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
 							/>
