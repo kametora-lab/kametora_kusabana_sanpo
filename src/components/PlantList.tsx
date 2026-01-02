@@ -135,14 +135,22 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                                 </div>
                                 <div className="p-4 relative -mt-12">
                                     <h3 className="font-display text-xl text-white mb-1 group-hover:text-neon-cyan transition-colors truncate">{plant.title}</h3>
-                                    <div className="flex gap-2 mb-2">
+                                    <div className="flex flex-wrap items-center gap-2 mb-2">
                                         {plant.colors?.slice(0, 3).map(cid => {
                                             const c = colors.find(col => col.id === cid);
                                             return c ? (
                                                 <span key={cid} className="w-2 h-2 rounded-full" style={{ backgroundColor: c.value, boxShadow: `0 0 5px ${c.value}` }}></span>
                                             ) : null;
                                         })}
+                                        {plant.months?.slice(0, 3).map(month => (
+                                            <span key={`${plant.id}-${month}`} className="text-[10px] font-mono text-neon-cyan/80 border border-neon-cyan/30 rounded-full px-2 py-0.5">
+                                                {`${normalizeMonth(month)}月`}
+                                            </span>
+                                        ))}
                                     </div>
+                                    <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                                        {plant.description || '（説明文が未入力です）'}
+                                    </p>
                                 </div>
                             </a>
                         ))}

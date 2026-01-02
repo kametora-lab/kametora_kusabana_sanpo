@@ -291,10 +291,14 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
             <aside className="space-y-6">
                 <div className="glass-panel p-4 space-y-3">
-                    <label className="text-neon-cyan font-display text-xs uppercase tracking-wider">Search</label>
+                    <label className="text-neon-cyan font-display text-xs uppercase tracking-wider">検索（カタカナ）</label>
                     <input
                         type="text"
-                        placeholder="ID / name / description..."
+                        lang="ja"
+                        inputMode="kana"
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        placeholder="カタカナで入力"
                         value={searchQuery}
                         onChange={(event) => setSearchQuery(event.target.value)}
                         className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"

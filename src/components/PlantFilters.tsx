@@ -61,10 +61,14 @@ export const PlantFilters: React.FC<PlantFiltersProps> = ({
             </div>
             <div className={`grid grid-cols-1 gap-4 md:gap-6 ${isFiltersOpen ? 'grid' : 'hidden'} md:grid`}>
                 <div className="space-y-2">
-                    <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Search</label>
+                    <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">検索（カタカナ）</label>
                     <input
                         type="text"
-                        placeholder="Search plants..."
+                        lang="ja"
+                        inputMode="kana"
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        placeholder="カタカナで入力"
                         value={searchQuery}
                         onChange={(e) => onSearchChange(e.target.value)}
                         className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"

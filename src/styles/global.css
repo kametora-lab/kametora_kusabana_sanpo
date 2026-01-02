@@ -22,6 +22,10 @@ body {
     min-height: 100vh;
 }
 
+.font-nico {
+    font-family: "Nico Moji", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
