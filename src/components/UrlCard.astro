@@ -1,0 +1,55 @@
+---
+const { url, title, image } = Astro.props as {
+  url: string;
+  title?: string;
+  image?: string;
+};
+
+const getHostname = (value: string) => {
+  try {
+    return new URL(value).hostname.replace(/^www\./, '');
+  } catch {
+    return value;
+  }
+};
+
+const getPathLabel = (value: string) => {
+  try {
+    const parsed = new URL(value);
+    return parsed.pathname === '/' ? parsed.hostname : `${parsed.hostname}${parsed.pathname}`;
+  } catch {
+    return value;
+  }
+};
+
+const hostname = getHostname(url);
+const pathLabel = getPathLabel(url);
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block glass-panel border border-white/10 hover:border-neon-cyan/50 transition-all duration-300"
+>
+  <div class="flex items-center gap-4 p-4">
+    <div class="h-16 w-16 shrink-0 rounded-xl bg-gradient-to-br from-neon-cyan/30 via-white/10 to-neon-pink/20 border border-white/10 overflow-hidden flex items-center justify-center text-xs font-mono text-white/70">
+      {image ? (
+        <img
+          src={image}
+          alt=""
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        'LINK'
+      )}
+    </div>
+    <div class="min-w-0">
+      <div class="text-white font-display text-sm truncate">{title || hostname}</div>
+      <div class="text-gray-400 text-xs font-mono truncate">{pathLabel}</div>
+    </div>
+    <div class="ml-auto text-neon-cyan text-sm">↗</div>
+  </div>
+</a>

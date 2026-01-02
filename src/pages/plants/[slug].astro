@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { NeonButton } from '../../components/NeonButton';
 import { ImageGallery } from '../../components/ImageGallery';
 import { DetailFilters } from '../../components/DetailFilters';
+import UrlCard from '../../components/UrlCard.astro';
 import plants from '../../data/plants.json';
 import colors from '../../data/colors.json';
 
@@ -25,6 +26,85 @@ const plantColors = getColors(plant.colors);
 const plantIndex = plants.findIndex((item) => item.slug === plant.slug);
 const prevPlant = plantIndex > 0 ? plants[plantIndex - 1] : null;
 const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[plantIndex + 1] : null;
+
+const urlRegex = /(https?:\/\/[^\s]+)/gi;
+const isUrl = (value: string) => /^https?:\/\/\S+$/i.test(value);
+
+const ogpCache = (globalThis as { __ogpCache?: Map<string, { title?: string; image?: string }> }).__ogpCache
+  ?? new Map<string, { title?: string; image?: string }>();
+(globalThis as { __ogpCache?: Map<string, { title?: string; image?: string }> }).__ogpCache = ogpCache;
+
+const matchMetaContent = (html: string, key: string, value: string) => {
+  const tagMatch = html.match(new RegExp(`<meta[^>]+${key}=["']${value}["'][^>]*>`, 'i'));
+  if (!tagMatch) return undefined;
+  const contentMatch = tagMatch[0].match(/content=["']([^"']+)["']/i);
+  return contentMatch?.[1];
+};
+
+const matchTitle = (html: string) => {
+  const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+  return titleMatch?.[1]?.trim();
+};
+
+const resolveImageUrl = (imageUrl: string | undefined, pageUrl: string) => {
+  if (!imageUrl) return undefined;
+  if (/^https?:\/\//i.test(imageUrl)) return imageUrl;
+  try {
+    return new URL(imageUrl, pageUrl).toString();
+  } catch {
+    return imageUrl;
+  }
+};
+
+const fetchOgp = async (url: string) => {
+  if (ogpCache.has(url)) return ogpCache.get(url) ?? {};
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 6000);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        'user-agent': 'Mozilla/5.0 (compatible; KametoraBot/1.0; +https://github.com/kametora-lab)',
+        accept: 'text/html',
+      },
+    });
+    if (!response.ok) {
+      ogpCache.set(url, {});
+      return {};
+    }
+
+    const html = await response.text();
+    const title =
+      matchMetaContent(html, 'property', 'og:title')
+      ?? matchMetaContent(html, 'name', 'twitter:title')
+      ?? matchTitle(html);
+    const image = resolveImageUrl(
+      matchMetaContent(html, 'property', 'og:image')
+        ?? matchMetaContent(html, 'name', 'twitter:image'),
+      url
+    );
+
+    const meta = { title: title?.trim(), image };
+    ogpCache.set(url, meta);
+    return meta;
+  } catch {
+    ogpCache.set(url, {});
+    return {};
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
+const descriptionParts = (plant.description ?? '').split(urlRegex).filter(Boolean);
+const descriptionItems = await Promise.all(
+  descriptionParts.map(async (part) => {
+    if (!isUrl(part)) return { type: 'text', value: part };
+    const meta = await fetchOgp(part);
+    return { type: 'url', value: part, meta };
+  })
+);
 ---
 
 <Layout title={plant.title} description={plant.description}>
@@ -90,10 +170,18 @@ const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[pla
           </div>
 
           <div class="space-y-8">
-            <div>
-              <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4">
-                {plant.description}
-              </p>
+            <div class="space-y-3">
+              {descriptionItems.map((item) =>
+                item.type === 'url' ? (
+                  <UrlCard url={item.value} title={item.meta?.title} image={item.meta?.image} />
+                ) : (
+                  item.value.trim().length > 0 && (
+                    <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4 whitespace-pre-wrap">
+                      {item.value}
+                    </p>
+                  )
+                )
+              )}
             </div>
 
             <div class="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
