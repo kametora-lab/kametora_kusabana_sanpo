@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { NeonButton } from '../../components/NeonButton';
 import { ImageGallery } from '../../components/ImageGallery';
+import { DetailFilters } from '../../components/DetailFilters';
 import plants from '../../data/plants.json';
 import colors from '../../data/colors.json';
 
@@ -14,7 +15,6 @@ export function getStaticPaths() {
 
 const { plant } = Astro.props;
 
-// Helper to get color info
 const getColors = (colorIds: string[] | undefined) => {
   if (!colorIds) return [];
   return colorIds.map(id => colors.find(c => c.id === id)).filter(Boolean);
@@ -29,87 +29,88 @@ const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[pla
 
 <Layout title={plant.title} description={plant.description}>
   <main class="min-h-screen p-4 md:p-8 pt-20 max-w-6xl mx-auto">
-    
-    <nav class="mb-8 flex items-center gap-2 text-sm font-mono tracking-tighter">
-      <a href="/kametora_kusabana_sanpo" class="text-gray-500 hover:text-neon-pink transition-colors">HOME</a>
-      <span class="text-gray-700">/</span>
-      <a href="/kametora_kusabana_sanpo/plants" class="text-gray-500 hover:text-neon-cyan transition-colors">DATABASE</a>
-      <span class="text-gray-700">/</span>
-      <span class="text-neon-purple uppercase">{plant.title}</span>
-    </nav>
+    <div class="flex flex-col gap-6 md:flex-row md:items-start">
+      <aside class="md:w-80 md:shrink-0 md:order-2 sticky top-0 md:top-24 z-30 self-start">
+        <DetailFilters client:load colors={colors} resultsCount={plants.length} />
+      </aside>
 
-    <div class="mb-10 space-y-4">
-      <h1 class="font-display text-4xl md:text-6xl font-black text-white text-glow">
-        {plant.title}
-      </h1>
-      <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
-        <span class="uppercase tracking-widest text-gray-500">ID</span>
-        <span class="text-white">{plant.id}</span>
-      </div>
-      <div class="flex flex-wrap items-center gap-3">
-        {plantColors.map((color) => (
-          <span 
-            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20"
-            style={{ 
-              color: color.value, 
-              borderColor: `${color.value}40`,
-              backgroundColor: `${color.value}10`,
-              boxShadow: `0 0 10px ${color.value}20`
-            }}
-          >
-            {color.name}
-          </span>
-        ))}
-        {plantColors.length === 0 && (
-          <span class="text-gray-600 text-xs italic">No colors</span>
-        )}
-      </div>
-      <div>
-        <h3 class="font-display text-sm text-neon-cyan mb-2 uppercase tracking-widest">Observation Months</h3>
-        <div class="flex flex-wrap gap-2">
-          {plant.months?.map((month) => (
-            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300 hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-default">
-              {month}
-            </span>
-          ))}
-          {(!plant.months || plant.months.length === 0) && (
-            <span class="text-gray-600 text-xs italic">No observation data</span>
-          )}
-        </div>
-      </div>
-    </div>
+      <div class="flex-1 md:order-1">
+        <nav class="mb-8 flex items-center gap-2 text-sm font-mono tracking-tighter">
+          <a href="/kametora_kusabana_sanpo" class="text-gray-500 hover:text-neon-pink transition-colors">HOME</a>
+          <span class="text-gray-700">/</span>
+          <a href="/kametora_kusabana_sanpo/plants" class="text-gray-500 hover:text-neon-cyan transition-colors">DATABASE</a>
+          <span class="text-gray-700">/</span>
+          <span class="text-neon-purple uppercase">{plant.title}</span>
+        </nav>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-      
-      {/* Left: Image Selection */}
-      <div class="space-y-4">
-        <ImageGallery client:load images={plant.images} title={plant.title} />
-      </div>
-
-      {/* Right: Info */}
-      <div class="space-y-8">
-        <div>
-          <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4">
-            {plant.description}
-          </p>
-        </div>
-
-        {/* Meta Info Grid */}
-        <div class="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
-          <div>
-            <span class="block text-gray-500 text-xs uppercase mb-1">Family</span>
-            <span class="text-white font-display">{plant.meta?.family || '-'}</span>
+        <div class="mb-10 space-y-4">
+          <h1 class="font-display text-4xl md:text-6xl font-black text-white text-glow">
+            {plant.title}
+          </h1>
+          <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
+            <span class="uppercase tracking-widest text-gray-500">ID</span>
+            <span class="text-white">{plant.id}</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            {plantColors.map((color) => (
+              <span 
+                class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20"
+                style={{ 
+                  color: color.value, 
+                  borderColor: `${color.value}40`,
+                  backgroundColor: `${color.value}10`,
+                  boxShadow: `0 0 10px ${color.value}20`
+                }}
+              >
+                {color.name}
+              </span>
+            ))}
+            {plantColors.length === 0 && (
+              <span class="text-gray-600 text-xs italic">No colors</span>
+            )}
           </div>
           <div>
-            <span class="block text-gray-500 text-xs uppercase mb-1">Scientific</span>
-            <span class="text-white font-display">{plant.meta?.scientificName || '-'}</span>
+            <h3 class="font-display text-sm text-neon-cyan mb-2 uppercase tracking-widest">Observation Months</h3>
+            <div class="flex flex-wrap gap-2">
+              {plant.months?.map((month) => (
+                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300 hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-default">
+                  {month}
+                </span>
+              ))}
+              {(!plant.months || plant.months.length === 0) && (
+                <span class="text-gray-600 text-xs italic">No observation data</span>
+              )}
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div class="space-y-4">
+            <ImageGallery client:load images={plant.images} title={plant.title} />
+          </div>
 
-    <div class="mt-16 flex flex-col sm:flex-row justify-between gap-4 border-t border-white/10 pt-6">
+          <div class="space-y-8">
+            <div>
+              <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4">
+                {plant.description}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
+              <div>
+                <span class="block text-gray-500 text-xs uppercase mb-1">Family</span>
+                <span class="text-white font-display">{plant.meta?.family || '-'}</span>
+              </div>
+              <div>
+                <span class="block text-gray-500 text-xs uppercase mb-1">Scientific</span>
+                <span class="text-white font-display">{plant.meta?.scientificName || '-'}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mt-16 flex flex-col sm:flex-row justify-between gap-4 border-t border-white/10 pt-6">
       {prevPlant ? (
         <a href={`/kametora_kusabana_sanpo/plants/${prevPlant.slug}`} class="group flex items-center gap-3 text-neon-cyan hover:text-white transition-colors">
           <span class="text-xl">←</span>
@@ -145,6 +146,8 @@ const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[pla
           <span class="text-xl">→</span>
         </span>
       )}
+        </div>
+      </div>
     </div>
   </main>
 </Layout>

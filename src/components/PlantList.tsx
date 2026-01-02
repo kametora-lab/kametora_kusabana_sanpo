@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { PlantFilters } from './PlantFilters';
 
 interface Plant {
     id: string;
@@ -26,8 +27,6 @@ interface PlantListProps {
     colors: Color[];
 }
 
-const ALL_MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-
 const getImageSrc = (images?: Array<string | PlantImage>) => {
     if (!images || images.length === 0) return '';
     const first = images[0];
@@ -38,9 +37,41 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
     const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
-    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-    const [isColorsOpen, setIsColorsOpen] = useState(false);
-    const [isMonthsOpen, setIsMonthsOpen] = useState(false);
+
+    const toMonthLabel = (month: string) => (month.includes('月') ? month : `${month}月`);
+    const normalizeMonth = (month: string) => month.replace('月', '').trim();
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('q') ?? '';
+        const colorsParam = params.get('colors');
+        const monthsParam = params.get('months');
+
+        if (query) setSearchQuery(query);
+        if (colorsParam) setSelectedColors(colorsParam.split(',').filter(Boolean));
+        if (monthsParam) {
+            const nextMonths = monthsParam
+                .split(',')
+                .map(value => value.trim())
+                .filter(Boolean)
+                .map(toMonthLabel);
+            setSelectedMonths(nextMonths);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const params = new URLSearchParams();
+        const query = searchQuery.trim();
+        if (query) params.set('q', query);
+        if (selectedColors.length > 0) params.set('colors', selectedColors.join(','));
+        if (selectedMonths.length > 0) params.set('months', selectedMonths.join(','));
+
+        const base = '/kametora_kusabana_sanpo/plants';
+        const url = params.toString() ? `${base}?${params.toString()}` : base;
+        window.history.replaceState(null, '', url);
+    }, [searchQuery, selectedColors, selectedMonths]);
 
     const toggleColor = (colorId: string) => {
         setSelectedColors(prev =>
@@ -56,124 +87,36 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
 
     const filteredPlants = useMemo(() => {
         return initialPlants.filter(plant => {
-            // Text Search
             const matchesSearch = plant.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 plant.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-            // Color Filter (OR logic within colors - shows if ANY selected color matches)
-            // If no color selected, show all.
             const matchesColor = selectedColors.length === 0 ||
                 (plant.colors && plant.colors.some(c => selectedColors.includes(c)));
 
-            // Month Filter (OR logic within months)
+            const selectedMonthValues = selectedMonths.map(normalizeMonth);
             const matchesMonth = selectedMonths.length === 0 ||
-                (plant.months && plant.months.some(m => selectedMonths.includes(m)));
+                (plant.months && plant.months.some(m => selectedMonthValues.includes(normalizeMonth(m))));
 
             return matchesSearch && matchesColor && matchesMonth;
         });
     }, [initialPlants, searchQuery, selectedColors, selectedMonths]);
 
     return (
-        <div className="flex flex-col gap-6">
-            {/* Filters Header */}
-            <div className="glass-panel border border-white/10 p-3 md:p-6 sticky top-16 md:top-24 z-20 bg-black/80 backdrop-blur">
-                <div className="mb-3 md:mb-4 flex flex-wrap justify-between items-end gap-3 border-b border-white/10 pb-2 md:pb-3">
-                    <h2 className="text-xl md:text-2xl font-display font-bold text-white">Database Listings</h2>
-                    <div className="flex items-center gap-3">
-                        <span className="text-neon-pink font-mono text-[11px] md:text-xs">{filteredPlants.length} results</span>
-                        <button
-                            type="button"
-                            onClick={() => setIsFiltersOpen(prev => !prev)}
-                            className="md:hidden inline-flex items-center gap-2 px-2 py-0.5 border border-white/20 rounded-full text-[10px] font-bold text-white hover:border-white/40 transition-colors"
-                            aria-label="Toggle filters"
-                            aria-expanded={isFiltersOpen}
-                        >
-                            <span className="flex flex-col gap-1">
-                                <span className="w-3.5 h-[2px] bg-white"></span>
-                                <span className="w-3.5 h-[2px] bg-white"></span>
-                                <span className="w-3.5 h-[2px] bg-white"></span>
-                            </span>
-                            Filters
-                        </button>
-                    </div>
-                </div>
-                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 ${isFiltersOpen ? 'grid' : 'hidden'} md:grid`}>
-                    {/* Search */}
-                    <div className="space-y-2 lg:col-span-4">
-                        <label className="text-neon-cyan font-display text-sm uppercase tracking-wider">Search</label>
-                        <input
-                            type="text"
-                            placeholder="Search plants..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"
-                        />
-                    </div>
-
-                    {/* Color Filter */}
-                    <div className="space-y-2 lg:col-span-4">
-                        <button
-                            type="button"
-                            onClick={() => setIsColorsOpen(prev => !prev)}
-                            className="md:hidden inline-flex items-center gap-2 text-neon-cyan font-display text-sm uppercase tracking-wider"
-                            aria-expanded={isColorsOpen}
-                        >
-                            Colors
-                            <span className={`text-white/70 transition-transform ${isColorsOpen ? 'rotate-180' : ''}`}>▾</span>
-                        </button>
-                        <label className="hidden md:block text-neon-cyan font-display text-sm uppercase tracking-wider">Colors</label>
-                        <div className={`${isColorsOpen ? 'flex' : 'hidden'} md:flex flex-wrap gap-2`}>
-                            {colors.map(color => (
-                                <button
-                                    key={color.id}
-                                    onClick={() => toggleColor(color.id)}
-                                    className={`px-3 py-1 rounded-full text-xs font-bold border transition-all duration-300 ${selectedColors.includes(color.id)
-                                        ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
-                                        : 'border-white/10 text-gray-400 hover:border-white/30'
-                                        }`}
-                                    style={{
-                                        backgroundColor: selectedColors.includes(color.id) ? color.value : 'transparent',
-                                        color: selectedColors.includes(color.id) && ['white', 'yellow'].includes(color.id) ? 'black' : undefined
-                                    }}
-                                >
-                                    {color.name}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Month Filter */}
-                    <div className="space-y-2 lg:col-span-4">
-                        <button
-                            type="button"
-                            onClick={() => setIsMonthsOpen(prev => !prev)}
-                            className="md:hidden inline-flex items-center gap-2 text-neon-cyan font-display text-sm uppercase tracking-wider"
-                            aria-expanded={isMonthsOpen}
-                        >
-                            Months
-                            <span className={`text-white/70 transition-transform ${isMonthsOpen ? 'rotate-180' : ''}`}>▾</span>
-                        </button>
-                        <label className="hidden md:block text-neon-cyan font-display text-sm uppercase tracking-wider">Months</label>
-                        <div className={`${isMonthsOpen ? 'grid' : 'hidden'} md:grid grid-cols-6 gap-2`}>
-                            {ALL_MONTHS.map(month => (
-                                <button
-                                    key={month}
-                                    onClick={() => toggleMonth(month)}
-                                    className={`text-[10px] py-1 rounded border transition-all ${selectedMonths.includes(month)
-                                        ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
-                                        : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
-                                        }`}
-                                >
-                                    {month}月
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+        <div className="flex flex-col gap-6 md:flex-row md:items-start">
+            <div className="md:w-80 md:shrink-0 md:order-2 sticky top-0 md:top-24 z-30 self-start">
+                <PlantFilters
+                    colors={colors}
+                    resultsCount={filteredPlants.length}
+                    searchQuery={searchQuery}
+                    selectedColors={selectedColors}
+                    selectedMonths={selectedMonths}
+                    onSearchChange={setSearchQuery}
+                    onToggleColor={toggleColor}
+                    onToggleMonth={toggleMonth}
+                />
             </div>
 
-            {/* Results Grid */}
-            <div className="flex-1">
+            <div className="flex-1 md:order-1">
                 {filteredPlants.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredPlants.map(plant => (
@@ -213,4 +156,3 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
         </div>
     );
 };
-

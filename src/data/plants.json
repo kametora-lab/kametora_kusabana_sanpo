@@ -1048,7 +1048,7 @@
       },
       {
         "src": "/kametora_kusabana_sanpo/images/0044_03.jpg",
-        "memo": "4枚目は、葉に斑が入った「キフゲットウ」"
+        "memo": "葉に斑が入った「キフゲットウ」"
       }
     ],
     "colors": [
@@ -2081,9 +2081,8 @@
       }
     ],
     "colors": [
-      "green",
-      "purpl",
       "white",
+      "green",
       "purple"
     ],
     "months": [],
