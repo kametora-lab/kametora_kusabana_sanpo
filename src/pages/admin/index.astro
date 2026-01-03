@@ -5,22 +5,18 @@ import plants from '../../data/plants.json';
 import colors from '../../data/colors.json';
 ---
 
-<Layout title="Admin" description="Plant management console for 草花アルバム.">
-  <main class="min-h-screen p-4 md:p-8 pt-20 max-w-7xl mx-auto">
-    <div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-8">
-      <div>
-        <a href="/kametora_kusabana_sanpo" class="text-neon-cyan hover:text-white transition-colors flex items-center gap-2 group mb-2">
-          <span class="group-hover:-translate-x-1 transition-transform">Бй</span> Back to Home
-        </a>
-        <h1 class="font-display text-4xl md:text-5xl font-black text-white text-glow">
-          ADMIN CONSOLE
-        </h1>
-      </div>
-      <p class="text-gray-400 font-mono text-xs max-w-xs text-right">
-        EDIT MODE. EXPORT JSON TO APPLY CHANGES.
+<Layout title="管理" description="草花データの管理ページ。">
+  <main class="min-h-screen px-6 pb-20 md:px-10 lg:px-16">
+    <header class="max-w-3xl space-y-4 pt-6 md:pt-10">
+      <p class="text-xs tracking-[0.4em] text-neutral-500 md:text-sm">ADMIN</p>
+      <h1 class="font-serif text-3xl md:text-5xl">管理</h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        草花データの更新・整理を行うための管理画面です。
       </p>
-    </div>
+    </header>
 
-    <AdminPanel client:load initialPlants={plants} colors={colors} />
+    <div class="mt-10">
+      <AdminPanel client:load initialPlants={plants} colors={colors} />
+    </div>
   </main>
 </Layout>

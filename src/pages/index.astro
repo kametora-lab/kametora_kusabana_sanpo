@@ -1,72 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { NeonButton } from '../components/NeonButton';
 import plants from '../data/plants.json';
 
-const featuredPlants = plants.slice(0, 9);
+const featuredPlants = plants.slice(0, 12);
 
 const getImageSrc = (images) => {
 	if (!images || images.length === 0) return '';
 	const first = images[0];
 	return typeof first === 'string' ? first : first.src;
 };
+
+const galleryPattern = [
+	'md:col-span-2 md:row-span-2',
+	'',
+	'md:row-span-2',
+	'md:col-span-2',
+	'',
+	'md:row-span-2',
+	'',
+];
+
+// Uneven rhythm for the gallery grid (plantica-like balance).
+const getGalleryClass = (index) => galleryPattern[index % galleryPattern.length];
 ---
 
-<Layout title="Home">
-	<main class="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
-		
-		{/* Hero Section */}
-		<section class="text-center z-10 max-w-4xl mx-auto space-y-8 mb-20">
-			<h1 class="font-nico text-transparent bg-clip-text bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan text-6xl md:text-8xl font-black tracking-tighter drop-shadow-[0_0_20px_rgba(255,45,149,0.5)] animate-pulse-slow">
+<Layout title="奄美の草花さんぽ帖" description="奄美大島で出会った草花の記録。">
+	<main class="min-h-screen px-6 pb-20 md:px-10 lg:px-16">
+		<section class="max-w-4xl space-y-5 pt-6 md:pt-10">
+			<p class="text-xs tracking-[0.4em] text-neutral-500 md:text-sm">AMAMI FLORA ARCHIVE</p>
+			<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-6xl">
 				奄美の草花さんぽ帖
 			</h1>
-			<p class="font-nico text-gray-300 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto">
-				世界自然遺産の島、奄美大島で草花を探して記録しています
-			</p>
-			
-			<div class="flex flex-wrap gap-4 justify-center pt-8">
-				<a href="/kametora_kusabana_sanpo/plants">
-					<NeonButton client:load variant="primary">Explore Database</NeonButton>
+			<div class="space-y-1">
+				<p class="text-base text-neutral-400 md:text-lg">
+					奄美大島で出会った草花の記録。
+				</p>
+				<p class="text-base text-neutral-400 md:text-lg">
+					世界自然遺産の島、奄美大島で草花を探して記録しています。
+				</p>
+			</div>
+			<div class="pt-4">
+				<a href="/kametora_kusabana_sanpo/plants" class="text-sm text-neutral-400 hover:text-neutral-200">
+					草花一覧を見る →
 				</a>
-				<button 
-					onClick={() => {
-						const randomPlant = plants[Math.floor(Math.random() * plants.length)];
-						window.location.href = `/kametora_kusabana_sanpo/plants/${randomPlant.slug}`;
-					}}
-					class="neon-button-secondary"
-				>
-					<NeonButton client:load variant="secondary">Random Discovery</NeonButton>
-				</button>
 			</div>
 		</section>
 
-		{/* Featured Cards */}
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4 z-10">
-			{featuredPlants.map((plant) => (
-				<a href={`/kametora_kusabana_sanpo/plants/${plant.slug}`} class="block glass-panel p-4 group hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
-						<div class="aspect-square bg-black/50 rounded-lg mb-4 overflow-hidden relative">
-							<div class="absolute inset-0 bg-gradient-to-tr from-neon-pink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+		<section class="mt-12 md:mt-20">
+			<div class="grid auto-rows-[140px] grid-cols-2 gap-4 md:auto-rows-[200px] md:grid-cols-4 md:gap-6">
+				{featuredPlants.map((plant, index) => (
+					<a
+						href={`/kametora_kusabana_sanpo/plants/${plant.slug}`}
+						class={`group relative block overflow-hidden ${getGalleryClass(index)}`}
+					>
 						{getImageSrc(plant.images) ? (
-							<img 
-								src={getImageSrc(plant.images)} 
+							<img
+								src={getImageSrc(plant.images)}
 								alt={plant.title}
-								class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+								class="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+								loading="lazy"
+								decoding="async"
 							/>
 						) : (
-							<div class="w-full h-full flex items-center justify-center text-gray-700 font-mono text-xs">
-								IMG: {plant.slug}
+							<div class="flex h-full w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+								NO IMAGE
 							</div>
 						)}
-					</div>
-					<h3 class="font-display text-xl text-white mb-1 group-hover:text-neon-cyan transition-colors">{plant.title}</h3>
-					<p class="text-gray-400 text-sm line-clamp-2">{plant.description}</p>
-				</a>
-			))}
-		</div>
-
-		{/* Decorative Elements */}
-		<div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl pointer-events-none"></div>
-		<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-cyan/20 rounded-full blur-3xl pointer-events-none"></div>
-
+						<div class="absolute inset-0 flex items-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+							<div class="w-full bg-black/60 px-3 py-2 text-xs text-neutral-200">
+								<div class="font-serif">{plant.title}</div>
+								{plant.meta?.scientificName && (
+									<div class="text-[11px] text-neutral-400">{plant.meta.scientificName}</div>
+								)}
+							</div>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
 	</main>
 </Layout>
+
+

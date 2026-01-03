@@ -102,8 +102,8 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
     }, [initialPlants, searchQuery, selectedColors, selectedMonths]);
 
     return (
-        <div className="flex flex-col gap-6 md:flex-row md:items-start">
-            <div className="md:w-80 md:shrink-0 md:order-2 sticky top-0 md:top-24 z-30 self-start">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start">
+            <div className="md:w-72 md:shrink-0 md:order-2 sticky top-6 md:top-24 z-30 self-start">
                 <PlantFilters
                     colors={colors}
                     resultsCount={filteredPlants.length}
@@ -118,37 +118,31 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
 
             <div className="flex-1 md:order-1">
                 {filteredPlants.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {filteredPlants.map(plant => (
-                            <a href={`/kametora_kusabana_sanpo/plants/${plant.slug}`} key={plant.id} className="group block glass-panel overflow-hidden hover:border-neon-cyan/50 hover:bg-white/5 transition-all duration-300">
-                                <div className="aspect-square bg-black/50 relative overflow-hidden">
+                            <a
+                                href={`/kametora_kusabana_sanpo/plants/${plant.slug}`}
+                                key={plant.id}
+                                className="group block"
+                            >
+                                <div className="relative aspect-[4/5] overflow-hidden bg-[#111]">
                                     {plant.images && plant.images.length > 0 ? (
                                         <img
                                             src={getImageSrc(plant.images)}
                                             alt={plant.title}
-                                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                                            className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-gray-700 font-mono text-xs">NO IMG</div>
+                                        <div className="flex h-full w-full items-center justify-center text-xs text-neutral-600">
+                                            NO IMAGE
+                                        </div>
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
                                 </div>
-                                <div className="p-4 relative -mt-12">
-                                    <h3 className="font-display text-xl text-white mb-1 group-hover:text-neon-cyan transition-colors truncate">{plant.title}</h3>
-                                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                                        {plant.colors?.slice(0, 3).map(cid => {
-                                            const c = colors.find(col => col.id === cid);
-                                            return c ? (
-                                                <span key={cid} className="w-2 h-2 rounded-full" style={{ backgroundColor: c.value, boxShadow: `0 0 5px ${c.value}` }}></span>
-                                            ) : null;
-                                        })}
-                                        {plant.months?.slice(0, 3).map(month => (
-                                            <span key={`${plant.id}-${month}`} className="text-[10px] font-mono text-neon-cyan/80 border border-neon-cyan/30 rounded-full px-2 py-0.5">
-                                                {`${normalizeMonth(month)}月`}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                                <div className="mt-3 space-y-1">
+                                    <h3 className="font-serif text-lg text-neutral-100">{plant.title}</h3>
+                                    <p className="text-xs leading-relaxed text-neutral-500 line-clamp-2">
                                         {plant.description || '（説明文が未入力です）'}
                                     </p>
                                 </div>
@@ -156,8 +150,8 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                         ))}
                     </div>
                 ) : (
-                    <div className="py-20 text-center text-gray-500 font-mono border-2 border-dashed border-white/10 rounded-xl">
-                        NO DATA MATCHED
+                    <div className="py-16 text-center text-sm text-neutral-500">
+                        該当する草花が見つかりませんでした。
                     </div>
                 )}
             </div>

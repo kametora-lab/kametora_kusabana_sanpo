@@ -1,29 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-    --color-neon-pink: #ff2d95;
-    --color-neon-cyan: #00f0ff;
-    --color-neon-purple: #b026ff;
-    --color-bg-dark: #0a0a0f;
-    --color-glass: rgba(255, 255, 255, 0.1);
+    --color-bg: #0b0b0b;
+    --color-ink: #eaeaea;
+    --color-ink-muted: #b6b6b6;
 
-    --font-display: "Orbitron", sans-serif;
-    --font-body: "Inter", sans-serif;
-
-    --shadow-neon-pink: 0 0 10px #ff2d95, 0 0 20px #ff2d95;
-    --shadow-neon-cyan: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    --font-serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
 }
 
 body {
-    @apply bg-bg-dark text-white font-body selection:bg-neon-pink selection:text-white;
-    background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 45, 149, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+    /* Base tone for the entire site */
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
     min-height: 100vh;
+    line-height: 1.9;
 }
 
-.font-nico {
-    font-family: "Nico Moji", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #f5f5f5;
+}
+
+::selection {
+    background: #2a2a2a;
+    color: var(--color-ink);
 }
 
 /* Scrollbar */
@@ -32,18 +38,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-bg-dark;
+    background-color: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-glass rounded-full hover:bg-neon-pink transition-colors;
-}
-
-/* Utilities */
-.glass-panel {
-    @apply bg-glass backdrop-blur-md border border-white/10 rounded-xl;
-}
-
-.text-glow {
-    text-shadow: 0 0 10px currentColor;
+    background-color: #262626;
+    border-radius: 999px;
 }

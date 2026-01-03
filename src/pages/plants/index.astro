@@ -5,24 +5,18 @@ import plants from '../../data/plants.json';
 import colors from '../../data/colors.json';
 ---
 
-<Layout title="Database" description="Search and filter the complete collection of digital flora.">
-  <main class="min-h-screen p-4 md:p-8 pt-16 md:pt-20 max-w-7xl mx-auto">
-    
-    <div class="sticky top-0 z-30 -mx-4 md:-mx-8 px-4 md:px-8 mb-4 md:mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4 border-b border-white/10 pb-2 md:pb-8 bg-black/80 backdrop-blur">
-      <div>
-        <a href="/kametora_kusabana_sanpo" class="text-neon-cyan hover:text-white transition-colors flex items-center gap-2 group mb-1 text-xs md:text-sm">
-          <span class="group-hover:-translate-x-1 transition-transform">←</span> Back to Home
-        </a>
-        <h1 class="font-display text-xl sm:text-2xl md:text-4xl font-black text-white text-glow">
-          FLORA DATABASE
-        </h1>
-      </div>
-      <p class="text-gray-400 font-mono text-xs max-w-xs text-right">
-        ACCESS GRANTED. INDEXING {plants.length} ENTITIES.
+<Layout title="草花一覧" description="奄美大島で出会った草花の記録。">
+  <main class="min-h-screen px-6 pb-20 md:px-10 lg:px-16">
+    <header class="max-w-3xl space-y-4 pt-6 md:pt-10">
+      <p class="text-xs tracking-[0.4em] text-neutral-500 md:text-sm">ARCHIVE</p>
+      <h1 class="font-serif text-3xl md:text-5xl">草花一覧</h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        奄美大島で出会った草花を、色や観察月で静かに辿れる一覧です。
       </p>
+    </header>
+
+    <div class="mt-10">
+      <PlantList client:load initialPlants={plants} colors={colors} />
     </div>
-
-    <PlantList client:load initialPlants={plants} colors={colors} />
-
   </main>
 </Layout>

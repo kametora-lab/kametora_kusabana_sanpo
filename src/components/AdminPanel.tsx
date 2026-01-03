@@ -264,9 +264,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
 
     if (!auth) {
         return (
-            <div className="max-w-md mx-auto glass-panel p-6 border border-neon-cyan/40">
-                <h2 className="font-display text-2xl text-white mb-4">ADMIN ACCESS</h2>
-                <p className="text-gray-400 text-sm mb-6">
+            <div className="max-w-md mx-auto border border-white/10 bg-[#0f0f0f] p-6">
+                <h2 className="font-serif text-2xl text-neutral-100 mb-4">ADMIN ACCESS</h2>
+                <p className="text-neutral-500 text-sm mb-6">
                     パスワードを入力して管理画面を開いてください。
                 </p>
                 <input
@@ -274,12 +274,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                     value={passwordInput}
                     onChange={(event) => setPasswordInput(event.target.value)}
                     placeholder="Password"
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-4 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"
+                    className="w-full border border-white/10 bg-transparent px-4 py-2 text-neutral-100 focus:border-white/30 focus:outline-none transition"
                 />
-                {authError && <p className="mt-3 text-sm text-neon-pink">{authError}</p>}
+                {authError && <p className="mt-3 text-sm text-neutral-400">{authError}</p>}
                 <button
                     onClick={handleLogin}
-                    className="mt-6 w-full py-2 font-display tracking-wide text-sm bg-neon-cyan/20 border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/40 transition"
+                    className="mt-6 w-full border border-white/20 py-2 text-sm text-neutral-200 hover:border-white/40 transition"
                 >
                     UNLOCK
                 </button>
@@ -290,8 +290,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
     return (
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
             <aside className="space-y-6">
-                <div className="glass-panel p-4 space-y-3">
-                    <label className="text-neon-cyan font-display text-xs uppercase tracking-wider">検索（カタカナ）</label>
+                <div className="border border-white/10 bg-[#0f0f0f] p-4 space-y-3">
+                    <label className="text-xs uppercase tracking-[0.3em] text-neutral-500">検索（カタカナ）</label>
                     <input
                         type="text"
                         lang="ja"
@@ -301,28 +301,28 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                         placeholder="カタカナで入力"
                         value={searchQuery}
                         onChange={(event) => setSearchQuery(event.target.value)}
-                        className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-pink focus:outline-none focus:shadow-[0_0_10px_rgba(255,45,149,0.3)] transition-all"
+                        className="w-full border border-white/10 bg-transparent px-3 py-2 text-sm text-neutral-100 focus:border-white/30 focus:outline-none transition"
                     />
                     <button
                         onClick={addPlant}
-                        className="w-full py-2 text-xs font-display tracking-wider border border-neon-pink text-neon-pink hover:bg-neon-pink/10 transition"
+                        className="w-full border border-white/20 py-2 text-xs text-neutral-200 hover:border-white/40 transition"
                     >
                         + 新規追加
                     </button>
                 </div>
-                <div className="glass-panel p-4 max-h-[70vh] overflow-auto space-y-2">
+                <div className="border border-white/10 bg-[#0f0f0f] p-4 max-h-[70vh] overflow-auto space-y-2">
                     {filteredPlants.map((plant) => (
                         <button
                             key={plant.id}
                             onClick={() => setSelectedId(plant.id)}
                             className={`w-full text-left px-3 py-2 rounded-lg border text-sm transition ${
                                 plant.id === selectedId
-                                    ? 'border-neon-cyan text-white bg-white/5'
-                                    : 'border-white/10 text-gray-400 hover:border-white/30 hover:text-gray-200'
+                                    ? 'border-white/40 text-neutral-100 bg-white/5'
+                                    : 'border-white/10 text-neutral-500 hover:border-white/30 hover:text-neutral-200'
                             }`}
                         >
-                            <div className="font-display text-sm truncate">{plant.title}</div>
-                            <div className="font-mono text-[10px] text-gray-500">{plant.id}</div>
+                            <div className="font-serif text-sm truncate text-neutral-100">{plant.title}</div>
+                            <div className="text-[10px] text-neutral-500">{plant.id}</div>
                         </button>
                     ))}
                 </div>
@@ -331,8 +331,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
             <section className="space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                        <h2 className="font-display text-2xl text-white">管理編集</h2>
-                        <p className="text-gray-500 text-xs mt-1">
+                        <h2 className="font-serif text-2xl text-neutral-100">管理編集</h2>
+                        <p className="text-neutral-500 text-xs mt-1">
                             変更後は「JSONを書き出し」で `plants.json` を置き換えてください。
                         </p>
                     </div>
@@ -340,17 +340,17 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                         <button
                             onClick={downloadJson}
                             disabled={!!idError}
-                            className={`px-4 py-2 text-xs font-display tracking-wider border transition ${
+                            className={`px-4 py-2 text-xs tracking-wider border transition ${
                                 idError
-                                    ? 'border-white/10 text-gray-600 cursor-not-allowed'
-                                    : 'border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10'
+                                    ? 'border-white/10 text-neutral-600 cursor-not-allowed'
+                                    : 'border-white/30 text-neutral-200 hover:border-white/40'
                             }`}
                         >
                             JSONを書き出し
                         </button>
                         <button
                             onClick={handleLogout}
-                            className="px-4 py-2 text-xs font-display tracking-wider border border-white/10 text-gray-400 hover:text-white hover:border-white/40 transition"
+                            className="px-4 py-2 text-xs tracking-wider border border-white/10 text-neutral-400 hover:text-neutral-200 hover:border-white/40 transition"
                         >
                             LOG OUT
                         </button>
@@ -358,58 +358,58 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                 </div>
 
                 {!selectedPlant ? (
-                    <div className="glass-panel p-6 text-gray-400 text-sm">
+                    <div className="border border-white/10 bg-[#0f0f0f] p-6 text-neutral-500 text-sm">
                         左のリストから植物を選択してください。
                     </div>
                 ) : (
                     <div className="space-y-6">
-                        <div className="glass-panel p-6 space-y-5">
+                        <div className="border border-white/10 bg-[#0f0f0f] p-6 space-y-5">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <label className="text-xs text-gray-400 uppercase tracking-wider">
+                                <label className="text-xs text-neutral-500 uppercase tracking-wider">
                                     ID
                                     <input
                                         type="text"
                                         value={selectedPlant.id}
                                         onChange={(event) => handleIdChange(event.target.value)}
-                                        className="mt-2 w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-cyan focus:outline-none"
+                                        className="mt-2 w-full border border-white/10 bg-transparent px-3 py-2 text-neutral-100 focus:border-white/30 focus:outline-none"
                                     />
-                                    {idError && <span className="text-neon-pink text-xs">{idError}</span>}
+                                    {idError && <span className="text-neutral-400 text-xs">{idError}</span>}
                                 </label>
-                                <label className="text-xs text-gray-400 uppercase tracking-wider">
+                                <label className="text-xs text-neutral-500 uppercase tracking-wider">
                                     表示名
                                     <input
                                         type="text"
                                         value={selectedPlant.title}
                                         onChange={(event) => updateSelected({ title: event.target.value })}
-                                        className="mt-2 w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-cyan focus:outline-none"
+                                        className="mt-2 w-full border border-white/10 bg-transparent px-3 py-2 text-neutral-100 focus:border-white/30 focus:outline-none"
                                     />
                                 </label>
                             </div>
 
-                            <label className="text-xs text-gray-400 uppercase tracking-wider">
+                            <label className="text-xs text-neutral-500 uppercase tracking-wider">
                                 説明文
                                 <textarea
                                     value={selectedPlant.description}
                                     onChange={(event) => updateSelected({ description: event.target.value })}
-                                    className="mt-2 w-full min-h-[120px] bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-cyan focus:outline-none"
+                                    className="mt-2 w-full min-h-[120px] border border-white/10 bg-transparent px-3 py-2 text-neutral-100 focus:border-white/30 focus:outline-none"
                                 />
                             </label>
 
-                            <label className="text-xs text-gray-400 uppercase tracking-wider">
+                            <label className="text-xs text-neutral-500 uppercase tracking-wider">
                                 画像パス & メモ
                                 <div className="mt-2 space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-[10px] text-gray-500">1枚ごとにメモを追加できます。</span>
+                                        <span className="text-[10px] text-neutral-500">1枚ごとにメモを追加できます。</span>
                                         <button
                                             type="button"
                                             onClick={addImage}
-                                            className="px-3 py-1 text-[10px] font-display tracking-wider border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 transition"
+                                            className="px-3 py-1 text-[10px] tracking-wider border border-white/20 text-neutral-200 hover:border-white/40 transition"
                                         >
                                             + 画像追加
                                         </button>
                                     </div>
                                     {selectedPlant.images.length === 0 ? (
-                                        <div className="text-gray-600 text-xs font-mono border border-dashed border-white/10 rounded-lg px-3 py-3">
+                                        <div className="text-neutral-600 text-xs border border-dashed border-white/10 rounded-lg px-3 py-3">
                                             画像が未登録です。
                                         </div>
                                     ) : (
@@ -423,19 +423,19 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                                                     value={img.src}
                                                     onChange={(event) => updateImage(index, { src: event.target.value })}
                                                     placeholder="/kametora_kusabana_sanpo/images/xxxx_00.jpg"
-                                                    className="w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white text-xs focus:border-neon-cyan focus:outline-none"
+                                                    className="w-full border border-white/10 bg-transparent px-3 py-2 text-xs text-neutral-100 focus:border-white/30 focus:outline-none"
                                                 />
                                                 <input
                                                     type="text"
                                                     value={img.memo ?? ''}
                                                     onChange={(event) => updateImage(index, { memo: event.target.value })}
                                                     placeholder="説明メモ"
-                                                    className="w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white text-xs focus:border-neon-cyan focus:outline-none"
+                                                    className="w-full border border-white/10 bg-transparent px-3 py-2 text-xs text-neutral-100 focus:border-white/30 focus:outline-none"
                                                 />
                                                 <button
                                                     type="button"
                                                     onClick={() => removeImage(index)}
-                                                    className="px-3 py-2 text-[10px] font-display tracking-wider border border-neon-pink text-neon-pink hover:bg-neon-pink/10 transition"
+                                                    className="px-3 py-2 text-[10px] tracking-wider border border-white/20 text-neutral-300 hover:border-white/40 transition"
                                                 >
                                                     削除
                                                 </button>
@@ -446,7 +446,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                             </label>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <label className="text-xs text-gray-400 uppercase tracking-wider">
+                                <label className="text-xs text-neutral-500 uppercase tracking-wider">
                                     学名
                                     <input
                                         type="text"
@@ -456,10 +456,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                                                 meta: { ...selectedPlant.meta, scientificName: event.target.value }
                                             })
                                         }
-                                        className="mt-2 w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-cyan focus:outline-none"
+                                        className="mt-2 w-full border border-white/10 bg-transparent px-3 py-2 text-neutral-100 focus:border-white/30 focus:outline-none"
                                     />
                                 </label>
-                                <label className="text-xs text-gray-400 uppercase tracking-wider">
+                                <label className="text-xs text-neutral-500 uppercase tracking-wider">
                                     科名
                                     <input
                                         type="text"
@@ -469,35 +469,25 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                                                 meta: { ...selectedPlant.meta, family: event.target.value }
                                             })
                                         }
-                                        className="mt-2 w-full bg-black/60 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-neon-cyan focus:outline-none"
+                                        className="mt-2 w-full border border-white/10 bg-transparent px-3 py-2 text-neutral-100 focus:border-white/30 focus:outline-none"
                                     />
                                 </label>
                             </div>
                         </div>
 
-                        <div className="glass-panel p-6 space-y-4">
+                        <div className="border border-white/10 bg-[#0f0f0f] p-6 space-y-4">
                             <div>
-                                <h3 className="font-display text-sm text-neon-cyan uppercase tracking-widest">花色</h3>
+                                <h3 className="text-xs uppercase tracking-[0.3em] text-neutral-500">花色</h3>
                                 <div className="flex flex-wrap gap-2 mt-3">
                                     {colors.map((color) => (
                                         <button
                                             key={color.id}
                                             onClick={() => toggleColor(color.id)}
-                                            className={`px-3 py-1 rounded-full text-xs font-bold border transition-all duration-300 ${
+                                            className={`px-3 py-1 rounded-full text-xs border transition-all duration-300 ${
                                                 selectedPlant.colors?.includes(color.id)
-                                                    ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
-                                                    : 'border-white/10 text-gray-400 hover:border-white/30'
+                                                    ? 'border-white/40 text-neutral-100 bg-white/5'
+                                                    : 'border-white/10 text-neutral-500 hover:border-white/30'
                                             }`}
-                                            style={{
-                                                backgroundColor: selectedPlant.colors?.includes(color.id)
-                                                    ? color.value
-                                                    : 'transparent',
-                                                color:
-                                                    selectedPlant.colors?.includes(color.id) &&
-                                                    ['white', 'yellow'].includes(color.id)
-                                                        ? 'black'
-                                                        : undefined
-                                            }}
                                         >
                                             {color.name}
                                         </button>
@@ -506,7 +496,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                             </div>
 
                             <div>
-                                <h3 className="font-display text-sm text-neon-cyan uppercase tracking-widest">観察月</h3>
+                                <h3 className="text-xs uppercase tracking-[0.3em] text-neutral-500">観察月</h3>
                                 <div className="grid grid-cols-6 gap-2 mt-3">
                                     {MONTHS.map((month) => (
                                         <button
@@ -514,8 +504,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                                             onClick={() => toggleMonth(month)}
                                             className={`text-xs py-1 rounded border transition-all ${
                                                 selectedPlant.months?.includes(month)
-                                                    ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan'
-                                                    : 'border-white/10 text-gray-500 hover:text-gray-300 hover:border-white/30'
+                                                    ? 'border-white/40 text-neutral-100 bg-white/5'
+                                                    : 'border-white/10 text-neutral-500 hover:text-neutral-300 hover:border-white/30'
                                             }`}
                                         >
                                             {month}
@@ -528,7 +518,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialPlants, colors })
                         <div className="flex justify-end">
                             <button
                                 onClick={deletePlant}
-                                className="px-4 py-2 text-xs font-display tracking-wider border border-neon-pink text-neon-pink hover:bg-neon-pink/10 transition"
+                                className="px-4 py-2 text-xs tracking-wider border border-white/20 text-neutral-300 hover:border-white/40 transition"
                             >
                                 削除
                             </button>

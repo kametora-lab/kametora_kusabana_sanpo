@@ -6,7 +6,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "A database of neon flowers." } = Astro.props;
+const { title, description = "奄美大島で出会った草花の記録。" } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -18,18 +18,31 @@ const base = import.meta.env.BASE_URL;
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<title>{title} | 草花アルバム</title>
+		<title>{title} | 奄美の草花さんぽ帖</title>
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@400;700;900&family=Nico+Moji&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
 	</head>
 	<body class="antialiased">
-		<div
-			class="fixed inset-0 pointer-events-none z-[-1] opacity-20"
-			style={`background-image: url('${base}grid-pattern.svg')`}
-		></div>
+		<header>
+			<div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 pb-6 pt-10 text-xs text-neutral-400 md:px-10 md:text-sm">
+				<a href="/kametora_kusabana_sanpo" class="font-serif text-base tracking-wide text-neutral-100 md:text-lg">
+					奄美の草花さんぽ帖
+				</a>
+				<nav class="flex items-center gap-5 text-xs text-neutral-400 md:text-sm" aria-label="Site">
+					<a href="/kametora_kusabana_sanpo/plants" class="hover:text-neutral-200">草花一覧</a>
+					<a href="http://amamikametora.blog.fc2.com/" class="hover:text-neutral-200">本家ブログ</a>
+					<a href="/kametora_kusabana_sanpo/about" class="hover:text-neutral-200">このサイトについて</a>
+					<a href="/kametora_kusabana_sanpo/privacy" class="hover:text-neutral-200">プライバシーポリシー</a>
+				</nav>
+			</div>
+		</header>
 		<slot />
+		<footer class="mt-16 border-t border-white/10 px-6 py-8 text-center text-xs text-neutral-500 md:px-10 md:text-sm">
+			© 2022 奄美の草花さんぽ帖.
+		</footer>
 	</body>
 </html>
+

@@ -30,10 +30,10 @@ const pathLabel = getPathLabel(url);
   href={url}
   target="_blank"
   rel="noopener noreferrer"
-  class="group block glass-panel border border-white/10 hover:border-neon-cyan/50 transition-all duration-300"
+  class="group block border border-white/10 bg-[#0f0f0f] hover:border-white/30 transition-colors"
 >
   <div class="flex items-center gap-4 p-4">
-    <div class="h-16 w-16 shrink-0 rounded-xl bg-gradient-to-br from-neon-cyan/30 via-white/10 to-neon-pink/20 border border-white/10 overflow-hidden flex items-center justify-center text-xs font-mono text-white/70">
+    <div class="h-16 w-16 shrink-0 border border-white/10 bg-black overflow-hidden flex items-center justify-center text-xs text-neutral-500">
       {image ? (
         <img
           src={image}
@@ -47,9 +47,9 @@ const pathLabel = getPathLabel(url);
       )}
     </div>
     <div class="min-w-0">
-      <div class="text-white font-display text-sm truncate">{title || hostname}</div>
-      <div class="text-gray-400 text-xs font-mono truncate">{pathLabel}</div>
+      <div class="text-sm text-neutral-100 truncate font-serif">{title || hostname}</div>
+      <div class="text-xs text-neutral-500 truncate">{pathLabel}</div>
     </div>
-    <div class="ml-auto text-neon-cyan text-sm">↗</div>
+    <div class="ml-auto text-xs text-neutral-500">↗</div>
   </div>
 </a>

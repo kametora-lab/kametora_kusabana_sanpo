@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { NeonButton } from '../../components/NeonButton';
 import { ImageGallery } from '../../components/ImageGallery';
 import { DetailFilters } from '../../components/DetailFilters';
 import UrlCard from '../../components/UrlCard.astro';
@@ -108,75 +107,68 @@ const descriptionItems = await Promise.all(
 ---
 
 <Layout title={plant.title} description={plant.description}>
-  <main class="min-h-screen p-4 md:p-8 pt-20 max-w-6xl mx-auto">
-    <div class="flex flex-col gap-6 md:flex-row md:items-start">
-      <aside class="md:w-80 md:shrink-0 md:order-2 sticky top-0 md:top-24 z-30 self-start">
+  <main class="min-h-screen px-6 pb-24 md:px-10 lg:px-16">
+    <div class="flex flex-col gap-10 pt-6 md:flex-row md:items-start md:pt-10">
+      <aside class="md:w-72 md:shrink-0 md:order-2 sticky top-6 md:top-24 z-30 self-start">
         <DetailFilters client:load colors={colors} resultsCount={plants.length} />
       </aside>
 
       <div class="flex-1 md:order-1">
-        <nav class="mb-8 flex items-center gap-2 text-sm font-mono tracking-tighter">
-          <a href="/kametora_kusabana_sanpo" class="text-gray-500 hover:text-neon-pink transition-colors">HOME</a>
-          <span class="text-gray-700">/</span>
-          <a href="/kametora_kusabana_sanpo/plants" class="text-gray-500 hover:text-neon-cyan transition-colors">DATABASE</a>
-          <span class="text-gray-700">/</span>
-          <span class="text-neon-purple uppercase">{plant.title}</span>
+        <nav class="mb-6 text-xs text-neutral-500">
+          <a href="/kametora_kusabana_sanpo" class="hover:text-neutral-200">トップ</a>
+          <span class="mx-2 text-neutral-600">/</span>
+          <a href="/kametora_kusabana_sanpo/plants" class="hover:text-neutral-200">草花一覧</a>
+          <span class="mx-2 text-neutral-600">/</span>
+          <span class="text-neutral-200">{plant.title}</span>
         </nav>
 
         <div class="mb-10 space-y-4">
-          <h1 class="font-display text-4xl md:text-6xl font-black text-white text-glow">
+          <h1 class="font-serif text-4xl leading-tight md:text-6xl">
             {plant.title}
           </h1>
-          <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
-            <span class="uppercase tracking-widest text-gray-500">ID</span>
-            <span class="text-white">{plant.id}</span>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-neutral-500">
+            <span class="uppercase tracking-[0.3em]">ID</span>
+            <span class="text-neutral-300">{plant.id}</span>
           </div>
-          <div class="flex flex-wrap items-center gap-3">
+          <div class="flex flex-wrap items-center gap-4 text-xs text-neutral-400">
             {plantColors.map((color) => (
-              <span 
-                class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20"
-                style={{ 
-                  color: color.value, 
-                  borderColor: `${color.value}40`,
-                  backgroundColor: `${color.value}10`,
-                  boxShadow: `0 0 10px ${color.value}20`
-                }}
-              >
+              <span class="inline-flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full" style={{ backgroundColor: color.value }}></span>
                 {color.name}
               </span>
             ))}
             {plantColors.length === 0 && (
-              <span class="text-gray-600 text-xs italic">No colors</span>
+              <span class="text-neutral-600 text-xs italic">色情報なし</span>
             )}
           </div>
           <div>
-            <h3 class="font-display text-sm text-neon-cyan mb-2 uppercase tracking-widest">Observation Months</h3>
-            <div class="flex flex-wrap gap-2">
+            <h3 class="text-xs uppercase tracking-[0.3em] text-neutral-500">観察月</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-xs text-neutral-400">
               {plant.months?.map((month) => (
-                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300 hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-default">
+                <span class="border border-white/10 px-2 py-1">
                   {month}
                 </span>
               ))}
               {(!plant.months || plant.months.length === 0) && (
-                <span class="text-gray-600 text-xs italic">No observation data</span>
+                <span class="text-neutral-600 text-xs italic">観察月の記録なし</span>
               )}
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div class="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
           <div class="space-y-4">
             <ImageGallery client:load images={plant.images} title={plant.title} />
           </div>
 
           <div class="space-y-8">
-            <div class="space-y-3">
+            <div class="space-y-4">
               {descriptionItems.map((item) =>
                 item.type === 'url' ? (
                   <UrlCard url={item.value} title={item.meta?.title} image={item.meta?.image} />
                 ) : (
                   item.value.trim().length > 0 && (
-                    <p class="text-gray-300 leading-relaxed text-lg border-l-2 border-neon-purple/50 pl-4 whitespace-pre-wrap">
+                    <p class="whitespace-pre-wrap text-base leading-relaxed text-neutral-300 md:text-lg">
                       {item.value}
                     </p>
                   )
@@ -184,54 +176,54 @@ const descriptionItems = await Promise.all(
               )}
             </div>
 
-            <div class="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
+            <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
               <div>
-                <span class="block text-gray-500 text-xs uppercase mb-1">Family</span>
-                <span class="text-white font-display">{plant.meta?.family || '-'}</span>
+                <span class="block text-xs uppercase tracking-[0.3em] text-neutral-500 mb-2">科</span>
+                <span class="font-serif text-neutral-200">{plant.meta?.family || '-'}</span>
               </div>
               <div>
-                <span class="block text-gray-500 text-xs uppercase mb-1">Scientific</span>
-                <span class="text-white font-display">{plant.meta?.scientificName || '-'}</span>
+                <span class="block text-xs uppercase tracking-[0.3em] text-neutral-500 mb-2">学名</span>
+                <span class="font-serif text-neutral-200">{plant.meta?.scientificName || '-'}</span>
               </div>
             </div>
 
           </div>
         </div>
 
-        <div class="mt-16 flex flex-col sm:flex-row justify-between gap-4 border-t border-white/10 pt-6">
+        <div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
       {prevPlant ? (
-        <a href={`/kametora_kusabana_sanpo/plants/${prevPlant.slug}`} class="group flex items-center gap-3 text-neon-cyan hover:text-white transition-colors">
-          <span class="text-xl">←</span>
+        <a href={`/kametora_kusabana_sanpo/plants/${prevPlant.slug}`} class="group flex items-center gap-3 hover:text-neutral-200">
+          <span class="text-base">←</span>
           <div class="text-left">
-            <span class="block text-xs text-gray-500 font-mono">前へ</span>
-            <span class="font-display text-sm">{prevPlant.title}</span>
+            <span class="block text-xs text-neutral-500">前へ</span>
+            <span class="font-serif text-sm">{prevPlant.title}</span>
           </div>
         </a>
       ) : (
-        <span class="flex items-center gap-3 text-gray-600 cursor-not-allowed">
-          <span class="text-xl">←</span>
+        <span class="flex items-center gap-3 text-neutral-600">
+          <span class="text-base">←</span>
           <div class="text-left">
-            <span class="block text-xs text-gray-600 font-mono">前へ</span>
-            <span class="font-display text-sm">なし</span>
+            <span class="block text-xs text-neutral-600">前へ</span>
+            <span class="font-serif text-sm">なし</span>
           </div>
         </span>
       )}
 
       {nextPlant ? (
-        <a href={`/kametora_kusabana_sanpo/plants/${nextPlant.slug}`} class="group flex items-center gap-3 text-neon-cyan hover:text-white transition-colors sm:ml-auto">
+        <a href={`/kametora_kusabana_sanpo/plants/${nextPlant.slug}`} class="group flex items-center gap-3 hover:text-neutral-200 sm:ml-auto">
           <div class="text-right">
-            <span class="block text-xs text-gray-500 font-mono">次へ</span>
-            <span class="font-display text-sm">{nextPlant.title}</span>
+            <span class="block text-xs text-neutral-500">次へ</span>
+            <span class="font-serif text-sm">{nextPlant.title}</span>
           </div>
-          <span class="text-xl">→</span>
+          <span class="text-base">→</span>
         </a>
       ) : (
-        <span class="flex items-center gap-3 text-gray-600 cursor-not-allowed sm:ml-auto">
+        <span class="flex items-center gap-3 text-neutral-600 sm:ml-auto">
           <div class="text-right">
-            <span class="block text-xs text-gray-600 font-mono">次へ</span>
-            <span class="font-display text-sm">なし</span>
+            <span class="block text-xs text-neutral-600">次へ</span>
+            <span class="font-serif text-sm">なし</span>
           </div>
-          <span class="text-xl">→</span>
+          <span class="text-base">→</span>
         </span>
       )}
         </div>
