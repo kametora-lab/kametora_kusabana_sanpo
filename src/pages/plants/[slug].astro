@@ -1,0 +1,273 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ImageGallery } from '../../components/ImageGallery';
+import { DetailFilters } from '../../components/DetailFilters';
+import UrlCard from '../../components/UrlCard.astro';
+import plants from '../../data/plants.json';
+import colors from '../../data/colors.json';
+
+export function getStaticPaths() {
+  return plants.map((plant) => ({
+    params: { slug: plant.slug },
+    props: { plant },
+  }));
+}
+
+const { plant } = Astro.props;
+
+const getColors = (colorIds: string[] | undefined) => {
+  if (!colorIds) return [];
+  return colorIds.map(id => colors.find(c => c.id === id)).filter(Boolean);
+};
+
+const plantColors = getColors(plant.colors);
+
+const plantIndex = plants.findIndex((item) => item.slug === plant.slug);
+const prevPlant = plantIndex > 0 ? plants[plantIndex - 1] : null;
+const nextPlant = plantIndex >= 0 && plantIndex < plants.length - 1 ? plants[plantIndex + 1] : null;
+
+const urlRegex = /(https?:\/\/[^\s]+)/gi;
+const isUrl = (value: string) => /^https?:\/\/\S+$/i.test(value);
+
+const ogpCache = (globalThis as { __ogpCache?: Map<string, { title?: string; image?: string }> }).__ogpCache
+  ?? new Map<string, { title?: string; image?: string }>();
+(globalThis as { __ogpCache?: Map<string, { title?: string; image?: string }> }).__ogpCache = ogpCache;
+
+const matchMetaContent = (html: string, key: string, value: string) => {
+  const tagMatch = html.match(new RegExp(`<meta[^>]+${key}=["']${value}["'][^>]*>`, 'i'));
+  if (!tagMatch) return undefined;
+  const contentMatch = tagMatch[0].match(/content=["']([^"']+)["']/i);
+  return contentMatch?.[1];
+};
+
+const matchTitle = (html: string) => {
+  const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+  return titleMatch?.[1]?.trim();
+};
+
+const resolveImageUrl = (imageUrl: string | undefined, pageUrl: string) => {
+  if (!imageUrl) return undefined;
+  if (/^https?:\/\//i.test(imageUrl)) return imageUrl;
+  try {
+    return new URL(imageUrl, pageUrl).toString();
+  } catch {
+    return imageUrl;
+  }
+};
+
+const fetchOgp = async (url: string) => {
+  if (ogpCache.has(url)) return ogpCache.get(url) ?? {};
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 6000);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        'user-agent': 'Mozilla/5.0 (compatible; KametoraBot/1.0; +https://github.com/kametora-lab)',
+        accept: 'text/html',
+      },
+    });
+    if (!response.ok) {
+      ogpCache.set(url, {});
+      return {};
+    }
+
+    const html = await response.text();
+    const title =
+      matchMetaContent(html, 'property', 'og:title')
+      ?? matchMetaContent(html, 'name', 'twitter:title')
+      ?? matchTitle(html);
+    const image = resolveImageUrl(
+      matchMetaContent(html, 'property', 'og:image')
+        ?? matchMetaContent(html, 'name', 'twitter:image'),
+      url
+    );
+
+    const meta = { title: title?.trim(), image };
+    ogpCache.set(url, meta);
+    return meta;
+  } catch {
+    ogpCache.set(url, {});
+    return {};
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
+const descriptionParts = (plant.description ?? '').split(urlRegex).filter(Boolean);
+const descriptionItems = await Promise.all(
+  descriptionParts.map(async (part) => {
+    if (!isUrl(part)) return { type: 'text', value: part };
+    const meta = await fetchOgp(part);
+    return { type: 'url', value: part, meta };
+  })
+);
+
+const descriptionText = (plant.description ?? '')
+  .replace(urlRegex, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+const metaDescription = descriptionText
+  ? (descriptionText.length > 160 ? `${descriptionText.slice(0, 157)}…` : descriptionText)
+  : `${plant.title}の詳細情報。`;
+
+const resolveSiteUrl = (value: string) => {
+  try {
+    return new URL(value, import.meta.env.SITE).toString();
+  } catch {
+    return value;
+  }
+};
+
+const firstImageSrc = (plant.images ?? [])
+  .map((img) => (typeof img === 'string' ? img : img.src))
+  .find((src) => src && src.trim());
+const ogImage = firstImageSrc ? resolveSiteUrl(firstImageSrc) : undefined;
+
+const canonicalUrl = Astro.url.toString();
+const plantStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": plant.title,
+  "description": metaDescription,
+  "image": ogImage ? [ogImage] : undefined,
+  "inLanguage": "ja",
+  "author": {
+    "@type": "Person",
+    "name": "かめとら"
+  },
+  "mainEntityOfPage": canonicalUrl,
+  "about": [
+    plant.meta?.scientificName ? { "@type": "Thing", "name": plant.meta.scientificName } : null,
+    plant.meta?.family ? { "@type": "Thing", "name": plant.meta.family } : null
+  ].filter(Boolean)
+};
+---
+
+<Layout title={plant.title} description={metaDescription} ogType="article" ogImage={ogImage} structuredData={plantStructuredData}>
+  <main class="min-h-screen px-6 pb-24 md:px-10 lg:px-16">
+    <div class="flex flex-col gap-10 pt-6 md:flex-row md:items-start md:pt-10">
+      <aside class="md:w-72 md:shrink-0 md:order-2 sticky top-6 md:top-24 z-30 self-start">
+        <DetailFilters client:load colors={colors} resultsCount={plants.length} />
+      </aside>
+
+      <div class="flex-1 md:order-1">
+        <nav class="mb-6 text-xs text-neutral-500">
+          <a href="/kametora_kusabana_sanpo" class="hover:text-neutral-200">トップ</a>
+          <span class="mx-2 text-neutral-600">/</span>
+          <a href="/kametora_kusabana_sanpo/plants" class="hover:text-neutral-200">草花一覧</a>
+          <span class="mx-2 text-neutral-600">/</span>
+          <span class="text-neutral-200">{plant.title}</span>
+        </nav>
+
+        <div class="mb-10 space-y-4">
+          <h1 class="font-serif text-4xl leading-tight md:text-6xl">
+            {plant.title}
+          </h1>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-neutral-500">
+            <span class="uppercase tracking-[0.3em]">ID</span>
+            <span class="text-neutral-300">{plant.id}</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-4 text-xs text-neutral-400">
+            {plantColors.map((color) => (
+              <span class="inline-flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full" style={{ backgroundColor: color.value }}></span>
+                {color.name}
+              </span>
+            ))}
+            {plantColors.length === 0 && (
+              <span class="text-neutral-600 text-xs italic">色情報なし</span>
+            )}
+          </div>
+          <div>
+            <h3 class="text-xs uppercase tracking-[0.3em] text-neutral-500">観察月</h3>
+            <div class="mt-2 flex flex-wrap gap-2 text-xs text-neutral-400">
+              {plant.months?.map((month) => (
+                <span class="border border-white/10 px-2 py-1">
+                  {month}
+                </span>
+              ))}
+              {(!plant.months || plant.months.length === 0) && (
+                <span class="text-neutral-600 text-xs italic">観察月の記録なし</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
+          <div class="space-y-4">
+            <ImageGallery client:load images={plant.images} title={plant.title} />
+          </div>
+
+          <div class="space-y-8">
+            <div class="space-y-4">
+              {descriptionItems.map((item) =>
+                item.type === 'url' ? (
+                  <UrlCard url={item.value} title={item.meta?.title} image={item.meta?.image} />
+                ) : (
+                  item.value.trim().length > 0 && (
+                    <p class="whitespace-pre-wrap text-base leading-relaxed text-neutral-300 md:text-lg">
+                      {item.value}
+                    </p>
+                  )
+                )
+              )}
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+              <div>
+                <span class="block text-xs uppercase tracking-[0.3em] text-neutral-500 mb-2">科</span>
+                <span class="font-serif text-neutral-200">{plant.meta?.family || '-'}</span>
+              </div>
+              <div>
+                <span class="block text-xs uppercase tracking-[0.3em] text-neutral-500 mb-2">学名</span>
+                <span class="font-serif italic text-neutral-200">{plant.meta?.scientificName || '-'}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
+      {prevPlant ? (
+        <a href={`/kametora_kusabana_sanpo/plants/${prevPlant.slug}`} class="group flex items-center gap-3 hover:text-neutral-200">
+          <span class="text-base">←</span>
+          <div class="text-left">
+            <span class="block text-xs text-neutral-500">前へ</span>
+            <span class="font-serif text-sm">{prevPlant.title}</span>
+          </div>
+        </a>
+      ) : (
+        <span class="flex items-center gap-3 text-neutral-600">
+          <span class="text-base">←</span>
+          <div class="text-left">
+            <span class="block text-xs text-neutral-600">前へ</span>
+            <span class="font-serif text-sm">なし</span>
+          </div>
+        </span>
+      )}
+
+      {nextPlant ? (
+        <a href={`/kametora_kusabana_sanpo/plants/${nextPlant.slug}`} class="group flex items-center gap-3 hover:text-neutral-200 sm:ml-auto">
+          <div class="text-right">
+            <span class="block text-xs text-neutral-500">次へ</span>
+            <span class="font-serif text-sm">{nextPlant.title}</span>
+          </div>
+          <span class="text-base">→</span>
+        </a>
+      ) : (
+        <span class="flex items-center gap-3 text-neutral-600 sm:ml-auto">
+          <div class="text-right">
+            <span class="block text-xs text-neutral-600">次へ</span>
+            <span class="font-serif text-sm">なし</span>
+          </div>
+          <span class="text-base">→</span>
+        </span>
+      )}
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

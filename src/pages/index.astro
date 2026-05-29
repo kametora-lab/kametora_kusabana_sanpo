@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopSlideshow from '../components/TopSlideshow.astro';
+import plants from '../data/plants.json';
+
+const featuredPlants = plants.slice(0, 9);
+const latestPlants = plants.slice(-6).reverse();
+
+const getImageSrc = (images) => {
+	if (!images || images.length === 0) return '';
+	const first = images[0];
+	return typeof first === 'string' ? first : first.src;
+};
+
+const galleryPattern = [
+	'lg:col-span-2 lg:row-span-2',
+	'',
+	'lg:row-span-2',
+	'lg:col-span-2',
+	'',
+	'lg:row-span-2',
+	'',
+	'lg:col-span-2',
+	'',
+];
+
+// Uneven rhythm for the gallery grid (plantica-like balance).
+const getGalleryClass = (index) => galleryPattern[index % galleryPattern.length];
+---
+
+<Layout
+	title="奄美の草花さんぽ帖"
+	description="世界自然遺産の島・奄美大島で撮りためた草花たちをまとめた写真帖です。お散歩気分で、草花の世界をそっとのぞいてみませんか。"
+	keywords="奄美の草花,草花図鑑,植物図鑑,奄美の花,奄美大島の自然,野の花アルバム,奄美大島,奄美さんぽ"
+>
+	<main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+		<div class="pt-6 md:pt-10">
+			<TopSlideshow>
+				<section class="w-full space-y-5 px-6 py-12 md:px-10 md:py-20 lg:px-16 lg:py-24 text-center">
+					<p class="text-xs tracking-[0.4em] text-neutral-300 md:text-sm drop-shadow-md">AMAMI FLORA ARCHIVE</p>
+					<h1 class="font-serif text-4xl leading-tight tracking-tight text-white md:text-6xl drop-shadow-lg">
+						奄美の草花さんぽ帖
+					</h1>
+					<div class="space-y-1 pt-4">
+						<p class="text-base text-neutral-200 md:text-lg drop-shadow">
+							奄美大島で出会った草花の記録。
+						</p>
+						<p class="text-base text-neutral-200 md:text-lg drop-shadow">
+							世界自然遺産の島、奄美大島で草花を探して記録しています。
+						</p>
+					</div>
+				</section>
+			</TopSlideshow>
+		</div>
+
+			<div class="pt-12 pb-3 md:pt-16 md:pb-4">
+				<div class="mb-4 flex flex-wrap items-end gap-3 md:gap-4">
+					<h2 class="flex items-center gap-3 font-serif text-2xl text-neutral-100 md:text-3xl">
+						<span class="rounded-full bg-red-500 px-2 py-1 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_12px_rgba(255,60,60,0.6)]">
+							NEW
+						</span>
+						新着草花
+					</h2>
+					<a href="/kametora_kusabana_sanpo/plants" class="mb-1 text-sm text-neutral-400 hover:text-neutral-200">
+						草花一覧を見る &gt;&gt;
+					</a>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+				{/* Left Column: New Plants (2/3 width) */}
+				<section class="lg:col-span-2">
+					<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+						{latestPlants.map((plant) => (
+							<a
+								href={`/kametora_kusabana_sanpo/plants/${plant.slug}`}
+								class="group relative block overflow-hidden border border-white/10 bg-[#0f0f0f] aspect-[4/3]"
+							>
+								{getImageSrc(plant.images) ? (
+									<img
+										src={getImageSrc(plant.images)}
+										alt={plant.title}
+										class="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+										loading="lazy"
+										decoding="async"
+									/>
+								) : (
+									<div class="flex h-full w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+										NO IMAGE
+									</div>
+								)}
+								<div class="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/60 px-3 py-2 backdrop-blur-sm">
+									<div class="truncate text-sm text-neutral-200">{plant.title}</div>
+									{plant.meta?.scientificName && (
+										<div class="truncate text-[10px] text-neutral-500">{plant.meta.scientificName}</div>
+									)}
+								</div>
+							</a>
+						))}
+					</div>
+				</section>
+
+				{/* Right Column: Video (1/3 width) */}
+				<section class="lg:col-span-1 lg:relative">
+					<div class="w-full aspect-square lg:aspect-auto lg:absolute lg:inset-0">
+						<a href="/kametora_kusabana_sanpo/kusabanamemo/hibiscus-collection" class="group relative block w-full h-full overflow-hidden rounded-2xl flex items-center justify-center">
+							<video
+								src="/kametora_kusabana_sanpo/videos/BiscasSlideShow.mp4"
+								controls={false}
+								autoplay
+								muted
+								loop
+								playsinline
+								class="max-h-full max-w-full object-contain pointer-events-none group-hover:opacity-90 transition-opacity duration-300"
+							></video>
+                            <div class="absolute inset-0 z-10 hidden group-hover:flex items-center justify-center bg-black/30 transition-all duration-300">
+                                <span class="font-serif text-white tracking-widest border border-white/50 px-4 py-2 bg-black/40 backdrop-blur-sm rounded-sm">COLLECTION</span>
+                            </div>
+						</a>
+					</div>
+				</section>
+			</div>
+			</div>
+
+		<section class="mt-3 md:mt-5">
+			<div class="grid auto-rows-[140px] grid-cols-2 gap-4 md:auto-rows-[200px] md:grid-cols-3 md:gap-6 lg:auto-rows-[220px]">
+				{featuredPlants.map((plant, index) => (
+					<a
+						href={`/kametora_kusabana_sanpo/plants/${plant.slug}`}
+						class={`group relative block overflow-hidden ${getGalleryClass(index)}`}
+					>
+						{getImageSrc(plant.images) ? (
+							<img
+								src={getImageSrc(plant.images)}
+								alt={plant.title}
+								class="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+								loading="lazy"
+								decoding="async"
+							/>
+						) : (
+							<div class="flex h-full w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+								NO IMAGE
+							</div>
+						)}
+						<div class="absolute inset-0 flex items-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+							<div class="w-full bg-black/60 px-3 py-2 text-xs text-neutral-200">
+								<div class="font-serif">{plant.title}</div>
+								{plant.meta?.scientificName && (
+									<div class="text-[11px] text-neutral-400">{plant.meta.scientificName}</div>
+								)}
+							</div>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>
+
+

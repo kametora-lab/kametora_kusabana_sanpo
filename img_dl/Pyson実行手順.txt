@@ -1,0 +1,14 @@
+PowerShell
+
+cd C:\Gravity\amamikusabana2\img_dl
+py download.py
+
+管理画面: http://localhost:4321/kametora_kusabana_sanpo/admin
+一覧: http://localhost:4321/kametora_kusabana_sanpo/plants
+
+json変更後の手順
+Gitに反映する流れは以下です。
+git status
+git add src/data/plants.json
+git commit -m "Update plants data"
+git push

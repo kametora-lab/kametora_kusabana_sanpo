@@ -1,0 +1,230 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+// Get all images from public/hibiscus-collection
+const imagesDir = path.join(process.cwd(), 'public', 'hibiscus-collection');
+let imageList: string[] = [];
+
+try {
+  const files = await fs.readdir(imagesDir);
+  imageList = files
+    .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
+    .sort((a, b) => {
+        // Natural sort for numbered files like biscas_2.jpg vs biscas_10.jpg
+        return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+    })
+    .map(file => `/kametora_kusabana_sanpo/hibiscus-collection/${file}`);
+} catch (error) {
+  console.error('Error reading hibiscus images directory:', error);
+}
+
+const imagesJson = JSON.stringify(imageList);
+---
+
+<Layout
+  title="奄美のハイビスカスコレクション｜奄美の草花さんぽ帖"
+  description="奄美大島で見つけた色鮮やかなハイビスカスの写真コレクションです。"
+  ogType="article"
+  ogImage={imageList[0] || ""}
+>
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <a href="/kametora_kusabana_sanpo/kusabanamemo" class="text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-300 md:text-sm">
+        FIELD NOTE
+      </a>
+      <h1 class="font-serif text-3xl leading-tight md:text-5xl text-white">
+        奄美のハイビスカスコレクション
+      </h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        島を歩けば必ずと言っていいほど目にするハイビスカス。その種類と色彩の豊かさは、見る人を飽きさせません。<br>
+        奄美の太陽を浴びて輝くハイビスカスたちを集めました。
+      </p>
+    </header>
+
+    <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {imageList.map((src, index) => (
+        <button
+          type="button"
+          class="group relative aspect-square w-full overflow-hidden rounded-lg bg-[#0f0f0f] border border-white/10 gallery-item"
+          data-index={index}
+          aria-label={`View hibiscus image ${index + 1}`}
+        >
+          <img
+            src={src}
+            alt={`Hibiscus ${index + 1}`}
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-0 transition-opacity duration-300"
+            onload="this.classList.remove('opacity-0')"
+          />
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+        </button>
+      ))}
+    </div>
+
+    {/* Lightbox Overlay */}
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-sm transition-opacity duration-300 opacity-0" aria-hidden="true">
+        <button id="close-btn" class="absolute top-4 right-4 z-50 p-2 text-white/50 hover:text-white transition-colors" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        
+        <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-4 text-white/50 hover:text-white transition-colors hidden md:block" aria-label="Previous Image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        
+        <div class="flex h-full w-full items-center justify-center p-4">
+            <img id="lightbox-img" src="" alt="Full size hibiscus" class="max-h-full max-w-full object-contain shadow-2xl rounded-sm" />
+        </div>
+        
+        <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-4 text-white/50 hover:text-white transition-colors hidden md:block" aria-label="Next Image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        {/* Mobile Navigation Areas */}
+        <div id="prev-area" class="absolute inset-y-0 left-0 w-1/4 z-40 md:hidden"></div>
+        <div id="next-area" class="absolute inset-y-0 right-0 w-1/4 z-40 md:hidden"></div>
+    </div>
+  </main>
+</Layout>
+
+<script define:vars={{ imagesJson }}>
+  const imageList = JSON.parse(imagesJson);
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('close-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  // Mobile tap areas
+  const prevArea = document.getElementById('prev-area');
+  const nextArea = document.getElementById('next-area');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+      currentIndex = index;
+      updateLightboxImage();
+      lightbox.classList.remove('hidden');
+      // Trigger reflow
+      void lightbox.offsetWidth; 
+      lightbox.classList.remove('opacity-0');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // History API
+      history.pushState({ lightboxOpen: true }, '', '#view');
+  }
+
+  function closeLightbox() {
+      lightbox.classList.add('opacity-0');
+      lightbox.setAttribute('aria-hidden', 'true');
+      setTimeout(() => {
+          lightbox.classList.add('hidden');
+          lightboxImg.src = '';
+      }, 300);
+      document.body.style.overflow = '';
+      
+      if (history.state && history.state.lightboxOpen) {
+          history.back();
+      }
+  }
+
+  function hideLightboxInternal() {
+      lightbox.classList.add('opacity-0');
+      lightbox.setAttribute('aria-hidden', 'true');
+      setTimeout(() => {
+          lightbox.classList.add('hidden');
+          lightboxImg.src = '';
+      }, 300);
+      document.body.style.overflow = '';
+  }
+
+  function updateLightboxImage() {
+      const src = imageList[currentIndex];
+      // Simple fade out/in effect
+      lightboxImg.style.opacity = '0.5';
+      const tempImg = new Image();
+      tempImg.src = src;
+      tempImg.onload = () => {
+          lightboxImg.src = src;
+          lightboxImg.style.opacity = '1';
+      };
+      // Fallback
+      lightboxImg.src = src;
+  }
+
+  function showNext() {
+      currentIndex = (currentIndex + 1) % imageList.length;
+      updateLightboxImage();
+  }
+
+  function showPrev() {
+      currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+      updateLightboxImage();
+  }
+
+  // Event Listeners
+  galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+          const index = parseInt(item.dataset.index);
+          openLightbox(index);
+      });
+  });
+
+  closeBtn.addEventListener('click', (e) => {
+      if (history.state && history.state.lightboxOpen) {
+          history.back();
+      } else {
+          hideLightboxInternal();
+      }
+      e.stopPropagation();
+  });
+
+  [nextBtn, nextArea].forEach(el => {
+      el?.addEventListener('click', (e) => {
+          showNext();
+          e.stopPropagation();
+      });
+  });
+
+  [prevBtn, prevArea].forEach(el => {
+      el?.addEventListener('click', (e) => {
+          showPrev();
+          e.stopPropagation();
+      });
+  });
+
+  lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+          if (history.state && history.state.lightboxOpen) {
+              history.back();
+          } else {
+              hideLightboxInternal();
+          }
+      }
+  });
+
+  document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+
+      if (e.key === 'Escape') {
+          if (history.state && history.state.lightboxOpen) {
+              history.back();
+          } else {
+              hideLightboxInternal();
+          }
+      } else if (e.key === 'ArrowRight') {
+          showNext();
+      } else if (e.key === 'ArrowLeft') {
+          showPrev();
+      }
+  });
+
+  window.addEventListener('popstate', (event) => {
+      if (!event.state || !event.state.lightboxOpen) {
+          hideLightboxInternal();
+      }
+  });
+</script>

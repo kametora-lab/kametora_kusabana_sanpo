@@ -1,0 +1,73 @@
+---
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+// Get all images from public/images
+const imagesDir = path.join(process.cwd(), 'public', 'images');
+let allImages: string[] = [];
+
+try {
+  const files = await fs.readdir(imagesDir);
+  allImages = files
+    .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
+    .map(file => `/kametora_kusabana_sanpo/images/${file}`);
+} catch (error) {
+  console.error('Error reading images directory:', error);
+}
+
+// Pass images to client-side
+const imagesJson = JSON.stringify(allImages);
+---
+
+<div class="relative overflow-hidden group rounded-3xl" id="top-slideshow">
+  {/* Slideshow background layer */}
+  <div class="absolute inset-0 z-0 bg-black">
+      <div id="slideshow-container" class="absolute inset-0 w-full h-full">
+        {/* Images will be injected here */}
+      </div>
+      {/* Dark overlay for text readability */}
+      <div class="absolute inset-0 bg-black/60 z-10 pointer-events-none"></div>
+  </div>
+
+  {/* Content layer */}
+  <div class="relative z-20">
+      <slot />
+  </div>
+</div>
+
+<script define:vars={{ imagesJson }}>
+  const images = JSON.parse(imagesJson);
+  const container = document.getElementById('slideshow-container');
+  
+  if (images.length > 0 && container) {
+    // Determine how many images to cycle through (e.g., 5 random ones)
+    const count = 5;
+    const shuffled = images.sort(() => 0.5 - Math.random()).slice(0, count);
+    
+    // Create image elements
+    shuffled.forEach((src, index) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = ""; // Decorative background
+      img.className = `absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+      container.appendChild(img);
+    });
+
+    let currentIndex = 0;
+    const imgElements = container.querySelectorAll('img');
+
+    if (imgElements.length > 1) {
+      setInterval(() => {
+        const nextIndex = (currentIndex + 1) % imgElements.length;
+        
+        imgElements[currentIndex].classList.remove('opacity-100');
+        imgElements[currentIndex].classList.add('opacity-0');
+        
+        imgElements[nextIndex].classList.remove('opacity-0');
+        imgElements[nextIndex].classList.add('opacity-100');
+        
+        currentIndex = nextIndex;
+      }, 5000); // 5 seconds interval
+    }
+  }
+</script>

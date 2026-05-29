@@ -1,0 +1,32 @@
+[
+    {
+        "id": "red",
+        "name": "赤",
+        "value": "#ff2d95"
+    },
+    {
+        "id": "yellow",
+        "name": "黄",
+        "value": "#ffee00"
+    },
+    {
+        "id": "purple",
+        "name": "紫と青",
+        "value": "#b026ff"
+    },
+    {
+        "id": "green",
+        "name": "緑",
+        "value": "#00ff9d"
+    },
+    {
+        "id": "white",
+        "name": "白",
+        "value": "#ffffff"
+    },
+    {
+        "id": "other",
+        "name": "その他",
+        "value": "#a0a0a0"
+    }
+]

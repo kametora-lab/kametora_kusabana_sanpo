@@ -1,0 +1,288 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import plants from '../../data/plants.json';
+
+const targetSlugs = ['0044', '0167', '0020'];
+const targetPlants = targetSlugs
+  .map((slug) => plants.find((plant) => plant.slug === slug))
+  .filter(Boolean);
+
+const plantMap = Object.fromEntries(
+  targetPlants.map((plant) => [plant.slug, plant])
+);
+
+const getImageSrc = (images) => {
+  if (!images || images.length === 0) return '';
+  const first = images[0];
+  return typeof first === 'string' ? first : first.src;
+};
+---
+
+<Layout
+  title="ゲットウ・アオノクマタケラン・クマタケランの比較と面白い話｜奄美の草花散歩"
+  description="奄美の梅雨時期に咲くショウガ科ハナミョウガ属のゲットウ、アオノクマタケラン、クマタケラン。混同しやすい3種の見分け方と、島に伝わる面白い歴史や民俗エピソードを紹介します。"
+  ogType="article"
+  ogImage="/kametora_kusabana_sanpo/images/0044_00.jpg"
+>
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <a href="/kametora_kusabana_sanpo/kusabanamemo" class="text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-300 md:text-sm">
+        FIELD NOTE
+      </a>
+      <h1 class="font-serif text-3xl leading-tight md:text-5xl">
+        ゲットウ・アオノクマタケラン・クマタケランの比較と面白い話
+      </h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        南西諸島を彩るショウガ科ハナミョウガ属3種の見分け方と、奄美の暮らしに息づくディープな雑学。
+      </p>
+      <p class="mt-2 rounded bg-white/5 p-3 text-sm">
+        💡 <a href="http://amamikametora.blog.fc2.com/blog-entry-5241.html" target="_blank" rel="noopener noreferrer" class="text-[#f7a0b5] hover:underline font-semibold">ブログ記事：梅雨時期に咲く似たものトリオ？ゲットウ・クマタケラン・アオノクマタケランの見分け方</a><br />
+        奄美の梅雨を代表するショウガ科3種の見分け方について、詳細な写真と共に解説したブログの元記事です。
+      </p>
+    </header>
+
+    <article class="mt-10 space-y-8 text-sm leading-relaxed text-neutral-300 md:text-base">
+      <p>
+        南西諸島や日本の暖地に自生するショウガ科ハナミョウガ属の<strong>ゲットウ（月桃）</strong>、<strong>アオノクマタケラン</strong>、そして<strong>クマタケラン</strong>。この3種は葉の姿が似ているため混同されがちですが、花序の付き方や葉の微細な特徴などで見分けることができます。
+      </p>
+      <p>
+        提供された資料に基づき、3種の見分け方と、それにまつわる奥深く面白いエピソードをまとめました。
+      </p>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">1. 3種の見分け方・違いのまとめ</h2>
+        <p>
+          花が咲いていない時期は見分けるのが難しい3種ですが、以下のポイントを抑えることで明確に識別可能です。
+        </p>
+
+        <div class="overflow-x-auto my-6 border border-white/10">
+          <table class="w-full text-left border-collapse text-xs md:text-sm">
+            <thead>
+              <tr class="border-b border-white/10 bg-white/5">
+                <th class="p-3 font-semibold text-neutral-200 min-w-[120px]">比較ポイント</th>
+                <th class="p-3 font-semibold text-neutral-200 min-w-[180px]">ゲットウ（月桃・サネン）</th>
+                <th class="p-3 font-semibold text-neutral-200 min-w-[180px]">アオノクマタケラン</th>
+                <th class="p-3 font-semibold text-neutral-200 min-w-[180px]">クマタケラン（カシャ）</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-neutral-300">
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>学名</strong></td>
+                <td class="p-3"><em>Alpinia zerumbet</em></td>
+                <td class="p-3"><em>Alpinia intermedia</em></td>
+                <td class="p-3"><em>Alpinia</em> &times; <em>formosana</em></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>草丈（サイズ）</strong></td>
+                <td class="p-3">1.5〜3m以上（大型）</td>
+                <td class="p-3">0.5〜1.5m（小型）</td>
+                <td class="p-3">1〜2m（中型）</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>花序の向き</strong></td>
+                <td class="p-3">重みで大きく<strong>下垂する（枝垂れる）</strong></td>
+                <td class="p-3">天に向けて<strong>完全に直立する</strong></td>
+                <td class="p-3">斜め上方向に<strong>斜上する</strong></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>花軸の毛</strong></td>
+                <td class="p-3">褐色の細毛が密生する</td>
+                <td class="p-3">完全な<strong>無毛</strong></td>
+                <td class="p-3">完全な<strong>無毛</strong></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>花の色彩</strong></td>
+                <td class="p-3">唇弁の中心が<strong>鮮烈な黄色</strong>地に赤い筋</td>
+                <td class="p-3">唇弁は白地に赤い筋で、<strong>黄色味がない</strong></td>
+                <td class="p-3">唇弁はやや<strong>黄色を帯び</strong>、赤い筋が入る</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>葉の毛</strong></td>
+                <td class="p-3">葉の縁および裏面主脈に<strong>毛が密生</strong></td>
+                <td class="p-3">表・裏・縁すべて<strong>完全無毛</strong></td>
+                <td class="p-3">葉の<strong>縁にのみ微毛</strong>がある</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>葉の香りと質感</strong></td>
+                <td class="p-3">幅広で肉厚。強烈な精油臭を放つ</td>
+                <td class="p-3">やや細く、表面の光沢が非常に強い</td>
+                <td class="p-3">ゲットウに比べて細身で、薄く軟らかい</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-neutral-200 bg-white/5"><strong>果実の表面</strong></td>
+                <td class="p-3">明瞭で深い<strong>縦方向の筋（条線）</strong>がある</td>
+                <td class="p-3">完全に滑らか（ツルツル）で筋がない</td>
+                <td class="p-3">わずかな縦線か浅い溝がある（結実しにくい）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">ゲットウ（月桃・サネン）</h2>
+        {plantMap['0044'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0044'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0044'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0044'].images)}
+                alt={plantMap['0044'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0044'].title}</div>
+              {plantMap['0044'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0044'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          奄美大島の海岸に近い山野や人里の路傍、民家の庭先などに広く自生する、2〜3m（環境によっては4m以上）にも達する大型の多年草です。
+          梅雨の時期（5〜6月頃）に、先端がほんのり桃赤色に染まった白い蕾をたくさんつけ、その重みで大きく枝垂れて下垂する華やかな花序が特徴です。開いたお花は唇弁の中心が鮮やかな黄色で、赤い筋模様が入ります。
+        </p>
+        <p>
+          葉は幅広く肉厚で、ちぎると強い特有の清涼感ある芳香（精油臭）を放ちます。
+          この香り成分には強い抗菌・防腐作用があるため、おにぎりや伝統菓子を包むハーブとして古くから利用されてきました。
+          乾燥した種子は「白手伊豆縮砂（シロテイズシュクシャ）」という生薬になり、芳香性健胃薬や整腸薬として用いられます。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">アオノクマタケラン</h2>
+        {plantMap['0020'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0020'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0020'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0020'].images)}
+                alt={plantMap['0020'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0020'].title}</div>
+              {plantMap['0020'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0020'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          暖帯から亜熱帯の山地森林内の湿った林床や沢沿いに自生する常緑多年草です。
+          草丈は50〜150cmと、ハナミョウガ属の中ではもっとも小柄な部類に入ります。
+          4〜6月頃にかけて茎の先端に総状の花序を形成し、ゲットウとは対照的に<strong>天に向けて完全に直立する</strong>のが特徴です。
+          お花は長さ約2cmと小振りで、白地に紅色の斑が入りますが、黄色味を全く帯びません。
+        </p>
+        <p>
+          最大の識別特徴は、葉の表裏および縁に至るまで一切の毛がない<strong>「完全無毛」</strong>である点です。
+          革質でツヤツヤと強い光沢を持った細身の葉は、非常に上品な美しさがあります。
+          やはり抗菌・防腐作用があり、奄美では「サネン」などと呼んで伝統的な「かしゃ餅」を包むのに使われてきたほか、近年ではその抽出成分（β-ピネンなど）がアトピーや肌の炎症を抑えるとしてスキンケア製品などにも応用されています。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">クマタケラン（カシャ）</h2>
+        {plantMap['0167'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0167'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0167'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0167'].images)}
+                alt={plantMap['0167'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0167'].title}</div>
+              {plantMap['0167'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0167'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          人家に近い少し湿った日陰や、低地から山地の林縁によく群生する中型の常緑多年草（草丈1〜2m）です。
+          ゲットウとアオノクマタケランの間に自生し、両者の特徴を併せ持っているのは、これが<strong>ゲットウとアオノクマタケランの自然交雑種（ハイブリッド）</strong>だからです。
+          花期は5〜8月頃で、花序は下垂も直立もせず、<strong>斜め上方（斜上）に伸びる</strong>という中間の特徴を持ちます。
+          花は白地に淡い黄色を帯び、紅色の縦線が入ります。
+        </p>
+        <p>
+          葉はゲットウに比べて細身ですが、薄くて軟らかい質感を備えており、<strong>葉の縁にのみ微細な毛がある</strong>のが特徴です。
+          奄美大島では「カシャ」と呼ばれ、郷土菓子の「カシャ餅（よもぎ餅）」を包むのに欠かせない植物として栽培や株分けが広く行われてきました。
+        </p>
+      </section>
+
+      <section class="space-y-6 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">2. 3種にまつわる面白い話・ディープな雑学</h2>
+
+        <div class="space-y-4">
+          <h3 class="font-serif text-xl text-neutral-200">① 奇跡の自然交雑種「クマタケラン」と繁殖の秘密</h3>
+          <p>
+            クマタケランは、実はゲットウとアオノクマタケランの自然交雑種（ハイブリッド）であることがわかっています。
+            交雑種ゆえに不妊性が非常に高く、花は咲いても種を作って結実することは滅滅にありません。それにもかかわらず、奄美群島などで広く群生しているのは、地中を這う強靭な地下茎による「栄養繁殖」で増えているためです。これは、島の人々が有用な植物として株分けをし、庭先や畑に定植してきた「半栽培化」の歴史を物語っています。
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="font-serif text-xl text-neutral-200">② 「カシャ餅」を包むのはどっち？地域のパラドックス</h3>
+          <p>
+            奄美大島では、クマタケランのことを「カシャ」と呼び、郷土菓子のヨモギ餅「カシャ餅」を包むのに欠かせない植物として重宝しています。ゲットウ（サネン）の生葉は、蒸すと強烈な苦味や青臭さが食品に移ってしまうため、お餅を包むのには不向きとされているのです（お茶やアロマに利用されます）。
+          </p>
+          <p>
+            面白いことに、屋久島などでは「クマタケランの葉は硬くて香りも薄く、包むのには向かない」という真逆の評価があります。これは、奄美の人々が長い歴史の中で、自然交雑種の中から<strong>「葉が幅広く軟らかで、香りが良く、苦味の少ない」優れた個体（クローン）だけを選別</strong>し、畑に植えて育ててきたからだと考えられています。
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="font-serif text-xl text-neutral-200">③ 奄美の恋愛ことわざ「餅とカシャ」</h3>
+          <p>
+            クマタケラン（カシャ）の葉で包んだカシャ餅は、葉とお餅がぴったりと密着して離れません。そこから奄美の社会では、<strong>「片時も離れない、とても仲の睦まじい男女」</strong>のことを、親しみを込めて<strong>「餅とカシャのようだ」</strong>と例える独自のフォークロア（民俗表現）が息づいています。
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="font-serif text-xl text-neutral-200">④ 火消しの泥の身代わり！？カシャ餅と「ムチモレ踊り」</h3>
+          <p>
+            奄美大島の大和村湯湾釜集落では、防火と無病息災を祈る伝統行事「ムチモレ踊り」が行われます。踊り手たちが集落を回ると、各家庭はもてなしの引き出物として必ずカシャ餅を渡します。
+            この行事において、暗い緑色で粘り気のあるカシャ餅は、かつて初期消火の際に投げつけて使われた<strong>「田んぼの泥」の象徴（メタファー）</strong>とされており、これを皆で分け合うことで集落を火災から守るという、土着の火伏せ信仰と深く結びついています。
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="font-serif text-xl text-neutral-200">⑤ 精巧なカラクリ「鶴の首」状の雄しべ</h3>
+          <p>
+            クマタケランとアオノクマタケランの花の内部を観察すると、機能している雄しべが1つしかなく、それが<strong>「鶴の首」のように前方に大きく湾曲している</strong>という非常にユニークな構造をしています。
+            この湾曲した雄しべの隙間から雌しべ（柱頭）が突き出ており、蜜を求めてやってきた昆虫の背中に花粉を確実に擦り付け、他家受粉を成立させるための精巧な送粉システムとなっています。
+          </p>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>

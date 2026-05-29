@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { PlantList } from '../../components/PlantList';
+import plants from '../../data/plants.json';
+import colors from '../../data/colors.json';
+---
+
+<Layout title="草花一覧" description="奄美大島で出会った草花の記録。">
+  <main class="min-h-screen px-6 pb-20 md:px-10 lg:px-16">
+    <header class="max-w-3xl space-y-4 pt-6 md:pt-10">
+      <p class="text-xs tracking-[0.4em] text-neutral-500 md:text-sm">ARCHIVE</p>
+      <h1 class="font-serif text-3xl md:text-5xl">草花一覧</h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        奄美大島で出会った草花を、色や観察月で静かに辿れる一覧です。
+      </p>
+    </header>
+
+    <div class="mt-10">
+      <PlantList client:load initialPlants={plants} colors={colors} />
+    </div>
+  </main>
+</Layout>

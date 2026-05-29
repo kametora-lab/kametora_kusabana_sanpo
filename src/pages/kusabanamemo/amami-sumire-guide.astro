@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import plants from '../../data/plants.json';
+
+const targetSlugs = ['0253', '0257', '0308', '0344'];
+const targetPlants = targetSlugs
+  .map((slug) => plants.find((plant) => plant.slug === slug))
+  .filter(Boolean);
+
+const plantMap = Object.fromEntries(
+  targetPlants.map((plant) => [plant.slug, plant])
+);
+
+const getImageSrc = (images) => {
+  if (!images || images.length === 0) return '';
+  const first = images[0];
+  return typeof first === 'string' ? first : first.src;
+};
+---
+
+<Layout
+  title="奄美で見つけたスミレの種類と特徴｜春の野草観察ガイド"
+  description="奄美で出会った4種のスミレの特徴と、幻のアマミスミレについての観察メモ。"
+  ogType="article"
+  ogImage="/kametora_kusabana_sanpo/images/0253_00.jpg"
+>
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <a href="/kametora_kusabana_sanpo/kusabanamemo" class="text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-300 md:text-sm">
+        FIELD NOTE
+      </a>
+      <h1 class="font-serif text-3xl leading-tight md:text-5xl">
+        奄美で見つけたスミレの種類と特徴｜春の野草観察ガイド
+      </h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        奄美でこれまでに出会ったスミレの記録。春の気配とともに現れる4種類と、幻のアマミスミレについてまとめました。
+      </p>
+    </header>
+
+    <article class="mt-10 space-y-8 text-sm leading-relaxed text-neutral-300 md:text-base">
+      <p>
+        奄美でこれまでに出会ったスミレは、なんと4種類です。
+        それぞれに特徴があり、見るたびに心が踊ります。この記事では、その魅力をたっぷりお届けします。
+      </p>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">リュウキュウコスミレ</h2>
+        {plantMap['0253'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0253'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0253'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0253'].images)}
+                alt={plantMap['0253'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0253'].title}</div>
+              {plantMap['0253'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0253'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          奄美で一番よく目にするスミレです。
+          日本の南西諸島に自生し、その美しい紫色の花は春の訪れを告げる象徴として親しまれています。
+          市街地でも普通に見かけることができ、私の家の庭にもたくさん生えています。
+          その愛らしい紫の花は、見つけるたびにほっと心を和ませてくれます。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">リュウキュウシロスミレ</h2>
+        {plantMap['0257'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0257'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0257'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0257'].images)}
+                alt={plantMap['0257'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0257'].title}</div>
+              {plantMap['0257'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0257'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          少し山間の林道を歩いていると、白い花が目に飛び込んできます。
+          白色なので緑の中でもすぐに見つかるのが特徴で、ちょっと特別感のある出会いです。
+          太陽の光を受けて、白い花びらがきらきらと輝く様子はまるで小さな宝石のよう。
+          自然の中にいる心地よさを感じます。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">タチツボスミレ</h2>
+        {plantMap['0308'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0308'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0308'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0308'].images)}
+                alt={plantMap['0308'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0308'].title}</div>
+              {plantMap['0308'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0308'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          リュウキュウシロスミレよりもさらに山深い場所の木陰で見かけます。
+          タチツボスミレは薄紫で、花弁が細長い感じがします。
+          山道でひっそり咲くタチツボスミレを見つけたときの嬉しさは格別で、思わず足を止めてじっくり観察してしまいます。
+        </p>
+      </section>
+
+      <p>
+        リュウキュウコスミレ、リュウキュウシロスミレ、タチツボスミレの3種類は早ければ1月から3月くらいに見かけ、
+        冬から春への移ろいを感じさせてくれます。
+      </p>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">ヤクシマスミレ</h2>
+        {plantMap['0344'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0344'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0344'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0344'].images)}
+                alt={plantMap['0344'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0344'].title}</div>
+              {plantMap['0344'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0344'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          私がこれを見たのは、宇検の湯湾岳の頂上だけです。
+          ゴールデンウイーク頃に登ると、毎年のように出会うことができ、その小さな姿に胸がときめきます。
+          ほかのスミレよりも華奢で、良い香りがするのが特徴です。
+          湯湾岳の展望台からは宇検の海が見渡せ、自然の豊かさを全身で感じることができます。
+          その山頂にそっと咲くヤクシマスミレは、まさに山からの贈り物です。
+          登山の達成感と一緒に味わうこの花の可憐さは、言葉では言い表せない感動があります。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">"幻"のアマミスミレ</h2>
+        <p>
+          実は、私の中では"幻の花"もあります。それが、アマミスミレです。
+          詳しい人によると4月にある特定の場所で見られるそうで、ガイドなしではなかなか出会えない希少な存在です。
+          いつか、ぜひ自分の目で見てみたいと思っています。
+          アマミスミレに会うためには、しっかり下調べをして、現地のガイドさんに相談するのが良さそうです。
+          出会えたときの感動を想像するだけで、心が高鳴り、胸がわくわくします。
+          自分だけの発見を求めて歩く時間は、何ものにも代えがたい宝物です。
+        </p>
+      </section>
+    </article>
+
+  </main>
+</Layout>

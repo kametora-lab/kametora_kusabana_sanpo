@@ -1,0 +1,320 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import plants from '../../data/plants.json';
+
+// キイチゴ類 6種 + テリハノイバラ
+const targetSlugs = ['0249', '0252', '0110', '0210', '0008', '0358', '0318'];
+const targetPlants = targetSlugs
+  .map((slug) => plants.find((plant) => plant.slug === slug))
+  .filter(Boolean);
+
+const plantMap = Object.fromEntries(
+  targetPlants.map((plant) => [plant.slug, plant])
+);
+
+const getImageSrc = (images) => {
+  if (!images || images.length === 0) return '';
+  const first = images[0];
+  return typeof first === 'string' ? first : first.src;
+};
+---
+
+<Layout
+  title="奄美のバラ科植物図鑑｜キイチゴ類とテリハノイバラの種類と特徴"
+  description="奄美大島に自生するバラ科植物の観察記録。オレンジ・赤・ピンクに熟す野イチゴ6種と、海岸に這うテリハノイバラを一挙紹介。イチュビ酒やハブの言い伝えなど、島の生活文化もあわせてお届けします。"
+  ogType="article"
+  ogImage="/kametora_kusabana_sanpo/images/0249_02.jpg"
+>
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <a href="/kametora_kusabana_sanpo/kusabanamemo" class="text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-300 md:text-sm">
+        FIELD NOTE
+      </a>
+      <h1 class="font-serif text-3xl leading-tight md:text-5xl">
+        奄美のバラ科植物図鑑｜キイチゴの仲間とテリハノイバラ
+      </h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        奄美大島で出会ったバラ科植物の記録。名前に「イチゴ」とつく仲間は6種、そしてこれは「バラ」！なテリハノイバラをまとめました。
+      </p>
+    </header>
+
+    <article class="mt-10 space-y-8 text-sm leading-relaxed text-neutral-300 md:text-base">
+      <p>
+        奄美大島でさんぽをしていると、「〇〇イチゴ」という名前の植物に意外なほど多く出会います。
+        どれもバラ科キイチゴ属（<em>Rubus</em>）に属する仲間で、花は白、実はオレンジ・赤・紅紫色とバラエティ豊か。
+        さらに、キイチゴではなく本家「バラ」の仲間——テリハノイバラも奄美の海岸沿いに自生しています。
+        この記事では、奄美で観察できるバラ科植物を一挙にご紹介します。
+      </p>
+
+      <!-- ① リュウキュウバライチゴ -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">リュウキュウバライチゴ</h2>
+        {plantMap['0249'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0249'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0249'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0249'].images)}
+                alt={plantMap['0249'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0249'].title}</div>
+              {plantMap['0249'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0249'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          奄美大島でいちばんよく目にする野イチゴです。春の林縁や道端に多く、初めから「どこでもよく見かける」と言われます。
+          2月下旬から4月にかけて大きな白い花を咲かせ、鋭いカギ状のトゲがあるので採取には要注意。
+          4月〜6月には紅紫色に熟した甘い実が実り、生食のほかジャムや果実酒にも使われます。
+          沖縄や奄美の方言名は「インギイチブ」。鹿児島県のレッドデータブックで「分布特性上重要な種」に指定されています。
+        </p>
+      </section>
+
+      <!-- ② リュウキュウイチゴ -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">リュウキュウイチゴ</h2>
+        {plantMap['0252'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0252'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0252'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0252'].images)}
+                alt={plantMap['0252'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0252'].title}</div>
+              {plantMap['0252'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0252'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          3〜4月に見られ、花びらがうつむき加減にぶら下がるように咲くので写真撮影が意外と難しいのが特徴です。
+          キイチゴの仲間としては珍しくトゲがほとんどなく、葉は複数の小葉に分かれない「単葉」なのもポイント。
+          熟すと半透明のオレンジ色（橙黄色）になり、これが最大の見どころ。図鑑でも「味が良い」と記されています。
+          島では「イチュビ」または「イチョビ」と呼ばれ、泡盛と氷砂糖に漬け込んだ「イチュビ酒」は島の風物詩です。
+          湯湾岳の頂上でも見かけることができます。
+        </p>
+      </section>
+
+      <!-- ③ ホウロクイチゴ -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">ホウロクイチゴ</h2>
+        {plantMap['0110'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0110'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0110'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0110'].images)}
+                alt={plantMap['0110'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0110'].title}</div>
+              {plantMap['0110'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0110'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          常緑キイチゴの中では最大級の巨大な葉が特徴で、バラ科らしくない独特の見た目をしています。
+          葉の裏にはフワフワとした綿毛が密生し、枝には鋭いトゲが。花は下向きに咲くので見つけにくいことがあります。
+          甘酸っぱい赤い実は5〜8月に熟し、美味しいと評判。徳之島ではリュウキュウイチゴとともに「春の森の甘味」として親しまれていました。
+          そして忘れてはならないのが、「イチゴの下にはハブがいる」という言い伝え。甘い実を採りに茂みへ入るときは、足元に十分ご注意を。
+        </p>
+      </section>
+
+      <p>
+        リュウキュウバライチゴ、リュウキュウイチゴ、ホウロクイチゴの3種は、主に冬から春（1〜5月頃）にかけて花や実の見頃を迎えます。
+        奄美の春の森さんぽで出会えたら、ぜひ観察してみてください。
+      </p>
+
+      <!-- ④ ナワシロイチゴ -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">ナワシロイチゴ</h2>
+        {plantMap['0210'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0210'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0210'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0210'].images)}
+                alt={plantMap['0210'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0210'].title}</div>
+              {plantMap['0210'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0210'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          白い野バラが多い奄美のキイチゴの仲間の中で、可愛いピンクの花を咲かせる珍しい存在です。
+          4月頃、林縁や道端で見かけます。花は小さく華奢で優雅な印象。
+          不思議なのは、5枚の花びらが完全には開かず、直立したまま咲き続けること——これがナワシロイチゴの大きな見分けポイントです。
+          葉の裏が白い綿毛に覆われて白く見えるのも個性的。実は赤く熟しますが、酸味が強くやや食べにくく、ジャムなど加工向きです。
+        </p>
+      </section>
+
+      <!-- ⑤ アマミフユイチゴ -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">アマミフユイチゴ</h2>
+        {plantMap['0008'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0008'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0008'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0008'].images)}
+                alt={plantMap['0008'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0008'].title}</div>
+              {plantMap['0008'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0008'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          奄美大島と徳之島の固有種で、湯湾岳などの高地・多湿な林床（雲霧林）にのみ自生する、幻のような野イチゴです。
+          名前は「フユイチゴ」ですが、本土の近縁種とは異なり夏（7〜8月）に赤い実をつけるという、奄美ならではの不思議な生態を持っています。
+          これは、亜熱帯の島嶼においてアマミノクロウサギなどの動物に栄養を供給するための独自の適応進化と考えられています。
+          6月頃に湯湾岳に登ると出会えることがありますが、私は花期を逃すことが多く、貴重な出会いになっています。
+        </p>
+      </section>
+
+      <!-- ⑥ ヘビイチゴ -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">ヘビイチゴ</h2>
+        {plantMap['0358'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0358'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0358'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0358'].images)}
+                alt={plantMap['0358'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0358'].title}</div>
+              {plantMap['0358'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0358'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          道端や里山で普通に見られる小さな野イチゴ。他のキイチゴが白い花を咲かせるのに対し、ヘビイチゴは黄色い花が特徴——これも見分けるポイントになります。
+          「毒があるの？」とよく聞かれますが、実は無毒。ただし、実は水気がなくスカスカで甘みも酸味もほとんどなく、正直あまり美味しくありません……。
+          しかし奄美では、この実を焼酎に漬けた「ヘビイチゴ酒」を、ムカデや蜂などの虫刺されの薬として家庭に常備する文化が今も残っているとのこと。
+          なお、ヘビイチゴは正確にはキイチゴ属ではなくキジムシロ属（<em>Potentilla</em>）に分類されます。
+        </p>
+      </section>
+
+      <!-- ⑦ テリハノイバラ（バラ属） -->
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">テリハノイバラ——これは「バラ」！</h2>
+        {plantMap['0318'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0318'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0318'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0318'].images)}
+                alt={plantMap['0318'].title}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0318'].title}</div>
+              {plantMap['0318'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0318'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          名前に「イチゴ」とつく島の植物はけっこう多いけれど、これは「バラ」！
+          テリハノイバラは、バラ科バラ属（<em>Rosa</em>）に分類される本物のバラの仲間です。
+          5月頃、海岸近くに自生し、日差しに照らされた強いツヤのある葉がまず目を引きます——これが「照葉（てりは）」の名前の由来です。
+          ハマナスよりも白くて控えめな花ですが、ノイバラやナニワイバラよりは少し大きめで堂々としていて、芳香があります。
+          秋には小さな赤い「ローズヒップ」のような実がなります。
+          実は、現在世界中で親しまれている「つるバラ」の交配親として、テリハノイバラが多大な貢献をした歴史があるのをご存知でしょうか。
+          地面を這うように伸びる強さと美しさ——奄美の海岸の岩場に、ひっそりと咲く姿は格別です。
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+</Layout>

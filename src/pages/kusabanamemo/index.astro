@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const memos = [
+  {
+    title: 'ゲットウ・アオノクマタケラン・クマタケランの比較と面白い話',
+    slug: 'amami-gettou-kumatakeran-guide',
+    description: '南西諸島を彩るショウガ科ハナミョウガ属3種の見分け方と、奄美の暮らしに息づくディープな雑学。',
+    label: '植物比較',
+    image: '/kametora_kusabana_sanpo/images/0044_00.jpg'
+  },
+  {
+    title: '奄美で見つけたスミレの種類と特徴｜春の野草観察ガイド',
+    slug: 'amami-sumire-guide',
+    description: '奄美で出会った4種のスミレと、“幻”のアマミスミレについての観察メモ。',
+    label: '春の野草観察',
+    image: '/kametora_kusabana_sanpo/images/0253_00.jpg'
+  },
+  {
+    title: '奄美で見られるデイゴの種類と特徴｜南国に咲く情熱の花々',
+    slug: 'amami-deigo-guide',
+    description: '春から初夏にかけて奄美を彩る赤い花。「デイゴ」と名のつく仲間たちの特徴や違いについての観察メモ。',
+    label: '春の野草観察',
+    image: '/kametora_kusabana_sanpo/images/0037_00.jpg'
+  },
+  {
+    title: '奄美のバラ科植物図鑑｜キイチゴの仲間とテリハノイバラ',
+    slug: 'amami-barakanren-guide',
+    description: 'オレンジ・赤・ピンクに熟す野イチゴ6種と、海岸に這う本物のバラ「テリハノイバラ」。島の甘味とハブの言い伝えも。',
+    label: '植物図鑑',
+    image: '/kametora_kusabana_sanpo/images/0249_02.jpg'
+  }
+];
+
+const basePath = '/kametora_kusabana_sanpo/kusabanamemo';
+---
+
+<Layout title="奄美で出会った草花たち" description="奄美で出会った草花の記録や観察メモをまとめています。">
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <p class="text-xs tracking-[0.4em] text-neutral-500 md:text-sm">FIELD NOTE</p>
+      <h1 class="font-serif text-3xl md:text-5xl">奄美で出会った草花たち</h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        奄美の道ばたや森で出会った草花のメモ。季節の空気や観察の気づきを残しています。
+      </p>
+    </header>
+
+    <section class="mt-10 space-y-4">
+      {memos.map((memo) => (
+        <a
+          href={`${basePath}/${memo.slug}`}
+          class="group block overflow-hidden border border-white/10 bg-[#0f0f0f] transition-colors hover:border-white/30"
+        >
+          <div class="flex gap-5 p-5">
+            {memo.image && (
+              <div class="h-24 w-24 shrink-0 overflow-hidden border border-white/10 bg-black md:h-28 md:w-28">
+                <img
+                  src={memo.image}
+                  alt=""
+                  class="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            )}
+            <div class="min-w-0">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-neutral-500">
+              <span class="rounded-full border border-white/10 px-2 py-1 text-[10px] text-neutral-400">
+                {memo.label}
+              </span>
+              <span>Memo</span>
+            </div>
+            <h2 class="mt-4 font-serif text-xl text-neutral-100 transition-colors group-hover:text-neutral-50">
+              {memo.title}
+            </h2>
+            <p class="mt-3 text-sm leading-relaxed text-neutral-400">
+              {memo.description}
+            </p>
+            <div class="mt-4 text-xs text-neutral-500">続きを読む &gt;&gt;</div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,244 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import plants from '../../data/plants.json';
+
+const targetSlugs = ['0037', '0179', '0266', '0364'];
+const targetPlants = targetSlugs
+  .map((slug) => plants.find((plant) => plant.slug === slug))
+  .filter(Boolean);
+
+const plantMap = Object.fromEntries(
+  targetPlants.map((plant) => [plant.slug, plant])
+);
+
+const getImageSrc = (images) => {
+  if (!images || images.length === 0) return '';
+  const first = images[0];
+  return typeof first === 'string' ? first : first.src;
+};
+
+const getAltText = (plant) => {
+  if (plant.images && plant.images.length > 0 && typeof plant.images[0] !== 'string' && plant.images[0].alt) {
+    return plant.images[0].alt;
+  }
+  return plant.title;
+};
+
+const articleStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "奄美で見られるデイゴの種類と特徴｜南国に咲く情熱の花々",
+  "description": "奄美で見られるデイゴ、マルバデイゴ、サンゴシトウ、ブラジルデイゴの4種類の特徴と違いについてまとめました。",
+  "image": "https://kametora-lab.github.io/kametora_kusabana_sanpo/images/0037_00.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "かめとら"
+  }
+};
+---
+
+<Layout
+  title="奄美で見られるデイゴの種類と特徴｜南国に咲く情熱の花々"
+  description="奄美で見られるデイゴ、マルバデイゴ、サンゴシトウ、ブラジルデイゴの4種類の特徴と違いについてまとめました。"
+  keywords="奄美,デイゴ,マルバデイゴ,アメリカデイゴ,サンゴシトウ,ヒシバデイゴ,ブラジルデイゴ,沖縄県花,南国の花,奄美大島,植物図鑑,やしきこーさー"
+  ogType="article"
+  ogImage="/kametora_kusabana_sanpo/images/0037_00.jpg"
+  structuredData={articleStructuredData}
+>
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-20 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <a href="/kametora_kusabana_sanpo/kusabanamemo" class="text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-300 md:text-sm">
+        FIELD NOTE
+      </a>
+      <h1 class="font-serif text-3xl leading-tight md:text-5xl">
+        奄美で見られるデイゴの種類と特徴｜南国に咲く情熱の花々
+      </h1>
+      <p class="text-sm text-neutral-400 md:text-base">
+        春から初夏にかけて奄美を彩る情熱的な赤い花。「デイゴ」と名のつく仲間たち（デイゴ、マルバデイゴ、サンゴシトウ、ブラジルデイゴ）の特徴や違いについてまとめました。
+      </p>
+    </header>
+
+    <article class="mt-10 space-y-8 text-sm leading-relaxed text-neutral-300 md:text-base">
+      <p>
+        奄美をドライブしていると、目に飛び込んでくる鮮烈な赤い花々。
+        「あれはデイゴかな？」と思っても、実はデイゴの中にもいくつか種類があるんです。
+        それぞれの特徴を知ると、観察がもっと楽しくなりますよ！
+      </p>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">デイゴ（沖縄の県花）</h2>
+        {plantMap['0037'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0037'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0037'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0037'].images)}
+                alt={getAltText(plantMap['0037'])}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0037'].title}</div>
+              {plantMap['0037'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0037'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          「島唄」でも歌われている、まさに代表的なデイゴです。
+          インドからマレーシアにかけての熱帯アジア原産で、沖縄県の「県花」にも指定されています。
+          3月から5月頃にかけて、葉が落ちた枝先に鮮烈な深紅色の花を咲かせます。
+          大きな花びら（旗弁）が上を向いて咲くのが特徴です。
+        </p>
+        <p>
+          根を力強く横に張る性質があり、家の近くに植えると石垣や建物の基礎を持ち上げてしまうこともあるため、「やしきこーさー（屋敷壊さー）」という異名も持っています。木材は非常に軽く、琉球漆器の材料としても欠かせません。
+        </p>
+        <p>
+          奄美大島南部の加計呂麻島の諸鈍（しょどん）地区には、樹齢300年を超える見事な「諸鈍デイゴ並木」があり、映画『男はつらいよ』のロケ地としても有名です。
+        </p>
+        <p class="mt-2 rounded bg-white/5 p-3 text-sm">
+          💡 <a href="http://amamikametora.blog.fc2.com/blog-entry-5237.html" target="_blank" rel="noopener noreferrer" class="text-[#f7a0b5] hover:underline">ブログ記事：これぞ「デイゴ」の本気！広い空に赤い花が美しい</a><br />
+          川商ホール（奄美文化センター）の入口近くにある巨大な木。ずっとホウオウボクだと思っていたら、実は立派な本物の「デイゴ」だと気づいたエピソードです。空に向かって咲き誇る姿は圧巻です！
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">マルバデイゴ（アメリカデイゴ）</h2>
+        {plantMap['0179'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0179'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0179'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0179'].images)}
+                alt={getAltText(plantMap['0179'])}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0179'].title}</div>
+              {plantMap['0179'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0179'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          南アメリカ原産で、江戸時代から明治にかけて日本に渡来しました。
+          寒さにやや強いため、関東以西でも公園樹や街路樹としてよく見かけます（鹿児島県の県木にも指定されています）。
+        </p>
+        <p>
+          初夏から秋（6〜9月頃）にかけて、枝の先端から長い花序を出し、朱紅色の花を咲かせます。
+          一番大きな花びら（旗弁）が下を向き、まるで「あっかんべー😛」をしているように開くのがとてもユニークです！
+          本来のアメリカデイゴは葉の先が尖りますが、葉が丸みを帯びるものが「マルバデイゴ」と呼ばれています。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">サンゴシトウ（ヒシバデイゴ）</h2>
+        {plantMap['0266'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0266'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0266'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0266'].images)}
+                alt={getAltText(plantMap['0266'])}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0266'].title}</div>
+              {plantMap['0266'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0266'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          こちらは野生の植物ではなく、1840年代にオーストラリアで人工的に作られた園芸交配種です。
+          漢字では「珊瑚刺桐」と書き、花がサンゴのように赤く密集し、枝や葉にトゲがあり、幹が桐に似ていることに由来します。
+        </p>
+        <p>
+          花は一番大きな花びらがパカッと開かず、「細長い筒状（刀のような形）」のまま咲くのが大きな特徴です。
+          また、葉の先端が尖って少し「ひし形」をしているため、ヒシバデイゴとも呼ばれます。
+          咲き終わった枝を剪定してあげると、年に3回から4回も開花してくれます。
+        </p>
+        <p class="mt-2 rounded bg-white/5 p-3 text-sm">
+          💡 <a href="http://amamikametora.blog.fc2.com/blog-entry-5236.html" target="_blank" rel="noopener noreferrer" class="text-[#f7a0b5] hover:underline">ブログ記事：サンゴシトウ、ハイキンゴジカ、そして白い花の謎</a><br />
+          奄美らしさを感じる風景の一つとして見かけたのが、この「サンゴシトウ」でした。花の形や色合いがとても特徴的で、思わずカメラを向けたくなる美しさです。
+        </p>
+      </section>
+
+      <section class="space-y-4 border-t border-white/10 pt-6">
+        <h2 class="font-serif text-2xl text-neutral-100">ブラジルデイゴ（サイハイデイゴ）</h2>
+        {plantMap['0364'] && (
+          <a
+            href={`/kametora_kusabana_sanpo/plants/${plantMap['0364'].slug}`}
+            class="group block overflow-hidden border border-white/10 bg-[#0f0f0f]"
+          >
+            {getImageSrc(plantMap['0364'].images) ? (
+              <img
+                src={getImageSrc(plantMap['0364'].images)}
+                alt={getAltText(plantMap['0364'])}
+                class="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
+                NO IMAGE
+              </div>
+            )}
+            <div class="border-t border-white/10 px-3 py-2">
+              <div class="text-sm text-neutral-200">{plantMap['0364'].title}</div>
+              {plantMap['0364'].meta?.scientificName && (
+                <div class="text-xs text-neutral-500">{plantMap['0364'].meta.scientificName}</div>
+              )}
+            </div>
+          </a>
+        )}
+        <p>
+          その名の通りブラジル原産で、一般的なデイゴとは全くの別種です！
+          1月から4月頃にかけて、茎の先端に長さ50cmにもなる直立した総状花序を作ります。
+          細長い赤い花が上向きに密集して咲き、開花しても花びらは開ききらず、下から上へと順番に咲き進みます。
+        </p>
+        <p>
+          この直立したバトンのような特異な花の姿が、昔の武将が戦場で使った「采配（さいはい）」に似ていることから、
+          「サイハイデイゴ（采配梯梧）」というユニークな別名を持っています。
+          ハチドリなど特定の生き物のためにこのような形に進化したと言われています。
+        </p>
+      </section>
+
+      <p class="border-t border-white/10 pt-6">
+        ひとくちに「デイゴ」といっても、花の形が上向きだったり、下向きだったり、直立していたりと、本当に個性的です。
+        街や公園で見かけた赤い花も、よく観察してみると意外な発見があるかもしれません。枝のトゲには気をつけながら、ぜひ観察を楽しんでみてくださいね！
+      </p>
+
+    </article>
+
+  </main>
+</Layout>
