@@ -70,7 +70,13 @@ export const PlantFilters: React.FC<PlantFiltersProps> = ({
                         autoComplete="off"
                         placeholder="カタカナで入力"
                         value={searchQuery}
-                        onChange={(e) => onSearchChange(e.target.value)}
+                        onChange={(e) => {
+                            const val = e.target.value;
+                            const converted = val.replace(/[\u3041-\u3096]/g, (match) => {
+                                return String.fromCharCode(match.charCodeAt(0) + 0x60);
+                            });
+                            onSearchChange(converted);
+                        }}
                         className="w-full border border-white/10 bg-transparent px-3 py-2 text-sm text-neutral-200 focus:border-white/30 focus:outline-none"
                     />
                 </div>
