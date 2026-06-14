@@ -169,20 +169,5 @@ const getGalleryClass = (index) => galleryPattern[index % galleryPattern.length]
 	</main>
 </Layout>
 
-<script>
-	const searchInput = document.getElementById('top-search') as HTMLInputElement | null;
-	if (searchInput) {
-		searchInput.addEventListener('input', (e) => {
-			const target = e.target as HTMLInputElement;
-			const value = target.value;
-			const converted = value.replace(/[\u3041-\u3096]/g, (match) => {
-				return String.fromCharCode(match.charCodeAt(0) + 0x60);
-			});
-			if (value !== converted) {
-				target.value = converted;
-			}
-		});
-	}
-</script>
 
 

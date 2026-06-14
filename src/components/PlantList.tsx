@@ -41,6 +41,12 @@ const getImageAlt = (images: Array<string | PlantImage> | undefined, fallback: s
     return first.alt?.trim() || fallback;
 };
 
+const toKatakana = (str: string) => {
+    return str.replace(/[\u3041-\u3096]/g, (match) => {
+        return String.fromCharCode(match.charCodeAt(0) + 0x60);
+    });
+};
+
 export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -94,9 +100,12 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
     };
 
     const filteredPlants = useMemo(() => {
+        const query = toKatakana(searchQuery.toLowerCase().trim());
         return initialPlants.filter(plant => {
-            const matchesSearch = plant.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                plant.description.toLowerCase().includes(searchQuery.toLowerCase());
+            const title = toKatakana(plant.title.toLowerCase());
+            const description = toKatakana((plant.description || '').toLowerCase());
+
+            const matchesSearch = title.includes(query) || description.includes(query);
 
             const matchesColor = selectedColors.length === 0 ||
                 (plant.colors && plant.colors.some(c => selectedColors.includes(c)));
