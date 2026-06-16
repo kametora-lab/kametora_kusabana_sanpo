@@ -1,0 +1,251 @@
+---
+import Layout from '../layouts/Layout.astro';
+import plants from '../data/plants.json';
+
+// 月別の解説（SEO・AEO対策用テキスト）とフィルタ用クエリ
+const monthsData = [
+  {
+    num: 1,
+    traditionalName: "睦月 (むつき)",
+    description: "緋寒桜（ヒカンザクラ）が咲き始め、一足早い春の訪れを感じる季節です。世界自然遺産の森ではヘゴなどのシダ植物が青々と茂り、海辺にはアダンが力強く自生しています。",
+    query: "1月"
+  },
+  {
+    num: 2,
+    traditionalName: "如月 (きさらぎ)",
+    description: "年間を通じて最も気温が下がる時期ですが、山野ではリュウキュウバイカオウレンなどの可憐な白い花が咲き始めます。ホエールウォッチングのシーズンでもあり、自然の息吹を感じられます。",
+    query: "2月"
+  },
+  {
+    num: 3,
+    traditionalName: "弥生 (やよい)",
+    description: "奄美大島では「海開き」が行われ、本格的な春が始まります。林道沿いにはサクラツツジの薄ピンクの花が咲き乱れ、山々が新緑で美しく彩られる季節です。",
+    query: "3月"
+  },
+  {
+    num: 4,
+    traditionalName: "卯月 (うづき)",
+    description: "旧暦3月3日には伝統行事「三月三日（サニツ）」が行われ、女性たちが健康を祈って海に足を浸します。新緑の森にはアマミヒイラギモチなどの独特な草花が芽吹きます。",
+    query: "4月"
+  },
+  {
+    num: 5,
+    traditionalName: "皐月 (さつき)",
+    description: "梅雨入りを迎える奄美ですが、この湿潤な気候こそが亜熱帯の多様な植物を育みます。雨の中でイジュの白い花が香り高く咲き誇り、山々を白く染めます。",
+    query: "5月"
+  },
+  {
+    num: 6,
+    traditionalName: "水無月 (みなづき)",
+    description: "梅雨が明けると、一気に強い日差しが照りつける南国の夏が到来します。オオハマボウ（ユウナ）が海岸沿いで黄色い大輪の花を咲かせ、夕方には赤く色を変えて落ちる情緒ある光景が見られます。",
+    query: "6月"
+  },
+  {
+    num: 7,
+    traditionalName: "文月 (ふづき)",
+    description: "奄美の夏本番です。各集落では豊年祭が始まり、伝統のチヂン（太鼓）の音が響き渡ります。強い西日を浴びて、ゲットウ（月桃）の白い貝殻のような花や赤い実が映える季節です。",
+    query: "7月"
+  },
+  {
+    num: 8,
+    traditionalName: "葉月 (はづき)",
+    description: "旧盆（キュウボン）や豊年祭が盛んに行われる時期です。海岸沿いにはアダンの実がパイナップルのように赤く熟し、ツルアダンなどの珍しい南国特有 of 植物が生命力を爆発させます。",
+    query: "8月"
+  },
+  {
+    num: 9,
+    traditionalName: "長月 (ながつき)",
+    description: "朝晩は少し涼しい風が吹き始めますが、日中はまだ厳しい暑さが残ります。旧暦8月最初の丙（ひのえ）の日には伝統行事「ショチョガマ」や「平瀬マンカイ」が秋名集落で行われ、実りの秋と豊作を祈ります。",
+    query: "9月"
+  },
+  {
+    num: 10,
+    traditionalName: "神無月 (かんなづき)",
+    description: "奄美の秋です。台風シーズンが落ち着き、草花散歩に最適な気候になります。林縁にはナンバンギセルなどのユニークな寄生植物がひっそりと花を咲かせ、秋の訪れを告げます。",
+    query: "10月"
+  },
+  {
+    num: 11,
+    traditionalName: "霜月 (しもつき)",
+    description: "爽やかな秋晴れの日が多くなります。薄紫色のリュウキュウコスミレが道端に咲き始め、山ではツワブキの黄色い花が斜面を美しく彩り、奄美の短い秋を演出します。",
+    query: "11月"
+  },
+  {
+    num: 12,
+    traditionalName: "師走 (しわす)",
+    description: "冬の訪れとともに北風が強くなりますが、亜熱帯の奄美ではシマカンギクなどの黄色い花が元気に咲き誇ります。1年の締めくくりに、年中緑の絶えない奄美の生命力を感じられます。",
+    query: "12月"
+  }
+];
+
+// 各月の草花をフィルタリング（画像があるもののみ）
+const monthsWithPlants = monthsData.map((month) => {
+  const filteredPlants = plants.filter((plant) => {
+    return (
+      plant.months &&
+      plant.months.includes(month.query) &&
+      plant.images &&
+      plant.images.length > 0
+    );
+  });
+  return { ...month, plants: filteredPlants };
+});
+
+const pageTitle = "奄美の草花カレンダー（旧暦・伝統行事と咲く花一覧）";
+const pageDescription = "奄美大島で月ごとに咲く美しい草花・植物を旧暦や伝統行事とともに紹介するカレンダー。1月から12月まで、各月に奄美の山野や道端で見られる代表的な草花の写真をサムネイル形式で並べ、カルーセルでスムーズに閲覧できます。";
+
+// 検索エンジン・AI検索向けのJSON-LD構造化データ
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": pageTitle,
+  "description": pageDescription,
+  "url": Astro.url.toString(),
+  "itemListElement": monthsWithPlants.map((month, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": `${month.num}月の奄美の草花（${month.traditionalName}）`,
+    "description": month.description,
+    "item": {
+      "@type": "CreativeWork",
+      "name": `${month.num}月の奄美の草花カレンダー`,
+      "about": month.plants.slice(0, 10).map((plant) => ({
+        "@type": "Thing",
+        "name": plant.title,
+        "url": new URL(`/kametora_kusabana_sanpo/plants/${plant.slug}`, import.meta.env.SITE).toString()
+      }))
+    }
+  }))
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} structuredData={structuredData}>
+  <main class="mx-auto min-h-screen max-w-6xl px-6 pb-24 md:px-10 lg:px-16">
+    <header class="space-y-4 pt-6 md:pt-10">
+      <p class="text-xs tracking-[0.4em] text-neutral-500 md:text-sm">CALENDAR</p>
+      <h1 class="font-serif text-3xl md:text-5xl">奄美の草花カレンダー</h1>
+      <p class="text-sm text-neutral-400 md:text-base leading-relaxed">
+        奄美大島で出会った草花を、旧暦の季節の移り変わりや伝統行事、奄美ならではの気候とともに月ごとに辿るカレンダーです。
+      </p>
+    </header>
+
+    <div class="mt-16 space-y-16 max-w-6xl">
+      {monthsWithPlants.map((month) => (
+        <section class="border-b border-white/5 pb-12 last:border-0 last:pb-0" id={`month-${month.num}`}>
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+            {/* 月の紹介・旧暦・伝統行事 */}
+            <div class="space-y-4 lg:col-span-1">
+              <div class="flex items-baseline gap-3">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-neutral-100 tracking-tight">
+                  {month.num}月
+                </h2>
+                <span class="font-serif text-sm md:text-base text-neutral-500 font-medium">
+                  {month.traditionalName}
+                </span>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed font-sans">
+                {month.description}
+              </p>
+            </div>
+
+            {/* その月に見られる草花のカルーセル（左右の矢印ナビゲーション付き） */}
+            <div class="lg:col-span-3 relative group/carousel-container">
+              {month.plants.length > 0 && (
+                <>
+                  {/* 左矢印ボタン */}
+                  <button
+                    type="button"
+                    class="absolute left-2 top-[84px] md:top-[98px] -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white opacity-0 group-hover/carousel-container:opacity-100 transition-opacity duration-300 hover:bg-black/80 focus:outline-none cursor-pointer hidden md:flex"
+                    aria-label="左にスクロール"
+                    onclick={`document.getElementById('carousel-${month.num}').scrollBy({ left: -400, behavior: 'smooth' })`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                  </button>
+
+                  {/* 右矢印ボタン */}
+                  <button
+                    type="button"
+                    class="absolute right-2 top-[84px] md:top-[98px] -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white opacity-0 group-hover/carousel-container:opacity-100 transition-opacity duration-300 hover:bg-black/80 focus:outline-none cursor-pointer hidden md:flex"
+                    aria-label="右にスクロール"
+                    onclick={`document.getElementById('carousel-${month.num}').scrollBy({ left: 400, behavior: 'smooth' })`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </button>
+                </>
+              )}
+
+              {/* カルーセルコンテナ本体（スクロールバー非表示） */}
+              <div 
+                id={`carousel-${month.num}`}
+                class="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 px-1 -mx-1"
+              >
+                {month.plants.map((plant) => {
+                  const firstImage = plant.images[0];
+                  const imgSrc = typeof firstImage === 'string' ? firstImage : firstImage.src;
+                  const imgAlt = typeof firstImage === 'string' ? plant.title : (firstImage.alt || plant.title);
+                  
+                  return (
+                    <a 
+                      href={`/kametora_kusabana_sanpo/plants/${plant.slug}`} 
+                      class="w-48 md:w-56 shrink-0 snap-start group block focus:outline-none"
+                    >
+                      <div class="aspect-[4/3] w-full overflow-hidden border border-white/10 bg-[#111] rounded-lg relative">
+                        <img 
+                          src={imgSrc} 
+                          alt={imgAlt}
+                          class="w-full h-full object-cover transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) group-hover:scale-105 group-focus:scale-105"
+                          loading="lazy"
+                          decoding="async"
+                          width="320"
+                          height="240"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                      </div>
+                      <div class="mt-3 space-y-1">
+                        <h3 class="text-sm font-medium text-neutral-200 group-hover:text-neutral-100 group-focus:text-neutral-100 transition-colors duration-200 line-clamp-1">
+                          {plant.title}
+                        </h3>
+                        {plant.meta?.family && (
+                          <p class="text-xs text-neutral-500 font-sans tracking-wide line-clamp-1">
+                            {plant.meta.family}
+                          </p>
+                        )}
+                      </div>
+                    </a>
+                  );
+                })}
+                {month.plants.length === 0 && (
+                  <div class="h-[180px] w-full border border-dashed border-white/5 rounded-lg flex items-center justify-center text-neutral-600 text-sm">
+                    この月に見られる草花のデータがまだありません。
+                  </div>
+                )}
+              </div>
+              
+              {/* スクロールインジケーター（右端にスクロールできることを示す微妙なフェード） */}
+              {month.plants.length > 3 && (
+                <div class="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-[#0b0b0b] to-transparent pointer-events-none hidden md:block" />
+              )}
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* カルーセルのスクロールバーを非表示にする */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>
