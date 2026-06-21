@@ -3,7 +3,7 @@ const path = require('path');
 
 // パス設定
 const PROJECT_ROOT = 'C:/Gravity/amamikusabana_2';
-const REGIST_DIR = path.join(PROJECT_ROOT, '草花登録');
+const REGIST_DIR = path.join(PROJECT_ROOT, 'kusabana_touroku');
 const JSON_PATH = path.join(PROJECT_ROOT, 'src/data/plants.json');
 const IMAGE_DEST_DIR = path.join(PROJECT_ROOT, 'public/images');
 
@@ -66,10 +66,16 @@ function main() {
     }
 
     // 草花名を含む md ファイルを探す
-    const targetMdFile = files.find(file => file.toLowerCase().includes(plantName.toLowerCase()) && file.endsWith('.md'));
+    let targetMdFile = files.find(file => file.toLowerCase().includes(plantName.toLowerCase()) && file.endsWith('.md'));
     if (!targetMdFile) {
-      logError(`「${plantName}」を含むMarkdownファイルが「${REGIST_DIR}」内に見つかりませんニダ。`);
-      process.exit(1);
+      const allMdFiles = files.filter(file => file.endsWith('.md'));
+      if (allMdFiles.length === 1) {
+        targetMdFile = allMdFiles[0];
+        log(`草花名を含むmdが見つからないため、唯一のmdファイル「${targetMdFile}」を対象にするニダ。`);
+      } else {
+        logError(`「${plantName}」を含むMarkdownファイル、または唯一のMarkdownファイルが「${REGIST_DIR}」内に見つかりませんニダ。`);
+        process.exit(1);
+      }
     }
 
     const oldPath = path.join(REGIST_DIR, targetMdFile);
@@ -144,12 +150,35 @@ function main() {
   }
 
   // 3. 画像ファイルの処理
-  const filesInRegist = fs.readdirSync(REGIST_DIR);
+  let filesInRegist = fs.readdirSync(REGIST_DIR);
   // 草花名を含む jpg または jpeg ファイルを探す
-  const imageFiles = filesInRegist.filter(file => {
+  let imageFiles = filesInRegist.filter(file => {
     const lower = file.toLowerCase();
     return lower.includes(plantName.toLowerCase()) && (lower.endsWith('.jpg') || lower.endsWith('.jpeg'));
   }).sort();
+
+  // 見つからない場合、登録フォルダ内にあるすべての jpg/jpeg ファイルを対象にし、一時リネームする
+  if (imageFiles.length === 0) {
+    const allJpgFiles = filesInRegist.filter(file => {
+      const lower = file.toLowerCase();
+      return lower.endsWith('.jpg') || lower.endsWith('.jpeg');
+    }).sort();
+
+    if (allJpgFiles.length > 0) {
+      log(`草花名を含む画像が見つからないため、登録フォルダ内の全画像（${allJpgFiles.length}枚）を一時リネームして処理対象にするニダ。`);
+      allJpgFiles.forEach((file, idx) => {
+        const ext = path.extname(file);
+        const tempName = `${plantName}_temp_${idx}${ext}`;
+        try {
+          fs.renameSync(path.join(REGIST_DIR, file), path.join(REGIST_DIR, tempName));
+          imageFiles.push(tempName);
+        } catch (renameErr) {
+          logError(`画像の事前一時リネームに失敗しましたニダ: ${renameErr.message}`);
+        }
+      });
+      imageFiles.sort();
+    }
+  }
 
   if (imageFiles.length === 0) {
     log(`「${plantName}」を含む画像ファイル（jpg/jpeg）は見つからなかったニダ。画像処理はスキップするニダ。`);
