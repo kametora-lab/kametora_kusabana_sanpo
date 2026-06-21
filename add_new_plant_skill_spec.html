@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新規草花登録スキル（add-new-plant）仕様書</title>
+  <!-- Google Fonts: Outfit & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0c13;
+      --card-bg: rgba(20, 22, 37, 0.6);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #a855f7;
+      --primary-glow: rgba(168, 85, 247, 0.4);
+      --secondary: #06b6d4;
+      --secondary-glow: rgba(6, 182, 212, 0.4);
+      --accent-green: #10b981;
+      --accent-orange: #f97316;
+      --font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ヘッダーデザイン */
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(to right, #ffffff, #a855f7, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    /* カード・セクションスタイル */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168, 85, 247, 0.2);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 12px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 24px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      border-radius: 3px;
+      margin-right: 12px;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* リストデザイン */
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    li strong {
+      color: var(--text-main);
+    }
+
+    /* コードブロックスタイル */
+    .code-block {
+      background-color: rgba(7, 8, 15, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .code-block::before {
+      content: 'BASH / POWERSHELL';
+      position: absolute;
+      top: 6px;
+      right: 12px;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .code-comment {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .code-string {
+      color: #a78bfa;
+    }
+
+    /* パス表示タグ */
+    .path-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
+    /* フローチャート風コンポーネント */
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-weight: 900;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+    }
+
+    .step-content h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    /* 警告・仕様タグ */
+    .spec-alert {
+      border-left: 4px solid var(--accent-orange);
+      background: rgba(249, 115, 22, 0.08);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+
+    .spec-alert.info {
+      border-left-color: var(--secondary);
+      background: rgba(6, 182, 212, 0.08);
+    }
+
+    .spec-alert.success {
+      border-left-color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.08);
+    }
+
+    .spec-alert h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .spec-alert p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge">Local Skill Spec</div>
+      <h1>add-new-plant 仕様書</h1>
+      <p class="subtitle">草花登録・データ整理の自動化スクリプト仕様まとめニダ</p>
+    </header>
+
+    <!-- 概要セクション -->
+    <section id="overview">
+      <h2>概要ニダ</h2>
+      <p>このスキルは、<strong>「草花登録」フォルダ</strong>に配置された Markdownファイルと画像ファイルから、新規の草花データを JSON（<span class="path-tag">plants.json</span>）に自動登録、または既存の草花に新画像を追加した上で、ファイルを適切な保存先に整理するローカルシステムニダ。</p>
+      
+      <div class="spec-alert info">
+        <h4>💡 トリガー発言例</h4>
+        <p>ユーザーから「草花登録して」「〇〇を登録して」「草花整理して」等の要請があった場合に、このフローに従って実行するニダ。</p>
+      </div>
+    </section>
+
+    <!-- フローセクション -->
+    <section id="workflow">
+      <h2>登録フロー・手順ニダ</h2>
+      <div class="flow-steps">
+        
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>草花名（和名）の確認</h3>
+            <p>登録・整理を行いたい草花の名前（例: 「メジロホオズキ」「アダン」など）を特定するニダ。</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>事前リネーム（ファイル検出準備）</h3>
+            <p>スクリプトが正しくファイルを検出できるように、「草花登録」フォルダ内のファイルを以下のようにリネームするニダ。</p>
+            <ul>
+              <li><strong>Markdown:</strong> <span class="path-tag">新規 テキスト ドキュメント.md</span> など → <span class="path-tag">草花名.md</span></li>
+              <li><strong>画像:</strong> <span class="path-tag">2026xxxx.jpg</span> など → <span class="path-tag">草花名_2026xxxx.jpg</span> （※草花名を含める）</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>登録スクリプトの実行</h3>
+            <p>プロジェクトのルートディレクトリで、草花名を引数に与えてスクリプトを走らせるニダ。</p>
+            <div class="code-block">
+              <span class="code-comment"># Cwd: C:\Gravity\amamikusabana_2</span><br>
+              node .agents/skills/add-new-plant/scripts/register_plant.cjs <span class="code-string">"草花名"</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 詳細仕様セクション -->
+    <section id="details">
+      <h2>詳細処理仕様ニダ</h2>
+      
+      <h3>1. 画像ファイルの自動整理・リネーム</h3>
+      <p>「草花登録」フォルダ内の草花名を含む画像ファイルは、自動的に以下のルールでリネームされ、移動するニダ。</p>
+      <ul>
+        <li><strong>移動先:</strong> <span class="path-tag">public/images/</span></li>
+        <li><strong>リネーム規則:</strong> <span class="path-tag">[草花ID]_[連番].jpg</span> （例: 0185_02.jpg）</li>
+      </ul>
+      <div class="spec-alert">
+        <h4>⚠️ 画像重複時の挙動</h4>
+        <p>もし移動先に同じ名前の画像が既に存在する場合、ファイル移動は行われず、ログに「<strong>[画像名]は既存しています。調べてから自分でimagesフォルダに移動してくださいニダ。</strong>」と出力してスキップするニダ。</p>
+      </div>
+
+      <h3>2. Markdownファイルの自動整理・移動</h3>
+      <p>スクリプトでのパースが完了したMarkdownファイルは、以下のルールで自動的に整理移動するニダ。</p>
+      <ul>
+        <li><strong>移動先:</strong> <span class="path-tag">C:\Gravity\KUSABANA_SEIRI\motomemo_md\</span></li>
+      </ul>
+      <div class="spec-alert">
+        <h4>⚠️ Markdown重複時の挙動</h4>
+        <p>もし移動先に同名の Markdown ファイルが既に存在する場合、ファイル移動は行われず、ログに「<strong>mdがすでにあったのでmotomemo_mdには追加できませんニダ: [ファイル名].md</strong>」と警告を出力して移動をスキップするニダ。</p>
+      </div>
+
+      <h3>3. JSONデータの更新と自動バックアップ</h3>
+      <ul>
+        <li>新規草花の場合は、<span class="path-tag">plants.json</span> から最大IDを自動検知して新規ID（連番）を発行し、追加するニダ。</li>
+        <li>既存草花の場合は、新しく追加された画像の参照情報を `images` 配列に挿入するニダ。</li>
+        <li>ファイル書き込み直前に、<span class="path-tag">src/data/</span> 配下に <span class="path-tag">plants_YYYYMMDDHHmmss.json</span> 形式のバックアップファイルが自動生成されるニダ。</li>
+      </ul>
+    </section>
+
+    <!-- 編集画面セクション -->
+    <section id="server">
+      <h2>JSON編集サーバーの起動ニダ</h2>
+      <p>登録や画像追加が一通り完了した後は、最終確認および詳細設定のためにJSON編集画面を起動するニダ。</p>
+      
+      <div class="code-block">
+        <span class="code-comment"># Cwd: C:\Gravity\KUSABANA_SEIRI\JSON_EDIT</span><br>
+        .\run_server.bat
+      </div>
+
+      <p>起動後、ウェブブラウザで以下のアドレスにアクセスすることで、ビジュアル編集画面を確認できるニダ！</p>
+      <div class="spec-alert success">
+        <h4>🔗 ブラウザアクセス先</h4>
+        <p><a href="http://localhost:8000/index.html" target="_blank" style="color: var(--secondary); font-weight: 600; text-decoration: none;">http://localhost:8000/index.html</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Antigravity Digital Flora Database Project. Powered by DeepMind. ニダ！</p>
+    </footer>
+  </div>
+
+</body>
+</html>
