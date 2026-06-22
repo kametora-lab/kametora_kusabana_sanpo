@@ -132,7 +132,7 @@ const structuredData = {
     </header>
 
     <!-- 1月〜12月の月遷移タイルボタン (Stickyバー) -->
-    <nav class="sticky top-[84px] z-40 -mx-6 px-6 py-4 mt-8 bg-[#0b0b0b]/90 backdrop-blur-md border-b border-white/5 md:-mx-10 md:px-10 lg:-mx-16 lg:px-16 transition-all duration-300">
+    <nav class="sticky top-[84px] z-40 hidden md:block -mx-6 px-6 py-4 mt-8 bg-[#0b0b0b]/90 backdrop-blur-md border-b border-white/5 md:-mx-10 md:px-10 lg:-mx-16 lg:px-16 transition-all duration-300">
       <div class="max-w-6xl mx-auto">
         <div class="flex overflow-x-auto gap-2 pb-1 scrollbar-none snap-x sm:grid sm:grid-cols-6 lg:grid-cols-12">
           {monthsData.map((m) => (
@@ -273,3 +273,98 @@ const structuredData = {
     -webkit-overflow-scrolling: touch;
   }
 </style>
+
+<!-- スマホ専用フローティングボタン (FAB) -->
+<button
+  id="fab-month-selector"
+  type="button"
+  class="fixed bottom-6 right-6 z-40 md:hidden flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#0f0f0f]/90 text-neutral-200 shadow-xl backdrop-blur-md hover:bg-neutral-800 active:scale-95 transition-all duration-200 cursor-pointer focus:outline-none"
+  aria-label="月を選択する"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+  </svg>
+</button>
+
+<!-- スマホ専用月選択モーダルオーバーレイ -->
+<div
+  id="month-modal-overlay"
+  class="fixed inset-0 z-50 md:hidden bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-end justify-center p-4"
+>
+  <!-- モーダル本体 -->
+  <div
+    id="month-modal-content"
+    class="w-full max-w-sm bg-[#0f0f0f] border border-white/10 rounded-2xl p-6 shadow-2xl translate-y-8 transition-transform duration-300"
+  >
+    <div class="flex items-center justify-between pb-4 border-b border-white/5 mb-6">
+      <h3 class="font-serif text-lg text-neutral-100 font-medium">表示月を選択</h3>
+      <button id="close-month-modal" class="text-neutral-500 hover:text-white p-1 focus:outline-none cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="grid grid-cols-3 gap-3">
+      {monthsData.map((m) => (
+        <button
+          type="button"
+          class="month-modal-btn flex items-center justify-center py-3 rounded-xl border border-white/10 bg-white/5 text-neutral-200 hover:bg-neutral-800 hover:border-neutral-700 active:scale-95 transition-all duration-200 cursor-pointer"
+          data-target={`#month-${m.num}`}
+        >
+          <span class="text-sm font-semibold">{m.num}月</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const fab = document.getElementById('fab-month-selector');
+  const overlay = document.getElementById('month-modal-overlay');
+  const content = document.getElementById('month-modal-content');
+  const closeBtn = document.getElementById('close-month-modal');
+  const monthBtns = document.querySelectorAll('.month-modal-btn');
+
+  function openModal() {
+    if (overlay && content) {
+      overlay.classList.remove('pointer-events-none', 'opacity-0');
+      overlay.classList.add('opacity-100');
+      content.classList.remove('translate-y-8');
+      content.classList.add('translate-y-0');
+    }
+  }
+
+  function closeModal() {
+    if (overlay && content) {
+      overlay.classList.add('pointer-events-none');
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0');
+      content.classList.remove('translate-y-0');
+      content.classList.add('translate-y-8');
+    }
+  }
+
+  if (fab && overlay && closeBtn) {
+    fab.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    monthBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        if (targetId) {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            closeModal();
+            setTimeout(() => {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }, 200);
+          }
+        }
+      });
+    });
+  }
+</script>

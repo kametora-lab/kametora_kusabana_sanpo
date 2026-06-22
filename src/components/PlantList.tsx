@@ -51,6 +51,7 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedColors, setSelectedColors] = useState<string[]>([]);
     const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
+    const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
     const toMonthLabel = (month: string) => (month.includes('月') ? month : `${month}月`);
     const normalizeMonth = (month: string) => month.replace('月', '').trim();
@@ -118,9 +119,14 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
         });
     }, [initialPlants, searchQuery, selectedColors, selectedMonths]);
 
+    const activeFiltersCount = (selectedColors.length > 0 ? 1 : 0) + 
+                               (selectedMonths.length > 0 ? 1 : 0) + 
+                               (searchQuery.trim() ? 1 : 0);
+
     return (
-        <div className="flex flex-col gap-8 md:flex-row md:items-start">
-            <div className="md:w-72 md:shrink-0 md:order-2 sticky top-6 md:top-24 z-30 self-start">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start w-full">
+            {/* PC・タブレット用サイドバー固定フィルター */}
+            <div className="hidden md:block md:w-72 md:shrink-0 md:order-2 sticky top-6 md:top-24 z-30 self-start">
                 <PlantFilters
                     colors={colors}
                     resultsCount={filteredPlants.length}
@@ -131,6 +137,75 @@ export const PlantList: React.FC<PlantListProps> = ({ initialPlants, colors }) =
                     onToggleColor={toggleColor}
                     onToggleMonth={toggleMonth}
                 />
+            </div>
+
+            {/* スマホ用フローティングフィルターボタン (FAB) */}
+            <button
+                type="button"
+                onClick={() => setIsMobileFiltersOpen(true)}
+                className="fixed bottom-6 right-6 z-40 md:hidden flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#0f0f0f]/90 text-neutral-200 shadow-xl backdrop-blur-md hover:bg-neutral-800 active:scale-95 transition-all duration-200 cursor-pointer focus:outline-none"
+                aria-label="フィルターを開く"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                </svg>
+                {activeFiltersCount > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-neutral-100 text-[10px] font-bold text-neutral-900 shadow">
+                        {activeFiltersCount}
+                    </span>
+                )}
+            </button>
+
+            {/* スマホ用フィルターモーダルオーバーレイ */}
+            <div
+                onClick={(e) => {
+                    if (e.target === e.currentTarget) setIsMobileFiltersOpen(false);
+                }}
+                className={`fixed inset-0 z-50 md:hidden bg-black/60 backdrop-blur-sm flex items-end justify-center p-4 transition-opacity duration-300 ${
+                    isMobileFiltersOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+            >
+                <div
+                    className={`w-full max-w-sm bg-[#0f0f0f] border border-white/10 rounded-2xl p-6 shadow-2xl transition-transform duration-300 ${
+                        isMobileFiltersOpen ? 'translate-y-0' : 'translate-y-8'
+                    }`}
+                >
+                    <div className="flex items-center justify-between pb-4 border-b border-white/5 mb-6">
+                        <h3 className="font-serif text-lg text-neutral-100 font-medium">絞り込み条件</h3>
+                        <button
+                            type="button"
+                            onClick={() => setIsMobileFiltersOpen(false)}
+                            className="text-neutral-500 hover:text-white p-1 focus:outline-none cursor-pointer"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div className="max-h-[60vh] overflow-y-auto pr-1">
+                        <PlantFilters
+                            colors={colors}
+                            resultsCount={filteredPlants.length}
+                            searchQuery={searchQuery}
+                            selectedColors={selectedColors}
+                            selectedMonths={selectedMonths}
+                            onSearchChange={setSearchQuery}
+                            onToggleColor={toggleColor}
+                            onToggleMonth={toggleMonth}
+                            isModal={true}
+                            className="border-0 bg-transparent p-0 max-h-none overflow-visible"
+                        />
+                    </div>
+
+                    <button
+                        type="button"
+                        onClick={() => setIsMobileFiltersOpen(false)}
+                        className="mt-6 w-full py-3 bg-neutral-100 text-neutral-950 font-medium rounded-xl hover:bg-neutral-200 transition active:scale-98 cursor-pointer text-center text-sm"
+                    >
+                        結果を表示する ({filteredPlants.length}件)
+                    </button>
+                </div>
             </div>
 
             <div className="flex-1 md:order-1">

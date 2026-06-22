@@ -16,6 +16,8 @@ interface PlantFiltersProps {
     onSearchChange: (value: string) => void;
     onToggleColor: (colorId: string) => void;
     onToggleMonth: (month: string) => void;
+    isModal?: boolean;
+    className?: string;
 }
 
 const ALL_MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
@@ -30,33 +32,37 @@ export const PlantFilters: React.FC<PlantFiltersProps> = ({
     onSearchChange,
     onToggleColor,
     onToggleMonth,
+    isModal = false,
+    className,
 }) => {
-    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-    const [isColorsOpen, setIsColorsOpen] = useState(false);
-    const [isMonthsOpen, setIsMonthsOpen] = useState(false);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(isModal || false);
+    const [isColorsOpen, setIsColorsOpen] = useState(isModal || false);
+    const [isMonthsOpen, setIsMonthsOpen] = useState(isModal || false);
 
     return (
-        <div className="border border-white/10 bg-[#0f0f0f] p-4 md:p-6 md:max-h-[calc(100vh-7rem)] md:overflow-auto">
+        <div className={className || "border border-white/10 bg-[#0f0f0f] p-4 md:p-6 md:max-h-[calc(100vh-7rem)] md:overflow-auto"}>
             <div className="mb-4 flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-3">
                 <h2 className="font-serif text-lg text-neutral-100 md:text-xl">{title}</h2>
                 <div className="flex items-center gap-3">
                     {typeof resultsCount === 'number' && (
                         <span className="text-[11px] text-neutral-500 md:text-xs">{resultsCount}件</span>
                     )}
-                    <button
-                        type="button"
-                        onClick={() => setIsFiltersOpen(prev => !prev)}
-                        className="md:hidden inline-flex items-center gap-2 text-[10px] text-neutral-400"
-                        aria-label="Toggle filters"
-                        aria-expanded={isFiltersOpen}
-                    >
-                        <span className="flex flex-col gap-1">
-                            <span className="h-[2px] w-3.5 bg-neutral-500"></span>
-                            <span className="h-[2px] w-3.5 bg-neutral-500"></span>
-                            <span className="h-[2px] w-3.5 bg-neutral-500"></span>
-                        </span>
-                        フィルター
-                    </button>
+                    {!isModal && (
+                        <button
+                            type="button"
+                            onClick={() => setIsFiltersOpen(prev => !prev)}
+                            className="md:hidden inline-flex items-center gap-2 text-[10px] text-neutral-400"
+                            aria-label="Toggle filters"
+                            aria-expanded={isFiltersOpen}
+                        >
+                            <span className="flex flex-col gap-1">
+                                <span className="h-[2px] w-3.5 bg-neutral-500"></span>
+                                <span className="h-[2px] w-3.5 bg-neutral-500"></span>
+                                <span className="h-[2px] w-3.5 bg-neutral-500"></span>
+                            </span>
+                            フィルター
+                        </button>
+                    )}
                 </div>
             </div>
             <div className={`grid grid-cols-1 gap-5 ${isFiltersOpen ? 'grid' : 'hidden'} md:grid`}>
@@ -76,16 +82,22 @@ export const PlantFilters: React.FC<PlantFiltersProps> = ({
                 </div>
 
                 <div className="space-y-2">
-                    <button
-                        type="button"
-                        onClick={() => setIsColorsOpen(prev => !prev)}
-                        className="md:hidden inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-neutral-500"
-                        aria-expanded={isColorsOpen}
-                    >
-                        色
-                        <span className={`text-neutral-500 transition-transform ${isColorsOpen ? 'rotate-180' : ''}`}>v</span>
-                    </button>
-                    <label className="hidden text-xs uppercase tracking-[0.3em] text-neutral-500 md:block">色</label>
+                    {!isModal ? (
+                        <>
+                            <button
+                                type="button"
+                                onClick={() => setIsColorsOpen(prev => !prev)}
+                                className="md:hidden inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-neutral-500"
+                                aria-expanded={isColorsOpen}
+                            >
+                                色
+                                <span className={`text-neutral-500 transition-transform ${isColorsOpen ? 'rotate-180' : ''}`}>v</span>
+                            </button>
+                            <label className="hidden text-xs uppercase tracking-[0.3em] text-neutral-500 md:block">色</label>
+                        </>
+                    ) : (
+                        <label className="block text-xs uppercase tracking-[0.3em] text-neutral-500">色</label>
+                    )}
                     <div className={`${isColorsOpen ? 'grid' : 'hidden'} md:grid grid-cols-3 gap-2`}>
                         {colors.map(color => (
                             <button
@@ -104,16 +116,22 @@ export const PlantFilters: React.FC<PlantFiltersProps> = ({
                 </div>
 
                 <div className="space-y-2">
-                    <button
-                        type="button"
-                        onClick={() => setIsMonthsOpen(prev => !prev)}
-                        className="md:hidden inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-neutral-500"
-                        aria-expanded={isMonthsOpen}
-                    >
-                        観察月
-                        <span className={`text-neutral-500 transition-transform ${isMonthsOpen ? 'rotate-180' : ''}`}>v</span>
-                    </button>
-                    <label className="hidden text-xs uppercase tracking-[0.3em] text-neutral-500 md:block">観察月</label>
+                    {!isModal ? (
+                        <>
+                            <button
+                                type="button"
+                                onClick={() => setIsMonthsOpen(prev => !prev)}
+                                className="md:hidden inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-neutral-500"
+                                aria-expanded={isMonthsOpen}
+                            >
+                                観察月
+                                <span className={`text-neutral-500 transition-transform ${isMonthsOpen ? 'rotate-180' : ''}`}>v</span>
+                            </button>
+                            <label className="hidden text-xs uppercase tracking-[0.3em] text-neutral-500 md:block">観察月</label>
+                        </>
+                    ) : (
+                        <label className="block text-xs uppercase tracking-[0.3em] text-neutral-500">観察月</label>
+                    )}
                     <div className={`${isMonthsOpen ? 'grid' : 'hidden'} md:grid grid-cols-3 gap-2`}>
                         {ALL_MONTHS.map(month => (
                             <button
