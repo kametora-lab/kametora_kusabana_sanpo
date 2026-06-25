@@ -1214,6 +1214,11 @@
         "src": "/kametora_kusabana_sanpo/images/0044_03.jpg",
         "memo": "葉に斑が入った「キフゲットウ」",
         "alt": "ゲットウの枝垂れて咲く黄色に赤い筋が入る花と奄美大島の人里の自生環境"
+      },
+      {
+        "src": "/kametora_kusabana_sanpo/images/0044_04.jpg",
+        "memo": "",
+        "alt": "ゲットウの枝垂れて咲く黄色に赤い筋が入る花と奄美大島の人里の自生環境"
       }
     ],
     "colors": [
@@ -1221,7 +1226,8 @@
       "red"
     ],
     "months": [
-      "5月"
+      "5月",
+      "6月"
     ],
     "meta": {
       "scientificName": "Alpinia zerumbet (Pers.) B.L.Burtt et R.M.Sm.",
