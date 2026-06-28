@@ -58,36 +58,40 @@ function main() {
 
     const files = fs.readdirSync(REGIST_DIR);
     
-    // 完全に一致する md ファイルが既にあるかチェック
     const exactMdFile = `${plantName}.md`;
-    if (files.includes(exactMdFile)) {
-      logError(`その草花mdは既にあるので新規登録できませんニダ: ${exactMdFile}`);
-      process.exit(1);
-    }
+    let targetMdFile = '';
 
-    // 草花名を含む md ファイルを探す
-    let targetMdFile = files.find(file => file.toLowerCase().includes(plantName.toLowerCase()) && file.endsWith('.md'));
-    if (!targetMdFile) {
-      const allMdFiles = files.filter(file => file.endsWith('.md'));
-      if (allMdFiles.length === 1) {
-        targetMdFile = allMdFiles[0];
-        log(`草花名を含むmdが見つからないため、唯一のmdファイル「${targetMdFile}」を対象にするニダ。`);
-      } else {
-        logError(`「${plantName}」を含むMarkdownファイル、または唯一のMarkdownファイルが「${REGIST_DIR}」内に見つかりませんニダ。`);
-        process.exit(1);
+    // 完全に一致する md ファイルが既にあるかチェック
+    if (files.includes(exactMdFile)) {
+      log(`登録フォルダにすでに「${exactMdFile}」が存在するニダ。これを使用するニダ。`);
+      targetMdFile = exactMdFile;
+    } else {
+      // 草花名を含む md ファイルを探す
+      targetMdFile = files.find(file => file.toLowerCase().includes(plantName.toLowerCase()) && file.endsWith('.md'));
+      if (!targetMdFile) {
+        const allMdFiles = files.filter(file => file.endsWith('.md'));
+        if (allMdFiles.length === 1) {
+          targetMdFile = allMdFiles[0];
+          log(`草花名を含むmdが見つからないため、唯一のmdファイル「${targetMdFile}」を対象にするニダ。`);
+        } else {
+          logError(`「${plantName}」を含むMarkdownファイル、または唯一のMarkdownファイルが「${REGIST_DIR}」内に見つかりませんニダ。`);
+          process.exit(1);
+        }
       }
     }
 
     const oldPath = path.join(REGIST_DIR, targetMdFile);
     const newPath = path.join(REGIST_DIR, exactMdFile);
 
-    // リネーム実行
-    try {
-      fs.renameSync(oldPath, newPath);
-      log(`Markdownファイルをリネームしたニダ: ${targetMdFile} -> ${exactMdFile}`);
-    } catch (err) {
-      logError(`Markdownファイルのリネームに失敗しましたニダ: ${err.message}`);
-      process.exit(1);
+    // リネーム実行 (名前が異なる場合のみ)
+    if (oldPath !== newPath) {
+      try {
+        fs.renameSync(oldPath, newPath);
+        log(`Markdownファイルをリネームしたニダ: ${targetMdFile} -> ${exactMdFile}`);
+      } catch (err) {
+        logError(`Markdownファイルのリネームに失敗しましたニダ: ${err.message}`);
+        process.exit(1);
+      }
     }
 
     // Markdownファイルを読み込んでパース
