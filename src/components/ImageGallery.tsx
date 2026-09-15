@@ -1,22 +1,35 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
+/**
+ * 草花の画像ギャラリーのプロパティ
+ */
 interface ImageGalleryProps {
     images: Array<string | PlantImage>;
     title: string;
 }
 
+/**
+ * 草花画像情報
+ */
 interface PlantImage {
     src: string;
     memo?: string;
     alt?: string;
 }
 
+/**
+ * 画像リストを正規化する
+ * @param images 画像リスト
+ */
 const normalizeImages = (images: Array<string | PlantImage>) =>
     images
         .map((img) => (typeof img === 'string' ? { src: img, memo: '', alt: '' } : { ...img, memo: img.memo ?? '', alt: img.alt ?? '' }))
         .filter((img) => img.src?.trim());
 
-export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => {
+/**
+ * 草花詳細ページの画像ギャラリーコンポーネント
+ */
+export function ImageGallery({ images, title }: ImageGalleryProps) {
     const normalizedImages = useMemo(() => normalizeImages(images ?? []), [images]);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +66,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
 
     return (
         <div className="space-y-4">
-            {/* Main Image View */}
             <div className="aspect-[4/3] overflow-hidden border border-white/10 bg-[#111] relative group">
                 <button
                     type="button"
@@ -87,7 +99,12 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
                 </button>
             </div>
 
-            {/* Thumbnails (all images) */}
+            {activeImage.memo?.trim() && (
+                <div className="rounded border-l-2 border-emerald-400/80 bg-white/[0.03] px-4 py-3 text-sm md:text-[15px] leading-relaxed text-neutral-300 whitespace-pre-wrap">
+                    {activeImage.memo}
+                </div>
+            )}
+
             {normalizedImages.length > 0 && (
                 <div className="grid grid-cols-3 gap-3 pb-2 sm:grid-cols-4">
                     {normalizedImages.map((img, imageIndex) => (
@@ -147,9 +164,14 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => 
                             alt={activeAlt}
                             className="max-h-[80vh] w-full rounded-md border border-white/10 object-contain shadow-[0_0_30px_rgba(120,255,220,0.15)]"
                         />
+                        {activeImage.memo?.trim() && (
+                            <div className="mt-3 rounded border border-white/10 bg-black/80 px-4 py-2.5 text-center text-sm text-neutral-300 whitespace-pre-wrap">
+                                {activeImage.memo}
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
         </div>
     );
-};
+}
