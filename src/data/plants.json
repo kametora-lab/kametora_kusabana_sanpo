@@ -4409,6 +4409,16 @@
         "src": "/kametora_kusabana_sanpo/images/0143_02.jpg",
         "memo": "",
         "alt": "キンゴジカ 淡黄色で花びらが渦巻状にねじれた花 奄美大島の日当たりの良い道端"
+      },
+      {
+        "src": "/kametora_kusabana_sanpo/images/0143_03.jpg",
+        "memo": "",
+        "alt": "キンゴジカ 淡黄色で花びらが渦巻状にねじれた花 奄美大島の日当たりの良い道端"
+      },
+      {
+        "src": "/kametora_kusabana_sanpo/images/0143_04.jpg",
+        "memo": "",
+        "alt": "キンゴジカ 淡黄色で花びらが渦巻状にねじれた花 奄美大島の日当たりの良い道端"
       }
     ],
     "colors": [
@@ -4416,7 +4426,8 @@
     ],
     "months": [
       "5月",
-      "7月"
+      "7月",
+      "10月"
     ],
     "meta": {
       "scientificName": "Sida rhombifolia L. subsp. rhombifolia （広義: Sida rhombifolia L.）",
