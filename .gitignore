@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # VS Code settings
 .vscode/
+
+# Root site repository (kametora-lab.github.io)
+root-site/

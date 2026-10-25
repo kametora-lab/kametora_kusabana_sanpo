@@ -19,12 +19,13 @@ const canonicalUrl = Astro.url;
 const defaultOgImage = new URL(`${assetBase}images/ogp.png`, import.meta.env.SITE).toString();
 const resolvedOgImage = ogImage ?? defaultOgImage;
 const siteUrl = new URL(assetBase, import.meta.env.SITE).toString();
+const rootSiteUrl = new URL('/', import.meta.env.SITE).toString();
 const siteStructuredData = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
 	"name": "奄美の草花さんぽ帖",
-	"alternateName": "奄美の草花アルバム",
-	"url": siteUrl,
+	"alternateName": ["奄美の草花アルバム", "Amami Kusabana Sanpo"],
+	"url": rootSiteUrl,
 	"description": "奄美大島の森や海辺、集落の道ばたで見つけた草花を写真とともに紹介する植物アルバム。南国ならではの花や樹木を、美しい写真とともに記録する奄美の草花図鑑サイトです。",
 	"inLanguage": "ja",
 	"creator": {
