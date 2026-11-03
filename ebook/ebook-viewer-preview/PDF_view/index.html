@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18201d">
+  <title>奄美の春を、草花とゆっくり歩く — PDFビューア</title>
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="ビューアの先頭">
+      <span class="brand-mark">AMAMI FLORA WALK BOOK</span>
+      <span class="brand-title">奄美の春を、草花とゆっくり歩く</span>
+    </a>
+  </header>
+
+  <main class="reader-shell">
+    <div class="reader-toolbar" aria-label="PDFページ操作">
+      <button class="nav-button" id="previousPage" type="button" aria-label="前へ">‹ <span>前へ</span></button>
+      <div class="page-status" id="pageStatus" aria-live="polite">PDFを読み込んでいます</div>
+      <div class="zoom-controls" aria-label="拡大縮小">
+        <button class="icon-button" id="zoomOut" type="button" aria-label="縮小">−</button>
+        <button class="icon-button" id="zoomReset" type="button" aria-label="拡大率をリセット">100%</button>
+        <button class="icon-button" id="zoomIn" type="button" aria-label="拡大">＋</button>
+      </div>
+      <button class="nav-button" id="nextPage" type="button" aria-label="次へ"><span>次へ</span> ›</button>
+    </div>
+
+    <section class="book-viewport" id="bookViewport" aria-label="PDFのページ。左右にドラッグしてめくります">
+      <div class="book-spread" id="bookSpread">
+        <div class="book-page page-left" id="leftPage">
+          <canvas id="leftCanvas" aria-label="左ページ"></canvas>
+          <div class="page-blank" id="leftBlank" aria-hidden="true"></div>
+        </div>
+        <div class="book-page page-right" id="rightPage">
+          <canvas id="rightCanvas" aria-label="右ページ"></canvas>
+        </div>
+
+        <div class="flip-leaf" id="flipLeaf" aria-hidden="true" hidden>
+          <div class="leaf-face leaf-front"><canvas id="leafFrontCanvas"></canvas></div>
+          <div class="leaf-face leaf-back"><canvas id="leafBackCanvas"></canvas></div>
+        </div>
+      </div>
+    </section>
+    <p class="reader-hint" id="readerHint">ページの端からドラッグするか、左右の矢印キーでめくれます</p>
+    <p class="reader-message" id="readerMessage" role="status">PDFを読み込んでいます…</p>
+  </main>
+
+  <footer class="site-footer">
+    <span>写真・文　かめとら</span>
+  </footer>
+
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

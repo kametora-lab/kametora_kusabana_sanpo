@@ -1,0 +1,959 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;600;700&display=swap');
+
+/* ============================================================
+   基本変数＆デザインシステム
+   ============================================================ */
+:root {
+  --bg-paper: #FAF8F5;
+  --bg-card: #F3EFE9;
+  --text-main: #242220;
+  --text-muted: #6B6560;
+  --text-sub: #8E8780;
+  --accent-green: #2B4C3F;
+  --accent-red: #A63D40;
+  --border-light: #E5DFC8;
+  --border-soft: #D5CEBF;
+  
+  --font-serif: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+  --font-en: 'Cormorant Garamond', Georgia, serif;
+
+  /* A5横: 210mm x 148mm */
+  --page-width: 210mm;
+  --page-height: 148mm;
+}
+
+/* ============================================================
+   リセット＆画面プレビュー用ラッパー
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #383735;
+  color: var(--text-main);
+  font-family: var(--font-serif);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  padding: 30px 10px;
+}
+
+.screen-header {
+  max-width: 860px;
+  margin: 0 auto 24px;
+  padding: 16px 24px;
+  background: #252422;
+  border-radius: 8px;
+  color: #E2DFD8;
+  font-family: var(--font-sans);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.screen-header h1 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.screen-header .badge {
+  font-size: 11px;
+  background: var(--accent-green);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.screen-header .print-btn {
+  background: #fff;
+  color: #222;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.screen-header .print-btn:hover {
+  background: #E2DFD8;
+  transform: translateY(-1px);
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* 単一ページ表示（表紙・本扉など） */
+.single-page-wrapper {
+  display: flex;
+  justify-content: center;
+  width: calc(var(--page-width) * 2);
+}
+
+/* 見開きスプレッド (2ページ並び) */
+.spread {
+  display: flex;
+  width: calc(var(--page-width) * 2);
+  height: var(--page-height);
+  background-color: var(--bg-paper);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+}
+
+/* 喉（のど：本の綴じ目）の陰影表現 */
+.spread::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, 
+    rgba(0,0,0,0.08) 0%, 
+    rgba(0,0,0,0.18) 48%, 
+    rgba(0,0,0,0.22) 50%, 
+    rgba(0,0,0,0.18) 52%, 
+    rgba(0,0,0,0.08) 100%);
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* 単一ページ (A5横: 210mm x 148mm) */
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  padding: 11mm 13mm 10mm 13mm;
+  position: relative;
+  background-color: var(--bg-paper);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-left {
+  padding-right: 17mm;
+}
+
+.page-right {
+  padding-left: 17mm;
+}
+
+/* ============================================================
+   表紙（COVER）スタイル
+   ============================================================ */
+.page-cover {
+  width: var(--page-width);
+  height: var(--page-height);
+  position: relative;
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 0;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cover-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(20, 25, 22, 0.88) 0%, rgba(20, 25, 22, 0.4) 60%, rgba(20, 25, 22, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16mm 18mm;
+}
+
+.cover-header .series-tag {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #D5CEBF;
+  border-bottom: 0.5px solid rgba(255,255,255,0.3);
+  padding-bottom: 2mm;
+  display: inline-block;
+}
+
+.cover-title-area {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.cover-subtitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #E5DFC8;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.cover-main-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  color: #FAF8F5;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 0.5px solid rgba(255,255,255,0.25);
+  padding-top: 3mm;
+}
+
+.cover-author {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #E2DFD8;
+}
+
+.cover-meta {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #C0B9AD;
+}
+
+/* ============================================================
+   本扉（内扉）
+   ============================================================ */
+.title-page-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 10mm 15mm;
+  text-align: center;
+}
+
+.title-page-header {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--text-sub);
+  text-transform: uppercase;
+}
+
+.title-page-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.title-page-sub {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--accent-green);
+  margin-bottom: 8px;
+}
+
+.title-page-main {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.title-page-deco {
+  width: 40px;
+  height: 1px;
+  background: var(--border-soft);
+  margin: 12px auto;
+}
+
+.title-page-footer {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+/* ============================================================
+   はじめに ＆ この本の楽しみ方 スプレッド
+   ============================================================ */
+.intro-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 8mm);
+  justify-content: center;
+  padding: 2mm 2mm;
+}
+
+.intro-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-green);
+  margin-bottom: 3.5mm;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 2mm;
+}
+
+.intro-p {
+  font-size: 11.2px;
+  line-height: 1.95;
+  color: #383533;
+  margin-bottom: 3mm;
+  text-align: justify;
+}
+
+.guide-box-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2mm;
+}
+
+.guide-box {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-green);
+  padding: 6px 10px;
+  border-radius: 0 3px 3px 0;
+}
+
+.guide-box-title {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.guide-box-p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   章扉（CHAPTER COVER SPREAD）
+   ============================================================ */
+.chapter-cover-left {
+  background-color: #1e2420;
+  color: #FAF8F5;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.chapter-cover-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.chapter-cover-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14mm 16mm;
+}
+
+.chapter-num-large {
+  font-family: var(--font-en);
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #D5CEBF;
+  line-height: 1;
+}
+
+.chapter-title-main {
+  font-family: var(--font-serif);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  color: #FAF8F5;
+  margin-top: 6px;
+}
+
+.chapter-lead-text {
+  font-size: 11.2px;
+  line-height: 1.95;
+  color: #E2DFD8;
+  text-align: justify;
+  letter-spacing: 0.04em;
+}
+
+.chapter-cover-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8mm 12mm;
+}
+
+.chapter-plant-index-title {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-sub);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 2mm;
+  margin-bottom: 3.5mm;
+}
+
+.chapter-plant-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chapter-card-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: 0.5px solid var(--border-light);
+}
+
+.chapter-card-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.chapter-card-text {
+  flex: 1;
+}
+
+.chapter-card-name {
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.05em;
+}
+
+.chapter-card-sub {
+  font-family: var(--font-en);
+  font-size: 10px;
+  color: var(--accent-green);
+  font-style: italic;
+}
+
+.chapter-card-role {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   ヘッダー（柱）＆ フッター（ノンブル）
+   ============================================================ */
+.running-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-en);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--text-sub);
+  text-transform: uppercase;
+  padding-bottom: 1.5mm;
+  border-bottom: 0.5px solid var(--border-soft);
+  margin-bottom: 3.5mm;
+}
+
+.running-head .chapter-tag {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--accent-green);
+  font-weight: 500;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 4mm;
+  display: flex;
+  font-family: var(--font-en);
+  font-size: 11px;
+  color: var(--text-sub);
+  letter-spacing: 0.08em;
+}
+
+.page-left .page-footer {
+  left: 13mm;
+}
+
+.page-right .page-footer {
+  right: 13mm;
+}
+
+/* ============================================================
+   左ページ：大迫力のメイン写真 ＆ 余白ある五感メモ
+   ============================================================ */
+.visual-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 10mm);
+}
+
+.photo-main-frame {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  min-height: 0;
+}
+
+.photo-main-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(36, 34, 32, 0.78);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-family: var(--font-en);
+  font-size: 9.5px;
+  letter-spacing: 0.15em;
+  padding: 3px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.sensory-note-wrapper {
+  margin-top: 3.5mm;
+  padding-bottom: 2mm;
+}
+
+.sensory-note {
+  border-left: 2px solid var(--accent-green);
+  padding-left: 10px;
+}
+
+.sensory-note .label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--accent-green);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sensory-note p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   右ページ：タイポグラフィ拡大 ＆ サブ写真挿入 ＆ スペック欄
+   ============================================================ */
+.content-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 10mm);
+}
+
+.title-header {
+  margin-bottom: 2mm;
+  position: relative;
+}
+
+.plant-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.plant-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.plant-ruby {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.meta-taxonomy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1mm;
+  font-family: var(--font-en);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.meta-taxonomy .scientific {
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--accent-green);
+}
+
+.meta-taxonomy .family {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  background: var(--bg-card);
+  padding: 1px 7px;
+  border-radius: 2px;
+  color: var(--text-muted);
+}
+
+.essay-text {
+  font-size: 11.4px;
+  line-height: 1.85;
+  color: #33312e;
+  text-align: justify;
+  margin-bottom: 2.5mm;
+  letter-spacing: 0.03em;
+}
+
+.essay-text p + p {
+  margin-top: 1.2mm;
+  text-indent: 1em;
+}
+
+/* ディテール写真＆キャプション */
+.detail-photo-card {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  gap: 11px;
+  align-items: center;
+  background: #f5f2eb;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin-bottom: 2.5mm;
+  border: 0.5px solid var(--border-light);
+}
+
+.detail-photo-card img {
+  width: 105px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+.detail-photo-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-photo-title {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--accent-green);
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.detail-photo-desc {
+  font-size: 9px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* 観察スペックカード */
+.specs-card {
+  margin-top: auto;
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-light);
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.specs-title {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-green);
+  text-transform: uppercase;
+  margin-bottom: 3.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.specs-title::after {
+  content: "";
+  flex: 1;
+  height: 0.5px;
+  background: var(--border-soft);
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 3px;
+  column-gap: 12px;
+}
+
+.spec-item {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--font-sans);
+  font-size: 8.8px;
+  line-height: 1.38;
+}
+
+.spec-label {
+  color: var(--text-sub);
+  width: 58px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.spec-value {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.spec-value strong {
+  color: var(--accent-red);
+  font-weight: 600;
+}
+
+.spec-item.full-width {
+  grid-column: span 2;
+  border-top: 0.5px dashed var(--border-soft);
+  padding-top: 2.5px;
+  margin-top: 1.5px;
+}
+
+/* ============================================================
+   巻末：おわりに ＆ 散歩手帖心得 ＆ 索引 ＆ 奥付
+   ============================================================ */
+.ending-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 8mm);
+  padding: 3mm 4mm;
+}
+
+.ending-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-green);
+  margin-bottom: 4mm;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 2mm;
+}
+
+.ending-p {
+  font-size: 11.2px;
+  line-height: 1.95;
+  color: #33312e;
+  margin-bottom: 3.5mm;
+  text-align: justify;
+}
+
+.safety-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 2mm;
+}
+
+.safety-card {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-red);
+  padding: 6px 10px;
+  border-radius: 0 3px 3px 0;
+}
+
+.safety-card.green {
+  border-left-color: var(--accent-green);
+}
+
+.safety-card-title {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.safety-card-desc {
+  font-size: 9.2px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* 観察カレンダー表 */
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2mm;
+  font-family: var(--font-sans);
+  font-size: 9px;
+}
+
+.calendar-table th {
+  background: var(--bg-card);
+  color: var(--accent-green);
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border-soft);
+  font-weight: 600;
+}
+
+.calendar-table td {
+  padding: 4px 6px;
+  border-bottom: 0.5px solid var(--border-light);
+  color: var(--text-main);
+}
+
+.calendar-table tr:nth-child(even) td {
+  background: rgba(243, 239, 233, 0.4);
+}
+
+/* 奥付（Colophon） */
+.colophon-box {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-top: auto;
+  font-family: var(--font-sans);
+}
+
+.colophon-title {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.colophon-row {
+  display: flex;
+  font-size: 9.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.colophon-label {
+  width: 70px;
+  flex-shrink: 0;
+  color: var(--text-sub);
+}
+
+/* ============================================================
+   印刷用スタイル（CSS Paged Media / PDF出力）
+   ============================================================ */
+@media print {
+  @page {
+    size: 210mm 148mm;
+    margin: 0;
+  }
+  
+  body {
+    background: transparent;
+    padding: 0;
+  }
+  
+  .screen-header {
+    display: none !important;
+  }
+  
+  .book-container {
+    gap: 0;
+  }
+  
+  .single-page-wrapper {
+    width: auto;
+    display: block;
+    page-break-after: always;
+    break-after: page;
+  }
+  
+  .spread {
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    display: block;
+    background: none;
+  }
+  
+  .spread::after {
+    display: none;
+  }
+  
+  .page, .page-cover {
+    width: 210mm;
+    height: 148mm;
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

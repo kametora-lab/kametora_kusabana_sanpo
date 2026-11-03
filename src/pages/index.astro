@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import TopSlideshow from '../components/TopSlideshow.astro';
 import plants from '../data/plants.json';
 
-const featuredPlants = plants.slice(0, 9);
 const latestPlants = plants.slice(-6).reverse();
 
 const getImageSrc = (images) => {
@@ -11,21 +10,6 @@ const getImageSrc = (images) => {
 	const first = images[0];
 	return typeof first === 'string' ? first : first.src;
 };
-
-const galleryPattern = [
-	'lg:col-span-2 lg:row-span-2',
-	'',
-	'lg:row-span-2',
-	'lg:col-span-2',
-	'',
-	'lg:row-span-2',
-	'',
-	'lg:col-span-2',
-	'',
-];
-
-// Uneven rhythm for the gallery grid (plantica-like balance).
-const getGalleryClass = (index) => galleryPattern[index % galleryPattern.length];
 ---
 
 <Layout
@@ -134,36 +118,33 @@ const getGalleryClass = (index) => galleryPattern[index % galleryPattern.length]
 			</div>
 			</div>
 
-		<section class="mt-3 md:mt-5">
-			<div class="grid auto-rows-[140px] grid-cols-2 gap-4 md:auto-rows-[200px] md:grid-cols-3 md:gap-6 lg:auto-rows-[220px]">
-				{featuredPlants.map((plant, index) => (
-					<a
-						href={`/kametora_kusabana_sanpo/plants/${plant.slug}`}
-						class={`group relative block overflow-hidden ${getGalleryClass(index)}`}
-					>
-						{getImageSrc(plant.images) ? (
-							<img
-								src={getImageSrc(plant.images)}
-								alt={plant.title}
-								class="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-85"
-								loading="lazy"
-								decoding="async"
-							/>
-						) : (
-							<div class="flex h-full w-full items-center justify-center bg-[#111] text-xs text-neutral-600">
-								NO IMAGE
-							</div>
-						)}
-						<div class="absolute inset-0 flex items-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-							<div class="w-full bg-black/60 px-3 py-2 text-xs text-neutral-200">
-								<div class="font-serif">{plant.title}</div>
-								{plant.meta?.scientificName && (
-									<div class="text-[11px] text-neutral-400">{plant.meta.scientificName}</div>
-								)}
-							</div>
-						</div>
-					</a>
-				))}
+		<section class="mt-8 md:mt-12">
+			<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+				<h2 class="flex items-center gap-3 font-serif text-2xl text-neutral-100 md:text-3xl">
+					<span class="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-1 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.3)]">
+						E-BOOK
+					</span>
+					奄美の春を、草花とゆっくり歩く
+				</h2>
+				<a
+					href="/kametora_kusabana_sanpo/pdf_view/index.html"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-emerald-300 transition-colors"
+				>
+					<span>全画面で開く</span>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 21 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+					</svg>
+				</a>
+			</div>
+			<div class="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#18201d] shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+				<iframe
+					src="/kametora_kusabana_sanpo/pdf_view/index.html"
+					title="奄美の春を、草花とゆっくり歩く — PDFビューア"
+					class="w-full h-[620px] md:h-[720px] lg:h-[800px] border-0"
+					loading="lazy"
+				></iframe>
 			</div>
 		</section>
 	</main>

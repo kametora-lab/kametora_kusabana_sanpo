@@ -27,4 +27,4 @@ Neon/Y2K-style digital flora database built with Astro v5 + React v19 + Tailwind
 
 ## Local Skills (`.agents/skills/`)
 - `add-new-plant`: 新規草花登録・画像追加スキル（`.agents/skills/add-new-plant/SKILL.md`）
-- `create-insta-carousel`: Instagram用4:5カルーセル画像＆投稿文生成スキル（`.agents/skills/create-insta-carousel/SKILL.md`）。ユーザーが「カルーセル作成して」「インスタのカルーセル作って」などと依頼した際は、必ずこのスキルを起動し、`insta_carousel/generate_carousel.py` を使って生成すること。
+- `create-insta-carousel`: Instagram用4:5カルーセル画像（1080x1350）＆9:16リール画像（1080x1920）生成＆Remotion自動連携スキル（`.agents/skills/create-insta-carousel/SKILL.md`）。ユーザーが「カルーセル作成して」「インスタのカルーセル作って」「リール用の画像作って」「リール動画作って」などと依頼した際は、必ずこのスキルを起動し、`insta_carousel/generate_carousel.py` を使って生成すること。

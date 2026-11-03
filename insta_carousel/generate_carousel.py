@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-奄美の草花さんぽ帖 Instagram 4:5 カルーセル画像生成スクリプト (v2)
+奄美の草花さんぽ帖 Instagram カルーセル(4:5)＆リール(9:16)画像生成スクリプト (v3)
 使い方:
-  python insta_carousel/generate_carousel.py --config insta_carousel/configs/sample.json --out-dir <出力先フォルダ> [--artifact-dir <プレビュー用フォルダ>]
-  引数なしで実行した場合はデフォルトのサンプル設定で生成します。
+  カルーセル生成 (1080x1350):
+    python insta_carousel/generate_carousel.py --config insta_carousel/configs/sample.json --out-dir <出力先フォルダ>
+  リール用画像生成 (1080x1920) ＆ Remotion自動同期:
+    python insta_carousel/generate_carousel.py --config insta_carousel/configs/sample.json --reel --sync-remotion
 """
 import os
 import sys
+import re
 import json
+import shutil
 import argparse
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -15,6 +19,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 BASE_DIR = r"C:\Gravity\amamikusabana_2_new"
 IMG_DIR = os.path.join(BASE_DIR, "public", "images")
 CAROUSEL_DIR = os.path.join(BASE_DIR, "insta_carousel")
+REMOTION_DIR = r"C:\Gravity\VIDEO_IROIRO\remotion_video"
 
 FONT_MINCHO_B = r"C:\Windows\Fonts\yumindb.ttf"
 FONT_MINCHO_R = r"C:\Windows\Fonts\yumin.ttf"
@@ -130,10 +135,10 @@ def save_outputs(img, filename, out_dirs):
 
 # ==============================================================================
 # 1枚目（表紙）：写真を全面に出し、グリッドでもスマホでも1秒で読める特大文字！
-# 上部のメイン写真は4:3の横長構図をほぼそのまま活かし、下部をボケグラデーションで繋ぐ
 # ==============================================================================
-def render_slide_1(cover_cfg, out_dirs):
-    W, H = 1080, 1350
+def render_slide_1(cover_cfg, out_dirs, is_reel=False):
+    W = 1080
+    H = 1920 if is_reel else 1350
     base = Image.new("RGBA", (W, H), (24, 34, 26, 255))
 
     img_path = resolve_img_path(cover_cfg["image"])
@@ -144,80 +149,106 @@ def render_slide_1(cover_cfg, out_dirs):
     bg_blur = crop_to_aspect(raw_photo, W, H).filter(ImageFilter.GaussianBlur(35))
     base.paste(bg_blur, (0, 0))
 
-    top_photo = crop_to_aspect(raw_photo, W, 900, focus_x=focus_x, focus_y=focus_y).convert("RGBA")
+    # リール時は上部1380pxまで写真をダイナミックに活用し、下部の間延びを完全解消
+    photo_h = 1380 if is_reel else 900
+    fade_start = 1080 if is_reel else 650
+    fade_len = photo_h - fade_start
 
-    mask = Image.new("L", (W, 900), 255)
+    top_photo = crop_to_aspect(raw_photo, W, photo_h, focus_x=focus_x, focus_y=focus_y).convert("RGBA")
+
+    mask = Image.new("L", (W, photo_h), 255)
     m_draw = ImageDraw.Draw(mask)
-    for y in range(650, 900):
-        alpha = int(255 * (1.0 - (y - 650) / 250.0))
+    for y in range(fade_start, photo_h):
+        alpha = int(255 * (1.0 - (y - fade_start) / float(fade_len)))
         m_draw.line([(0, y), (W, y)], fill=alpha)
     base.paste(top_photo, (0, 0), mask)
 
     grad = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     g_draw = ImageDraw.Draw(grad)
-    for y in range(0, 220):
-        a = int(140 * (1.0 - y / 220.0))
+    for y in range(0, 240):
+        a = int(140 * (1.0 - y / 240.0))
         g_draw.line([(0, y), (W, y)], fill=(15, 22, 16, a))
-    for y in range(620, H):
-        ratio = min(1.0, (y - 620) / 320.0)
-        a = int(225 * ratio)
+
+    grad_bottom_start = 1020 if is_reel else 620
+    grad_fade_len = 500 if is_reel else 320
+    for y in range(grad_bottom_start, H):
+        ratio = min(1.0, (y - grad_bottom_start) / float(grad_fade_len))
+        a = int(245 * ratio)
         g_draw.line([(0, y), (W, y)], fill=(20, 30, 22, a))
     base.alpha_composite(grad)
 
     draw = ImageDraw.Draw(base)
 
     # 上部センター：ブランド題字
+    brand_y = 85 if is_reel else 52
     f_brand = get_font(FONT_MINCHO_B, 34)
     brand_str = "―  奄美の草花さんぽ帖  ―"
     bw = draw.textbbox((0, 0), brand_str, font=f_brand)[2]
-    draw_text_with_shadow(base, ((W - bw) // 2, 52), brand_str, f_brand, fill=(255, 255, 255), blur=6)
+    draw_text_with_shadow(base, ((W - bw) // 2, brand_y), brand_str, f_brand, fill=(255, 255, 255), blur=6)
 
-    # 中央やや下：季節タグバッジ
+    # 季節タグバッジ
+    badge_y = 1220 if is_reel else 760
     draw = ImageDraw.Draw(base)
-    f_badge = get_font(FONT_GOTHIC_B, 30)
+    f_badge = get_font(FONT_GOTHIC_B, 32 if is_reel else 30)
     badge_txt = f" {cover_cfg['badge'].strip()} "
     badge_rgb = tuple(cover_cfg.get("badge_rgb", [178, 52, 52])) + (245,)
     bbw = draw.textbbox((0, 0), badge_txt, font=f_badge)[2]
-    bx = (W - bbw - 48) // 2
-    draw.rounded_rectangle([bx, 760, bx + bbw + 48, 824], radius=32, fill=badge_rgb)
-    draw.text((bx + 24, 774), badge_txt, font=f_badge, fill=(255, 255, 255))
+    bx = (W - bbw - 56) // 2
+    b_h = 68 if is_reel else 64
+    draw.rounded_rectangle([bx, badge_y, bx + bbw + 56, badge_y + b_h], radius=32, fill=badge_rgb)
+    draw.text((bx + 28, badge_y + (b_h - 32) // 2), badge_txt, font=f_badge, fill=(255, 255, 255))
 
-    # 特大メインタイトル（文字数に応じて72pt〜58ptに自動調整）
+    # 特大メインタイトル（文字数に応じて自動調整）
     t1 = cover_cfg["title_line1"]
     t2 = cover_cfg["title_line2"]
     max_len = max(len(t1), len(t2))
-    main_pt = 72 if max_len <= 11 else (64 if max_len <= 13 else 56)
+    main_pt = 76 if is_reel else (72 if max_len <= 11 else (64 if max_len <= 13 else 56))
     f_main = get_font(FONT_MINCHO_B, main_pt)
     w1 = draw.textbbox((0, 0), t1, font=f_main)[2]
     w2 = draw.textbbox((0, 0), t2, font=f_main)[2]
-    draw_text_with_shadow(base, ((W - w1) // 2, 862), t1, f_main, fill=(255, 255, 255), blur=10, offset=(0, 4))
-    draw_text_with_shadow(base, ((W - w2) // 2, 958), t2, f_main, fill=(255, 235, 195), blur=10, offset=(0, 4))
 
-    # サブコピー（36pt）
-    f_sub = get_font(FONT_MINCHO_B, 36)
+    t1_y = 1320 if is_reel else 862
+    t2_y = 1430 if is_reel else 958
+    draw_text_with_shadow(base, ((W - w1) // 2, t1_y), t1, f_main, fill=(255, 255, 255), blur=10, offset=(0, 4))
+    draw_text_with_shadow(base, ((W - w2) // 2, t2_y), t2, f_main, fill=(255, 235, 195), blur=10, offset=(0, 4))
+
+    # サブコピー
+    f_sub = get_font(FONT_MINCHO_B, 38 if is_reel else 36)
     s1 = cover_cfg["subtitle"]
     sw1 = draw.textbbox((0, 0), s1, font=f_sub)[2]
-    draw_text_with_shadow(base, ((W - sw1) // 2, 1084), s1, f_sub, fill=(235, 242, 235), blur=6)
+    sub_y = 1570 if is_reel else 1084
+    draw_text_with_shadow(base, ((W - sw1) // 2, sub_y), s1, f_sub, fill=(235, 242, 235), blur=6)
 
-    # 下部スワイプ誘導バー（30pt）
-    draw = ImageDraw.Draw(base)
-    draw.line([(80, 1185), (1000, 1185)], fill=(200, 169, 126, 160), width=2)
-    f_cta = get_font(FONT_GOTHIC_B, 30)
+    # 下部案内エリア
     cover_plant = cover_cfg.get("cover_plant_label", "")
-    cta_str = f"表紙：{cover_plant}   スワイプで図鑑へ ＞＞" if cover_plant else "スワイプして草花図鑑をめくる ＞＞"
-    cw = draw.textbbox((0, 0), cta_str, font=f_cta)[2]
-    draw.text(((W - cw) // 2, 1218), cta_str, font=f_cta, fill=(255, 225, 175))
+    show_swipe_cta = False if is_reel else cover_cfg.get("show_swipe_cta", True)
+
+    cta_parts = []
+    if cover_plant:
+        cta_parts.append(f"表紙：{cover_plant}")
+    if show_swipe_cta:
+        cta_parts.append("スワイプで図鑑へ ＞＞" if cover_plant else "スワイプして草花図鑑をめくる ＞＞")
+
+    if cta_parts:
+        line_y = 1690 if is_reel else 1185
+        text_y = 1715 if is_reel else 1218
+        draw = ImageDraw.Draw(base)
+        draw.line([(80, line_y), (1000, line_y)], fill=(200, 169, 126, 160), width=2)
+        f_cta = get_font(FONT_GOTHIC_B, 32 if is_reel else 30)
+        cta_str = "   ".join(cta_parts)
+        cw = draw.textbbox((0, 0), cta_str, font=f_cta)[2]
+        draw.text(((W - cw) // 2, text_y), cta_str, font=f_cta, fill=(255, 225, 175))
 
     save_outputs(base, "slide_01_cover.png", out_dirs)
 
 
 # ==============================================================================
 # 2〜N-1枚目（植物図鑑スライド）：
-# 4:3横長写真を「横幅1080pxいっぱい（1080×810px）」に1ミリも切らずドカンと配置！
-# 図鑑Noは非公開のため絶対に入れず、特大の植物名（58pt）と太明朝解説（33pt）を配置
+# 写真を横幅いっぱいに活かし、特大の植物名と明朝体解説を配置
 # ==============================================================================
-def render_plant_slide(filename, num, plant_cfg, page, total_pages, out_dirs):
-    W, H = 1080, 1350
+def render_plant_slide(filename, num, plant_cfg, page, total_pages, out_dirs, is_reel=False):
+    W = 1080
+    H = 1920 if is_reel else 1350
     img = Image.new("RGBA", (W, H), (247, 244, 237, 255))
 
     name = plant_cfg["name"]
@@ -231,43 +262,46 @@ def render_plant_slide(filename, num, plant_cfg, page, total_pages, out_dirs):
     season = plant_cfg["season"]
     accent_rgb = tuple(plant_cfg.get("accent_rgb", [46, 92, 62]))
 
-    # 1. 上部に 4:3 のメイン写真を「横幅1080px × 高さ810px（完全な4:3比率！）」で端から端まで配置！
+    # メイン写真の高さ設定 (リールは上部1060pxで迫力と下部テキスト領域のバランスを最適化)
+    main_photo_h = 1060 if is_reel else 810
     photo_main = Image.open(resolve_img_path(main_img)).convert("RGB")
-    photo_main = crop_to_aspect(photo_main, 1080, 810)
+    photo_main = crop_to_aspect(photo_main, W, main_photo_h)
     img.paste(photo_main, (0, 0))
 
-    # 写真上部にさりげないグラデーションを入れて、左上の番号バッジを見やすくする
-    top_grad = Image.new("RGBA", (W, 140), (0, 0, 0, 0))
+    # 上部グラデーション
+    top_grad = Image.new("RGBA", (W, 150), (0, 0, 0, 0))
     tg_draw = ImageDraw.Draw(top_grad)
-    for y in range(140):
-        a = int(130 * (1.0 - y / 140.0))
+    for y in range(150):
+        a = int(140 * (1.0 - y / 150.0))
         tg_draw.line([(0, y), (W, y)], fill=(0, 0, 0, a))
     img.alpha_composite(top_grad, (0, 0))
 
     draw = ImageDraw.Draw(img)
 
-    # 左上：番号＆ブランド名バッジ（図鑑Noは非開示のため入れない）
-    f_top_num = get_font(FONT_GOTHIC_B, 27)
+    # 左上：番号＆ブランド名バッジ
+    badge_top_y = 50 if is_reel else 28
+    f_top_num = get_font(FONT_GOTHIC_B, 28)
     badge_label = f"{num} ｜ 奄美の草花さんぽ帖"
     blw = draw.textbbox((0, 0), badge_label, font=f_top_num)[2]
-    draw.rounded_rectangle([32, 28, 62 + blw + 28, 92], radius=8, fill=(25, 32, 26, 210))
-    draw.rectangle([32, 28, 44, 92], fill=accent_rgb)
-    draw.text((62, 44), badge_label, font=f_top_num, fill=(255, 255, 255))
+    draw.rounded_rectangle([32, badge_top_y, 62 + blw + 28, badge_top_y + 64], radius=8, fill=(25, 32, 26, 210))
+    draw.rectangle([32, badge_top_y, 44, badge_top_y + 64], fill=accent_rgb)
+    draw.text((62, badge_top_y + 16), badge_label, font=f_top_num, fill=(255, 255, 255))
 
-    # 右上：季節バッジ（26pt）
+    # 右上：季節バッジ
     f_season = get_font(FONT_GOTHIC_B, 26)
     sw = draw.textbbox((0, 0), season, font=f_season)[2]
     sx = W - sw - 68
-    draw.rounded_rectangle([sx, 28, W - 28, 92], radius=32, fill=accent_rgb)
-    draw.text((sx + 20, 44), season, font=f_season, fill=(255, 255, 255))
+    draw.rounded_rectangle([sx, badge_top_y, W - 28, badge_top_y + 64], radius=32, fill=accent_rgb)
+    draw.text((sx + 20, badge_top_y + 16), season, font=f_season, fill=(255, 255, 255))
 
     # 写真とテキストの境界ライン
-    draw.rectangle([0, 806, W, 814], fill=accent_rgb)
+    draw.rectangle([0, main_photo_h - 4, W, main_photo_h + 4], fill=accent_rgb)
 
-    # 右下（写真の境界線上）：2枚目の4:3サブ写真（336×252px）を白いフチ付きで配置（sub_img指定時）
+    # サブ写真
     if sub_img:
-        sub_w, sub_h = 336, 252
-        sub_x, sub_y = W - sub_w - 32, 810 - sub_h + 42
+        sub_w, sub_h = (360, 270) if is_reel else (336, 252)
+        sub_x = W - sub_w - 36
+        sub_y = (main_photo_h - sub_h + 10) if is_reel else (main_photo_h - sub_h + 48)
 
         shadow = Image.new("RGBA", (sub_w + 40, sub_h + 40), (0, 0, 0, 0))
         s_draw = ImageDraw.Draw(shadow)
@@ -283,33 +317,45 @@ def render_plant_slide(filename, num, plant_cfg, page, total_pages, out_dirs):
 
         if sub_cap:
             draw = ImageDraw.Draw(img)
-            draw.rectangle([sub_x, sub_y + sub_h - 44, sub_x + sub_w, sub_y + sub_h], fill=(20, 26, 22, 220))
-            f_subcap = get_font(FONT_GOTHIC_B, 20)
+            draw.rectangle([sub_x, sub_y + sub_h - 46, sub_x + sub_w, sub_y + sub_h], fill=(20, 26, 22, 220))
+            f_subcap = get_font(FONT_GOTHIC_B, 22 if is_reel else 20)
             scw = draw.textbbox((0, 0), sub_cap, font=f_subcap)[2]
-            draw.text((sub_x + (sub_w - scw) // 2, sub_y + sub_h - 35), sub_cap, font=f_subcap, fill=(255, 255, 255))
+            draw.text((sub_x + (sub_w - scw) // 2, sub_y + sub_h - 36), sub_cap, font=f_subcap, fill=(255, 255, 255))
 
-    # 2. 下部テキストエリア（y = 830 〜 1350）
+    # 下部テキストエリア
     draw = ImageDraw.Draw(img)
-    f_catch = get_font(FONT_GOTHIC_B, 29)
-    f_name = get_font(FONT_MINCHO_B, 58)
-    f_subname = get_font(FONT_MINCHO_B, 28)
-    f_desc = get_font(FONT_MINCHO_B, 33)
+    f_catch = get_font(FONT_GOTHIC_B, 32 if is_reel else 29)
+    f_name = get_font(FONT_MINCHO_B, 66 if is_reel else 58)
+    f_subname = get_font(FONT_MINCHO_B, 30 if is_reel else 28)
+    f_desc = get_font(FONT_MINCHO_B, 38 if is_reel else 33)
 
-    draw.text((48, 836), f"◆ {catchphrase}", font=f_catch, fill=accent_rgb)
-    draw.text((48, 886), name, font=f_name, fill=(22, 30, 24))
-    draw.text((52, 960), sub_name, font=f_subname, fill=(88, 100, 90))
+    base_text_y = (main_photo_h + 50) if is_reel else 836
+    draw.text((48, base_text_y), f"◆ {catchphrase}", font=f_catch, fill=accent_rgb)
+    draw.text((48, base_text_y + 54), name, font=f_name, fill=(22, 30, 24))
+    draw.text((52, base_text_y + 140), sub_name, font=f_subname, fill=(88, 100, 90))
 
-    draw_wrapped_text(draw, short_desc, x=48, y=1016, max_w=984, font=f_desc, fill=(35, 45, 37), line_spacing=20)
+    desc_y = base_text_y + 200
+    draw_wrapped_text(draw, short_desc, x=48, y=desc_y, max_w=984, font=f_desc, fill=(35, 45, 37), line_spacing=26 if is_reel else 20)
 
-    # 最下部：観察ポイント帯（28pt）
-    draw.rounded_rectangle([44, 1218, 1036, 1308], radius=10, fill=(230, 235, 226, 255))
-    draw.rectangle([44, 1218, 56, 1308], fill=accent_rgb)
+    # 観察ポイント帯（リール時は下部空白を活かし160pxのセーフエリア最適化カード構成）
+    point_y = 1680 if is_reel else 1218
+    point_h = 160 if is_reel else 90
+    draw.rounded_rectangle([44, point_y, 1036, point_y + point_h], radius=14, fill=(230, 235, 226, 255))
+    draw.rectangle([44, point_y, 56, point_y + point_h], fill=accent_rgb)
 
-    f_pt = get_font(FONT_GOTHIC_B, 28)
-    draw.text((76, 1246), f"● 観察ポイント：{point}", font=f_pt, fill=(30, 44, 34))
+    f_pt_label = get_font(FONT_GOTHIC_B, 32 if is_reel else 28)
+    f_pt_text = get_font(FONT_MINCHO_B, 34 if is_reel else 28)
+    if is_reel:
+        draw.text((76, point_y + 24), "● 観察ポイント", font=f_pt_label, fill=accent_rgb)
+        draw.text((76, point_y + 84), point, font=f_pt_text, fill=(30, 44, 34))
+    else:
+        draw.text((76, point_y + 28), f"● 観察ポイント：{point}", font=f_pt_label, fill=(30, 44, 34))
 
-    f_page = get_font(FONT_GOTHIC_B, 24)
-    draw.text((942, 1250), f"{page} / {total_pages}", font=f_page, fill=(110, 120, 112))
+    f_page = get_font(FONT_GOTHIC_B, 26 if is_reel else 24)
+    page_str = f"{page} / {total_pages}"
+    pw = draw.textbbox((0, 0), page_str, font=f_page)[2]
+    page_y = (point_y + 26) if is_reel else (point_y + 30)
+    draw.text((1016 - pw, page_y), page_str, font=f_page, fill=(110, 120, 112))
 
     save_outputs(img, filename, out_dirs)
 
@@ -319,50 +365,46 @@ def render_plant_slide(filename, num, plant_cfg, page, total_pages, out_dirs):
 # ・草花デジタル図鑑：「奄美の草花さんぽ帖」
 # ・奄美のさんぽブログ：「奄美☆かめとらの奄美生活」
 # ==============================================================================
-def render_slide_outro(filename, plants_list, out_dirs):
-    W, H = 1080, 1350
+def render_slide_outro(filename, plants_list, out_dirs, is_reel=False):
+    W = 1080
+    H = 1920 if is_reel else 1350
     img = Image.new("RGBA", (W, H), (32, 46, 36, 255))
     draw = ImageDraw.Draw(img)
 
-    draw.rectangle([24, 24, W - 24, H - 24], outline=(150, 168, 152), width=2)
+    margin = 32 if is_reel else 24
+    draw.rectangle([margin, margin, W - margin, H - margin], outline=(150, 168, 152), width=2)
 
-    f_sub_h = get_font(FONT_GOTHIC_B, 26)
-    f_main_h = get_font(FONT_MINCHO_B, 54)
+    f_sub_h = get_font(FONT_GOTHIC_B, 30 if is_reel else 26)
+    f_main_h = get_font(FONT_MINCHO_B, 58 if is_reel else 54)
 
+    header_y = 110 if is_reel else 64
     sh = "世界自然遺産・奄美大島の植物記録"
     shw = draw.textbbox((0, 0), sh, font=f_sub_h)[2]
-    draw.text(((W - shw) // 2, 64), sh, font=f_sub_h, fill=(212, 182, 138))
+    draw.text(((W - shw) // 2, header_y), sh, font=f_sub_h, fill=(212, 182, 138))
 
     mh = "もっと詳しく見たい方へ"
     mhw = draw.textbbox((0, 0), mh, font=f_main_h)[2]
-    draw.text(((W - mhw) // 2, 112), mh, font=f_main_h, fill=(255, 255, 255))
+    draw.text(((W - mhw) // 2, header_y + 56), mh, font=f_main_h, fill=(255, 255, 255))
 
-    draw.line([(W // 2 - 60, 192), (W // 2 + 60, 192)], fill=(212, 182, 138), width=4)
+    line_y = header_y + 145
+    draw.line([(W // 2 - 60, line_y), (W // 2 + 60, line_y)], fill=(212, 182, 138), width=4)
 
-    # 今回登場した植物の4:3写真サムネイル（最大3枚を横並び）
+    # 今回登場した植物の4:3写真サムネイル
     thumbs_data = plants_list[:3]
     n_thumbs = len(thumbs_data)
-    if n_thumbs == 3:
-        tw, th = 296, 222
-        gap = 32
-        start_x = (W - (tw * 3 + gap * 2)) // 2
-    elif n_thumbs == 2:
-        tw, th = 360, 270
-        gap = 48
-        start_x = (W - (tw * 2 + gap)) // 2
-    else:
-        tw, th = 360, 270
-        gap = 0
-        start_x = (W - tw) // 2
+    tw, th = (310, 232) if (n_thumbs == 3 and is_reel) else (296, 222)
+    gap = 26
+    start_x = (W - (tw * n_thumbs + gap * (n_thumbs - 1))) // 2
+    thumb_y = (line_y + 40)
 
-    f_tcap = get_font(FONT_GOTHIC_B, 24)
+    f_tcap = get_font(FONT_GOTHIC_B, 25 if is_reel else 24)
 
     for idx, p_cfg in enumerate(thumbs_data):
         t_img = p_cfg["main_img"]
         c_num = CIRCLED_NUMS[idx] if idx < len(CIRCLED_NUMS) else f"{idx+1}."
         t_name = f"{c_num} {p_cfg['name']}"
         tx = start_x + idx * (tw + gap)
-        ty = 224
+        ty = thumb_y
         draw.rounded_rectangle([tx - 5, ty - 5, tx + tw + 5, ty + th + 5], radius=6, fill=(255, 255, 255, 255))
         p = Image.open(resolve_img_path(t_img)).convert("RGB")
         p = crop_to_aspect(p, tw, th)
@@ -371,42 +413,60 @@ def render_slide_outro(filename, plants_list, out_dirs):
         nw = draw.textbbox((0, 0), t_name, font=f_tcap)[2]
         draw.text((tx + (tw - nw) // 2, ty + th + 16), t_name, font=f_tcap, fill=(235, 242, 235))
 
-    # 2つのメインサイト紹介カード
-    f_guide = get_font(FONT_GOTHIC_B, 32)
+    # サイト紹介カード
+    guide_y = 660 if is_reel else 520
+    f_guide = get_font(FONT_GOTHIC_B, 34 if is_reel else 32)
     g_txt = "▼ プロフィールのリンクからすぐ開けます ▼"
     gw = draw.textbbox((0, 0), g_txt, font=f_guide)[2]
-    draw.text(((W - gw) // 2, 520), g_txt, font=f_guide, fill=(255, 225, 170))
+    draw.text(((W - gw) // 2, guide_y), g_txt, font=f_guide, fill=(255, 225, 170))
 
-    f_label = get_font(FONT_GOTHIC_B, 26)
-    f_site = get_font(FONT_MINCHO_B, 46)
-    f_desc = get_font(FONT_GOTHIC_M, 28)
+    f_label = get_font(FONT_GOTHIC_B, 28 if is_reel else 26)
+    f_site = get_font(FONT_MINCHO_B, 50 if is_reel else 46)
+    f_desc = get_font(FONT_GOTHIC_M, 30 if is_reel else 28)
 
-    # カード1：草花デジタル図鑑「奄美の草花さんぽ帖」
-    draw.rounded_rectangle([60, 584, 1020, 854], radius=14, fill=(247, 244, 237, 255))
-    draw.rounded_rectangle([60, 584, 80, 854], radius=6, fill=(46, 92, 62, 255))
-    draw.rounded_rectangle([104, 608, 430, 656], radius=6, fill=(46, 92, 62, 255))
-    draw.text((124, 617), "① 草花デジタル図鑑", font=f_label, fill=(255, 255, 255))
+    card1_y = 740 if is_reel else (guide_y + 70)
+    card_h = 330 if is_reel else 270
 
-    draw.text((104, 674), "『 奄美の草花さんぽ帖 』", font=f_site, fill=(24, 42, 30))
-    draw.text((108, 748), "300種以上の草花を「花の色」や「咲く季節」から", font=f_desc, fill=(60, 72, 62))
-    draw.text((108, 790), "パッと探せるオンライン写真図鑑です。", font=f_desc, fill=(60, 72, 62))
+    # カード1：草花デジタル図鑑
+    draw.rounded_rectangle([60, card1_y, 1020, card1_y + card_h], radius=14, fill=(247, 244, 237, 255))
+    draw.rounded_rectangle([60, card1_y, 80, card1_y + card_h], radius=6, fill=(46, 92, 62, 255))
+    draw.rounded_rectangle([104, card1_y + 26, 440, card1_y + 78], radius=6, fill=(46, 92, 62, 255))
+    draw.text((124, card1_y + 36), "① 草花デジタル図鑑", font=f_label, fill=(255, 255, 255))
 
-    # カード2：奄美のさんぽブログ「奄美☆かめとらの奄美生活」
-    draw.rounded_rectangle([60, 884, 1020, 1154], radius=14, fill=(247, 244, 237, 255))
-    draw.rounded_rectangle([60, 884, 80, 1154], radius=6, fill=(166, 78, 46, 255))
-    draw.rounded_rectangle([104, 908, 430, 956], radius=6, fill=(166, 78, 46, 255))
-    draw.text((124, 917), "② 奄美のさんぽブログ", font=f_label, fill=(255, 255, 255))
+    draw.text((104, card1_y + 98), "『 奄美の草花さんぽ帖 』", font=f_site, fill=(24, 42, 30))
+    draw.text((108, card1_y + 185), "300種以上の草花を「花の色」や「咲く季節」から", font=f_desc, fill=(60, 72, 62))
+    draw.text((108, card1_y + 235), "パッと探せるオンライン写真図鑑です。", font=f_desc, fill=(60, 72, 62))
 
-    draw.text((104, 974), "『 奄美☆かめとらの奄美生活 』", font=f_site, fill=(48, 30, 22))
-    draw.text((108, 1048), "毎日の何気ない散歩道で見つけた草花の記録や、", font=f_desc, fill=(60, 72, 62))
-    draw.text((108, 1090), "島の季節の空気感を綴っています。", font=f_desc, fill=(60, 72, 62))
+    # カード2：奄美のさんぽブログ
+    card2_y = 1110 if is_reel else (card1_y + card_h + 30)
+    draw.rounded_rectangle([60, card2_y, 1020, card2_y + card_h], radius=14, fill=(247, 244, 237, 255))
+    draw.rounded_rectangle([60, card2_y, 80, card2_y + card_h], radius=6, fill=(166, 78, 46, 255))
+    draw.rounded_rectangle([104, card2_y + 26, 440, card2_y + 78], radius=6, fill=(166, 78, 46, 255))
+    draw.text((124, card2_y + 36), "② 奄美のさんぽブログ", font=f_label, fill=(255, 255, 255))
 
-    # 最下部：保存＆フォロー促進ボタン（特大31pt）
-    draw.rounded_rectangle([60, 1196, 1020, 1288], radius=12, fill=(212, 182, 138, 255))
-    f_bot = get_font(FONT_GOTHIC_B, 31)
-    b_txt = "★ 右下の【保存】でマイ図鑑に！ フォローも大歓迎です"
-    bw = draw.textbbox((0, 0), b_txt, font=f_bot)[2]
-    draw.text(((W - bw) // 2, 1226), b_txt, font=f_bot, fill=(24, 34, 26))
+    draw.text((104, card2_y + 98), "『 奄美☆かめとらの奄美生活 』", font=f_site, fill=(48, 30, 22))
+    draw.text((108, card2_y + 185), "毎日の何気ない散歩道で見つけた草花の記録や、", font=f_desc, fill=(60, 72, 62))
+    draw.text((108, card2_y + 235), "島の季節の空気感を綴っています。", font=f_desc, fill=(60, 72, 62))
+
+    # 最下部：保存＆フォロー促進ボタン
+    btn_y = 1490 if is_reel else 1196
+    btn_h = 190 if is_reel else 92
+    draw.rounded_rectangle([60, btn_y, 1020, btn_y + btn_h], radius=14, fill=(212, 182, 138, 255))
+
+    if is_reel:
+        f_bot1 = get_font(FONT_GOTHIC_B, 34)
+        f_bot2 = get_font(FONT_GOTHIC_B, 28)
+        b_txt1 = "★ 画面下の【保存】でマイ図鑑にストック！"
+        b_txt2 = "奄美大島の美しい植物記録を毎日発信中 ｜ フォロー歓迎"
+        bw1 = draw.textbbox((0, 0), b_txt1, font=f_bot1)[2]
+        bw2 = draw.textbbox((0, 0), b_txt2, font=f_bot2)[2]
+        draw.text(((W - bw1) // 2, btn_y + 42), b_txt1, font=f_bot1, fill=(24, 34, 26))
+        draw.text(((W - bw2) // 2, btn_y + 104), b_txt2, font=f_bot2, fill=(48, 58, 50))
+    else:
+        f_bot = get_font(FONT_GOTHIC_B, 31)
+        b_txt = "★ 右下の【保存】でマイ図鑑に！ フォローも大歓迎です"
+        bw = draw.textbbox((0, 0), b_txt, font=f_bot)[2]
+        draw.text(((W - bw) // 2, btn_y + 30), b_txt, font=f_bot, fill=(24, 34, 26))
 
     save_outputs(img, filename, out_dirs)
 
@@ -464,21 +524,84 @@ DEFAULT_CONFIG = {
 }
 
 
-def run_from_config(cfg, out_dirs):
+def sync_to_remotion(folder_name, generated_filenames, bgm_path="kusabana/インスト風の音.mp3", duration_in_frames=300):
+    """生成したリール画像を Remotion の public に配置し、Root.tsx の AmamiPlantsReel を自動更新する"""
+    if not os.path.exists(REMOTION_DIR):
+        print(f"[Warning] Remotion directory not found: {REMOTION_DIR}")
+        return
+
+    remotion_public_dest = os.path.join(REMOTION_DIR, "public", folder_name)
+    os.makedirs(remotion_public_dest, exist_ok=True)
+
+    src_dir = os.path.join(CAROUSEL_DIR, "output", folder_name)
+    for fname in generated_filenames:
+        src_file = os.path.join(src_dir, fname)
+        if os.path.exists(src_file):
+            shutil.copy2(src_file, os.path.join(remotion_public_dest, fname))
+
+    print(f"Copied images to Remotion: {remotion_public_dest}")
+
+    # Root.tsx の更新
+    root_tsx_path = os.path.join(REMOTION_DIR, "src", "Root.tsx")
+    if not os.path.exists(root_tsx_path):
+        print(f"[Warning] Root.tsx not found: {root_tsx_path}")
+        return
+
+    with open(root_tsx_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    slides_js = ",\n".join([f'            "{folder_name}/{fn}"' for fn in generated_filenames])
+    new_comp = f"""      <Composition
+        id="AmamiPlantsReel"
+        component={{AmamiPlantsReel}}
+        durationInFrames={{{duration_in_frames}}}
+        fps={{30}}
+        width={{1080}}
+        height={{1920}}
+        schema={{amamiPlantsReelSchema}}
+        defaultProps={{{{
+          slides: [
+{slides_js},
+          ],
+          bgmPath: "{bgm_path}",
+          bgmVolume: 0.5,
+        }}}}
+      />"""
+
+    comp_regex = re.compile(r'<Composition\s+id="AmamiPlantsReel"[\s\S]*?\/>')
+    if comp_regex.search(content):
+        updated_content = comp_regex.sub(new_comp, content, count=1)
+        with open(root_tsx_path, "w", encoding="utf-8") as f:
+            f.write(updated_content)
+        print("Successfully updated Root.tsx for AmamiPlantsReel!")
+    else:
+        print("[Warning] Could not find AmamiPlantsReel Composition in Root.tsx")
+
+
+def run_from_config(cfg, out_dirs, is_reel=False):
     plants = cfg["plants"]
     total_pages = len(plants) + 2
 
-    render_slide_1(cfg["cover"], out_dirs)
+    generated_filenames = []
 
+    # 1. 表紙
+    render_slide_1(cfg["cover"], out_dirs, is_reel=is_reel)
+    generated_filenames.append("slide_01_cover.png")
+
+    # 2. 植物スライド
     for idx, p_cfg in enumerate(plants):
         slide_num = idx + 2
         num_str = f"{idx + 1:02d}"
         fname = f"slide_{slide_num:02d}_plant{idx + 1}.png"
-        render_plant_slide(fname, num_str, p_cfg, slide_num, total_pages, out_dirs)
+        render_plant_slide(fname, num_str, p_cfg, slide_num, total_pages, out_dirs, is_reel=is_reel)
+        generated_filenames.append(fname)
 
+    # 3. 最終スライド
     outro_fname = f"slide_{total_pages:02d}_outro.png"
-    render_slide_outro(outro_fname, plants, out_dirs)
+    render_slide_outro(outro_fname, plants, out_dirs, is_reel=is_reel)
+    generated_filenames.append(outro_fname)
 
+    # キャプション保存
     if "caption" in cfg and cfg["caption"]:
         for d in out_dirs:
             if not d:
@@ -492,13 +615,21 @@ def run_from_config(cfg, out_dirs):
             except PermissionError:
                 pass
 
+    return generated_filenames
+
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate Instagram Carousel (1080x1350) for Amami Kusabana Sanpo.")
+    parser = argparse.ArgumentParser(description="Generate Instagram Carousel (1080x1350) or Reel (1080x1920) for Amami Kusabana Sanpo.")
     parser.add_argument("--config", type=str, default="", help="Path to JSON config file")
     parser.add_argument("--out-dir", type=str, default="", help="Output directory path")
     parser.add_argument("--artifact-dir", type=str, default="", help="Optional artifact directory path for preview")
+    parser.add_argument("--reel", action="store_true", help="Generate 9:16 vertical images (1080x1920) for Reels without swipe CTA")
+    parser.add_argument("--mode", type=str, choices=["carousel", "reel"], default="", help="Explicitly specify mode ('carousel' or 'reel')")
+    parser.add_argument("--sync-remotion", action="store_true", help="Automatically copy generated reel images to Remotion and update Root.tsx")
+    parser.add_argument("--bgm", type=str, default="kusabana/インスト風の音.mp3", help="BGM path for Remotion (relative to remotion public dir)")
     args = parser.parse_args()
+
+    is_reel = args.reel or (args.mode == "reel")
 
     if args.config:
         with open(args.config, "r", encoding="utf-8") as f:
@@ -507,14 +638,20 @@ def main():
         cfg = DEFAULT_CONFIG
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    default_out = os.path.join(CAROUSEL_DIR, "output", f"carousel_{timestamp}")
+    folder_suffix = "_reels" if is_reel else ""
+    folder_name = f"carousel_{timestamp}{folder_suffix}"
+    default_out = os.path.join(CAROUSEL_DIR, "output", folder_name)
     out_dir = args.out_dir if args.out_dir else default_out
 
     out_dirs = [out_dir]
     if args.artifact_dir:
         out_dirs.append(args.artifact_dir)
 
-    run_from_config(cfg, out_dirs)
+    print(f"--- Running generation in {'REEL (1080x1920)' if is_reel else 'CAROUSEL (1080x1350)'} mode ---")
+    generated_filenames = run_from_config(cfg, out_dirs, is_reel=is_reel)
+
+    if is_reel and args.sync_remotion:
+        sync_to_remotion(os.path.basename(out_dir), generated_filenames, bgm_path=args.bgm)
 
 
 if __name__ == "__main__":

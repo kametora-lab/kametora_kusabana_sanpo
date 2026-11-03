@@ -2,13 +2,13 @@
 name: create-insta-carousel
 description: >-
   「奄美の草花さんぽ帖」プロジェクトの草花データ（src/data/plants.json）と写真（public/images/）から、
-  Instagram用の4:5縦長カルーセル投稿画像一式（1080x1350px）と投稿文（キャプション・ハッシュタグ）を自動生成するローカルスキルニダ。
-  ユーザーが「カルーセル作成して」「インスタのカルーセルを作って」「〇〇と〇〇でカルーセル作って」などと依頼したときに必ず起動するニダ。
+  Instagram用の4:5縦長カルーセル投稿画像一式（1080x1350px）または9:16縦長リール用画像一式（1080x1920px）と投稿文（キャプション・ハッシュタグ）を自動生成し、Remotion動画プロジェクトへの連携も行うローカルスキルニダ。
+  ユーザーが「カルーセル作成して」「インスタのカルーセルを作って」「リール用の画像作って」「リール動画作って」などと依頼したときに必ず起動するニダ。
 ---
 
-# 奄美の草花さんぽ帖 Instagramカルーセル作成スキル (create-insta-carousel)
+# 奄美の草花さんぽ帖 Instagramカルーセル＆リール作成スキル (create-insta-carousel)
 
-ユーザーが「カルーセル作成して」「インスタのカルーセル作って」と依頼した際、このスキルに従って **美しい4:3写真を前面に出し、スマホの小さな画面や40代〜60代女性の目でも1秒でクッキリ読める特大文字デザインのカルーセル画像（5枚構成）＋保存を促すキャプション** を一括作成するニダ。
+ユーザーが「カルーセル作成して」「リール用の画像作って」「リール動画作って」と依頼した際、このスキルに従って **美しい4:3写真を前面に出し、スマホの小さな画面や40代〜60代女性の目でも1秒でクッキリ読める特大文字デザインの画像（5枚構成）＋保存を促すキャプション** を一括作成し、リールの場合はRemotion動画プロジェクト（`AmamiPlantsReel`）へ自動同期するニダ。
 
 ---
 
@@ -112,14 +112,26 @@ description: >-
 - `plants[].point`：**24文字以内**
 - `plants[].accent_rgb`：その植物の花や実の色に合わせた上品な深みのあるRGB（赤系 `[168, 52, 52]`、紫系 `[107, 58, 158]`、青紫系 `[64, 82, 156]`、黄・橙系 `[184, 110, 28]`、緑系 `[46, 92, 62]`、ピンク系 `[176, 62, 108]` など）
 
-### ステップ3：カルーセル画像の生成実行
+### ステップ3：カルーセル画像またはリール画像の生成実行
 [insta_carousel/generate_carousel.py](file:///C:/Gravity/amamikusabana_2_new/insta_carousel/generate_carousel.py) を実行して5枚のPNG画像を生成するニダ。
 
-- サンドボックス環境で `C:\Gravity\amamikusabana_2_new\insta_carousel\output\...` への新規フォルダ作成が権限エラーになる場合があるため、`--artifact-dir` に会話のアーティファクトディレクトリ（`<Artifact Directory Path>/carousel_<timestamp>`）を指定するか、事前にプロジェクト内の出力先フォルダを用意してから実行するニダ。
-
+#### 1) カルーセル（4:5、1080×1350px）の場合
 ```powershell
 python C:\Gravity\amamikusabana_2_new\insta_carousel\generate_carousel.py --config C:\Gravity\amamikusabana_2_new\insta_carousel\configs\carousel_<timestamp>.json --out-dir C:\Gravity\amamikusabana_2_new\insta_carousel\output\carousel_<timestamp> --artifact-dir <ArtifactDir>\carousel_<timestamp>
 ```
+
+#### 2) リール用画像（9:16、1080×1920px・スワイプ文言排除）＆ Remotion自動同期の場合
+- `--reel` オプションを付与すると、1080×1920pxの縦長最適化レイアウトで描画され、カルーセル用の「スワイプ＞」などの文言が完全に排除されるニダ。
+- `--sync-remotion` オプションを付与すると、生成された5枚の画像が自動的に `C:\Gravity\VIDEO_IROIRO\remotion_video\public\carousel_<timestamp>_reels\` にコピーされ、`Root.tsx` の `AmamiPlantsReel` コンポジションが上書き更新されるニダ！
+
+```powershell
+python C:\Gravity\amamikusabana_2_new\insta_carousel\generate_carousel.py --config C:\Gravity\amamikusabana_2_new\insta_carousel\configs\carousel_<timestamp>.json --reel --sync-remotion
+```
+
+> [!IMPORTANT]
+> **Remotionのレンダリングについて（絶対厳守ニダ）**
+> Remotion動画のレンダリング（mp4出力）はユーザー自身が行うため、エージェントが自動で `npx remotion render` などのレンダリングコマンドを実行してはならないニダ！
+> セットアップ完了後は、Remotion Studio（`npm run dev`）でプレビュー確認できる状態をユーザーに報告すること！
 
 ### ステップ4：生成された全画像の目視チェックと提示（最新アルゴリズムSEO＆大人女性向け拡散ルール）
 1. 生成された `slide_01_cover.png` 〜 `slide_05_outro.png` を `read_file` で必ず確認し、文字切れ・重なり・文字化けがないか検証するニダ。
