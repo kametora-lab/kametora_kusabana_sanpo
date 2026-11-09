@@ -562,6 +562,7 @@ def sync_to_remotion(folder_name, generated_filenames, bgm_path="kusabana/イン
         height={{1920}}
         schema={{amamiPlantsReelSchema}}
         defaultProps={{{{
+          transitionType: "filmBurn",
           slides: [
 {slides_js},
           ],
