@@ -524,7 +524,9 @@ DEFAULT_CONFIG = {
 }
 
 
-def sync_to_remotion(folder_name, generated_filenames, bgm_path="kusabana/インスト風の音.mp3", duration_in_frames=300):
+def sync_to_remotion(folder_name, generated_filenames, bgm_path="kusabana/インスト風の音.mp3", duration_in_frames=None):
+    if duration_in_frames is None:
+        duration_in_frames = len(generated_filenames) * 60
     """生成したリール画像を Remotion の public に配置し、Root.tsx の AmamiPlantsReel を自動更新する"""
     if not os.path.exists(REMOTION_DIR):
         print(f"[Warning] Remotion directory not found: {REMOTION_DIR}")
